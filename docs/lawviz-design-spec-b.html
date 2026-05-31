@@ -1,0 +1,1352 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>律析 LawViz · 前端设计规格 · 方案B 晓光</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:          oklch(98% 0.005 75);
+      --surface:     oklch(100% 0 0);
+      --surface-2:   oklch(96% 0.007 75);
+      --fg:          oklch(17% 0.02 285);
+      --muted:       oklch(50% 0.016 285);
+      --border:      oklch(88% 0.008 75);
+      --border-cool: oklch(90% 0.006 285);
+      --accent:      oklch(40% 0.17 294);
+      --accent-light:oklch(40% 0.17 294 / 0.07);
+      --accent-mid:  oklch(40% 0.17 294 / 0.18);
+      --coral:       oklch(68% 0.15 18);
+      --coral-soft:  oklch(68% 0.15 18 / 0.1);
+      --code-bg:     oklch(96% 0.006 270);
+      --tag-bg:      oklch(40% 0.17 294 / 0.06);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'PingFang SC', system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Layout ── */
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 80px 48px 120px;
+    }
+
+    /* ── Doc Header ── */
+    .doc-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 40px;
+      margin-bottom: 60px;
+    }
+
+    .doc-kicker {
+      font-family: 'DM Sans', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .doc-title {
+      font-family: 'Playfair Display', 'Noto Serif SC', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 40px;
+      color: var(--fg);
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .doc-sub {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .doc-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 28px;
+    }
+
+    .doc-meta-item {
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .doc-meta-label {
+      font-weight: 500;
+      color: var(--fg);
+    }
+
+    /* ── TOC ── */
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border-cool);
+      border-radius: 10px;
+      padding: 28px 32px;
+      margin-bottom: 60px;
+    }
+
+    .toc-title {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .toc-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 40px;
+    }
+
+    .toc-list a {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.15s;
+    }
+
+    .toc-list a:hover { color: var(--accent); }
+
+    .toc-num {
+      font-family: monospace;
+      font-size: 10px;
+      color: var(--accent);
+      opacity: 0.6;
+      min-width: 20px;
+    }
+
+    /* ── Section ── */
+    .section {
+      margin-bottom: 72px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 32px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-num {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: 13px;
+      color: var(--accent);
+      opacity: 0.6;
+      min-width: 28px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', 'Noto Serif SC', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 24px;
+      color: var(--fg);
+      line-height: 1.3;
+    }
+
+    /* ── Subsection ── */
+    .sub {
+      margin-bottom: 36px;
+    }
+
+    .sub-title {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sub-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── Text ── */
+    p {
+      color: var(--muted);
+      margin-bottom: 12px;
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    /* ── Token Table ── */
+    .token-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .token-table th {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 8px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .token-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+      color: var(--fg);
+    }
+
+    .token-table tr:last-child td { border-bottom: none; }
+
+    .token-table tr:hover td { background: var(--surface-2); }
+
+    .color-chip {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      border: 1px solid oklch(0% 0 0 / 0.08);
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    .token-var {
+      font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+      font-size: 12px;
+      color: var(--accent);
+      background: var(--tag-bg);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .token-value {
+      font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* ── Type Specimens ── */
+    .type-spec-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .type-spec-row {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 24px;
+      display: grid;
+      grid-template-columns: 140px 1fr auto;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .type-spec-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .type-spec-sample {
+      color: var(--fg);
+      line-height: 1.2;
+    }
+
+    .type-spec-meta {
+      font-family: 'SF Mono', 'Menlo', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    /* ── Component Cards ── */
+    .component-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .component-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+    }
+
+    .component-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    .component-name {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--fg);
+    }
+
+    .component-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 3px 9px;
+      border-radius: 20px;
+      border: 1px solid;
+    }
+
+    .tag-accent {
+      color: var(--accent);
+      border-color: var(--accent-mid);
+      background: var(--accent-light);
+    }
+
+    .tag-coral {
+      color: var(--coral);
+      border-color: oklch(68% 0.15 18 / 0.25);
+      background: var(--coral-soft);
+    }
+
+    .tag-muted {
+      color: var(--muted);
+      border-color: var(--border);
+      background: var(--surface-2);
+    }
+
+    .component-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+
+    /* ── Code Block ── */
+    pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border-cool);
+      border-radius: 8px;
+      padding: 18px 20px;
+      overflow-x: auto;
+      font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+      font-size: 12px;
+      line-height: 1.7;
+      color: var(--fg);
+    }
+
+    code {
+      font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+      font-size: 12px;
+      background: var(--tag-bg);
+      color: var(--accent);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    pre code {
+      background: none;
+      padding: 0;
+      color: inherit;
+    }
+
+    /* ── Rule List ── */
+    .rule-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .rule-list li {
+      display: flex;
+      gap: 14px;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .rule-marker {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--accent-light);
+      border: 1px solid var(--accent-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .rule-marker-cross {
+      background: oklch(68% 0.15 18 / 0.08);
+      border-color: oklch(68% 0.15 18 / 0.25);
+      color: var(--coral);
+      font-size: 11px;
+    }
+
+    .rule-marker-check {
+      color: var(--accent);
+      font-size: 11px;
+    }
+
+    /* ── Grid Layouts Diagram ── */
+    .layout-demo {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+
+    .layout-demo-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .layout-visual {
+      display: flex;
+      gap: 6px;
+      height: 56px;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .lv-block {
+      background: var(--accent-light);
+      border: 1px dashed var(--accent-mid);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: var(--accent);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 32px 0;
+    }
+
+    /* ── Note / Callout ── */
+    .callout {
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: 13px;
+      color: var(--fg);
+      line-height: 1.65;
+    }
+
+    .callout-warn {
+      background: var(--coral-soft);
+      border-left-color: var(--coral);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 720px) {
+      .page { padding: 48px 24px 80px; }
+      .toc-list { grid-template-columns: 1fr; }
+      .type-spec-row { grid-template-columns: 1fr; gap: 8px; }
+      .type-spec-meta { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Doc Header -->
+  <header class="doc-header">
+    <p class="doc-kicker">律析 LawViz · 前端设计规格文档</p>
+    <h1 class="doc-title">方案B — 晓光</h1>
+    <p class="doc-sub">面向中国年轻女性律师的知性暖白视觉系统。本文档是其他开发 Agent 实现前端时的唯一参考规范，完整涵盖色彩体系、排版、组件、页面布局、交互原则及禁忌。</p>
+    <div class="doc-meta">
+      <div class="doc-meta-item"><span class="doc-meta-label">版本</span> v1.0</div>
+      <div class="doc-meta-item"><span class="doc-meta-label">日期</span> 2026-05-31</div>
+      <div class="doc-meta-item"><span class="doc-meta-label">技术栈</span> Next.js 14 + Tailwind CSS</div>
+      <div class="doc-meta-item"><span class="doc-meta-label">目标用户</span> 中国独立律师，年轻女性比例高</div>
+    </div>
+  </header>
+
+  <!-- TOC -->
+  <nav class="toc">
+    <p class="toc-title">目录</p>
+    <ul class="toc-list">
+      <li><a href="#s1"><span class="toc-num">01</span>设计哲学</a></li>
+      <li><a href="#s2"><span class="toc-num">02</span>色彩体系</a></li>
+      <li><a href="#s3"><span class="toc-num">03</span>排版规范</a></li>
+      <li><a href="#s4"><span class="toc-num">04</span>间距 & 边界</a></li>
+      <li><a href="#s5"><span class="toc-num">05</span>核心组件</a></li>
+      <li><a href="#s6"><span class="toc-num">06</span>页面布局规格</a></li>
+      <li><a href="#s7"><span class="toc-num">07</span>响应式断点</a></li>
+      <li><a href="#s8"><span class="toc-num">08</span>交互原则</a></li>
+      <li><a href="#s9"><span class="toc-num">09</span>Tailwind 配置</a></li>
+      <li><a href="#s10"><span class="toc-num">10</span>禁止事项</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- ── 01 设计哲学 ── -->
+  <section class="section" id="s1">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title">设计哲学</h2>
+    </div>
+
+    <p>方案B的核心命题：<strong style="color:var(--fg)">法律权威感与时尚知性审美可以共存</strong>。律析的核心用户是年轻女性律师，她们同时阅读《Vogue China》与最高院判决书，对视觉的要求与对专业的要求同样苛刻。</p>
+
+    <div class="divider"></div>
+
+    <div class="sub">
+      <p class="sub-title">三个关键词</p>
+      <div class="component-list">
+        <div class="component-card">
+          <div class="component-card-header">
+            <span class="component-name">知性（Intellectual）</span>
+            <div class="component-tags"><span class="tag tag-accent">Playfair Display</span><span class="tag tag-muted">衬线字体</span></div>
+          </div>
+          <p class="component-desc">Playfair Display 斜体作为展示字体，给产品带来编辑感与文学气质。对比以体现智识，而非以装饰取悦。专业不等于冷漠。</p>
+        </div>
+        <div class="component-card">
+          <div class="component-card-header">
+            <span class="component-name">克制（Restrained）</span>
+            <div class="component-tags"><span class="tag tag-muted">单点缀色</span><span class="tag tag-muted">无装饰渐变</span></div>
+          </div>
+          <p class="component-desc">深靛紫是唯一点缀色，珊瑚橙仅用于行动按钮。整个色彩系统只有两个非中性色。少即是多——每一处色彩的出现都应当令人印象深刻。</p>
+        </div>
+        <div class="component-card">
+          <div class="component-card-header">
+            <span class="component-name">温度（Warmth）</span>
+            <div class="component-tags"><span class="tag tag-coral">暖象牙底</span><span class="tag tag-coral">珊瑚 CTA</span></div>
+          </div>
+          <p class="component-desc">底色用象牙白而非冷白，给严肃法律产品带来一丝呼吸感。珊瑚色行动按钮传递"邀请感"，而非"命令感"——符合年轻女性律师作为服务提供者的身份认知。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── 02 色彩体系 ── -->
+  <section class="section" id="s2">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="section-title">色彩体系</h2>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">CSS Custom Properties（根变量）</p>
+      <pre>:root {
+  /* ── 基础 ── */
+  --bg:           oklch(98% 0.005 75);    /* 象牙白页面底色 */
+  --surface:      oklch(100% 0 0);         /* 纯白卡片/导航 */
+  --surface-2:    oklch(96% 0.007 75);     /* 次级背景、斑马纹 */
+  --fg:           oklch(17% 0.02 285);     /* 主文字，深靛近黑 */
+  --muted:        oklch(50% 0.016 285);    /* 次级文字、标签 */
+  --border:       oklch(88% 0.008 75);     /* 暖调分隔线 */
+  --border-cool:  oklch(90% 0.006 285);    /* 冷调分隔线（卡片） */
+
+  /* ── 点缀色：深靛紫（主）── */
+  --accent:       oklch(40% 0.17 294);     /* 全量：logo、强调、选中 */
+  --accent-light: oklch(40% 0.17 294 / 0.07);  /* 浅底：hover 背景 */
+  --accent-mid:   oklch(40% 0.17 294 / 0.18);  /* 中透：描边 */
+
+  /* ── 行动色：珊瑚橙（仅 CTA）── */
+  --coral:        oklch(68% 0.15 18);      /* 填充按钮背景 */
+  --coral-soft:   oklch(68% 0.15 18 / 0.1);    /* 浅底：辅助场景 */
+}</pre>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">色彩语义分配</p>
+      <table class="token-table">
+        <thead>
+          <tr>
+            <th>变量</th>
+            <th>视觉值</th>
+            <th>oklch</th>
+            <th>用途</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="token-var">--bg</span></td>
+            <td><span class="color-chip" style="background:oklch(98% 0.005 75);border-color:rgba(0,0,0,.1)"></span>象牙白</td>
+            <td class="token-value">98% 0.005 75</td>
+            <td>页面底色、Hero 背景</td>
+          </tr>
+          <tr>
+            <td><span class="token-var">--surface</span></td>
+            <td><span class="color-chip" style="background:#fff;border-color:rgba(0,0,0,.1)"></span>纯白</td>
+            <td class="token-value">100% 0 0</td>
+            <td>导航栏、卡片、弹窗</td>
+          </tr>
+          <tr>
+            <td><span class="token-var">--fg</span></td>
+            <td><span class="color-chip" style="background:oklch(17% 0.02 285)"></span>深靛近黑</td>
+            <td class="token-value">17% 0.02 285</td>
+            <td>H1–H3、body 正文</td>
+          </tr>
+          <tr>
+            <td><span class="token-var">--muted</span></td>
+            <td><span class="color-chip" style="background:oklch(50% 0.016 285)"></span>靛灰</td>
+            <td class="token-value">50% 0.016 285</td>
+            <td>次级文字、placeholder、标注</td>
+          </tr>
+          <tr>
+            <td><span class="token-var">--border</span></td>
+            <td><span class="color-chip" style="background:oklch(88% 0.008 75);border-color:rgba(0,0,0,.08)"></span>暖米边</td>
+            <td class="token-value">88% 0.008 75</td>
+            <td>分隔线、表格行线</td>
+          </tr>
+          <tr>
+            <td><span class="token-var">--accent</span></td>
+            <td><span class="color-chip" style="background:oklch(40% 0.17 294)"></span>深靛紫</td>
+            <td class="token-value">40% 0.17 294</td>
+            <td>品牌色、logo、强调文字、激活状态</td>
+          </tr>
+          <tr>
+            <td><span class="token-var">--coral</span></td>
+            <td><span class="color-chip" style="background:oklch(68% 0.15 18)"></span>珊瑚橙</td>
+            <td class="token-value">68% 0.15 18</td>
+            <td><strong>仅用于主行动按钮</strong>（注册/开始使用）</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <strong>唯一性规则：</strong>整个产品中 <code>--coral</code> 只出现在"主行动按钮"（免费体验、立即注册、开始使用）。其他任何元素——标签、徽章、图标、插图、状态——均不使用珊瑚色，以保持其行动含义的稀缺性。
+      </div>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">禁止使用的色彩</p>
+      <ul class="rule-list">
+        <li>
+          <span class="rule-marker rule-marker-cross">×</span>
+          <span>任何 <code>oklch(h: 20–70)</code> 暖棕/米橙/杏色的页面背景或大面积色块（非品牌要求）</span>
+        </li>
+        <li>
+          <span class="rule-marker rule-marker-cross">×</span>
+          <span>紫色/蓝紫渐变作为 Hero 或卡片背景</span>
+        </li>
+        <li>
+          <span class="rule-marker rule-marker-cross">×</span>
+          <span>红色（错误状态除外）、绿色（成功状态除外）在品牌 UI 中使用</span>
+        </li>
+        <li>
+          <span class="rule-marker rule-marker-cross">×</span>
+          <span>超过两个非中性色同时出现在同一视区内</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+
+  <!-- ── 03 排版规范 ── -->
+  <section class="section" id="s3">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="section-title">排版规范</h2>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">字体栈</p>
+      <table class="token-table">
+        <thead><tr><th>角色</th><th>字体栈</th><th>用途</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>展示字体</td>
+            <td class="token-value">'Playfair Display', 'Noto Serif SC', Georgia, serif</td>
+            <td>H1、H2、Logo、斜体引用、价格数字</td>
+          </tr>
+          <tr>
+            <td>正文字体</td>
+            <td class="token-value">-apple-system, BlinkMacSystemFont, 'PingFang SC', system-ui, sans-serif</td>
+            <td>body、标签、表单、次级文字</td>
+          </tr>
+          <tr>
+            <td>等宽字体</td>
+            <td class="token-value">'SF Mono', 'Menlo', 'Consolas', monospace</td>
+            <td>日期、代码、ID、模型名称</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="callout">Google Fonts 引入：<code>&lt;link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" /&gt;</code></div>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">字号阶梯</p>
+      <div class="type-spec-list">
+        <div class="type-spec-row">
+          <span class="type-spec-label">Display / H1</span>
+          <span class="type-spec-sample" style="font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:40px;color:var(--fg);line-height:1.15">每份案件方案</span>
+          <span class="type-spec-meta">Playfair italic 400<br>clamp(38px,4.5vw,68px)<br>lh 1.15 / ls -0.01em</span>
+        </div>
+        <div class="type-spec-row">
+          <span class="type-spec-label">Section / H2</span>
+          <span class="type-spec-sample" style="font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:28px;color:var(--fg);line-height:1.25">为律师设计的核心场景</span>
+          <span class="type-spec-meta">Playfair italic 400<br>32–34px<br>lh 1.25</span>
+        </div>
+        <div class="type-spec-row">
+          <span class="type-spec-label">Card Title / H3</span>
+          <span class="type-spec-sample" style="font-size:18px;color:var(--fg);line-height:1.3">谈案准备 · 专业展示</span>
+          <span class="type-spec-meta">System sans 400<br>18px<br>lh 1.3</span>
+        </div>
+        <div class="type-spec-row">
+          <span class="type-spec-label">Eyebrow / Kicker</span>
+          <span class="type-spec-sample" style="font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent)">AI 驱动的法律可视化</span>
+          <span class="type-spec-meta">System sans 400–500<br>11px / UPPERCASE<br>ls 0.1em</span>
+        </div>
+        <div class="type-spec-row">
+          <span class="type-spec-label">Body</span>
+          <span class="type-spec-sample" style="font-size:15px;color:var(--muted);line-height:1.75">律析 用 AI 将案件信息转化为专业可视化报告，帮助律师展示出色的专业水准。</span>
+          <span class="type-spec-meta">System sans 400<br>15–17px<br>lh 1.75</span>
+        </div>
+        <div class="type-spec-row">
+          <span class="type-spec-label">Caption / Meta</span>
+          <span class="type-spec-sample" style="font-size:12px;color:var(--muted)">已服务 2,000+ 律师 · 5 种模板</span>
+          <span class="type-spec-meta">System sans 400<br>12px<br>lh 1.5</span>
+        </div>
+        <div class="type-spec-row">
+          <span class="type-spec-label">Price / Number</span>
+          <span class="type-spec-sample" style="font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:36px;color:var(--accent);line-height:1">¥148</span>
+          <span class="type-spec-meta">Playfair 700<br>36px<br>tabular-nums</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">Playfair Display 使用规则</p>
+      <ul class="rule-list">
+        <li><span class="rule-marker rule-marker-check">✓</span><span>H1 Hero 标题：<code>font-style: italic; font-weight: 400</code></span></li>
+        <li><span class="rule-marker rule-marker-check">✓</span><span>H2 Section 标题：<code>font-style: italic; font-weight: 400</code></span></li>
+        <li><span class="rule-marker rule-marker-check">✓</span><span>价格数字、Logo 品牌名：<code>font-weight: 700</code>（非斜体）</span></li>
+        <li><span class="rule-marker rule-marker-check">✓</span><span>案件卡片标题（Mock）：<code>font-style: italic; font-weight: 400</code></span></li>
+        <li><span class="rule-marker rule-marker-cross">×</span><span>不用于正文段落、按钮、表单标签、导航链接</span></li>
+        <li><span class="rule-marker rule-marker-cross">×</span><span>不用于小于 14px 的文字</span></li>
+      </ul>
+    </div>
+  </section>
+
+
+  <!-- ── 04 间距 & 边界 ── -->
+  <section class="section" id="s4">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="section-title">间距 &amp; 边界</h2>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">圆角</p>
+      <table class="token-table">
+        <thead><tr><th>用途</th><th>值</th></tr></thead>
+        <tbody>
+          <tr><td>大卡片（案件卡、定价卡）</td><td class="token-value">border-radius: 12px</td></tr>
+          <tr><td>功能卡片、feature card</td><td class="token-value">border-radius: 10px</td></tr>
+          <tr><td>按钮（胶囊型）</td><td class="token-value">border-radius: 20–24px</td></tr>
+          <tr><td>按钮（方形型，卡片内）</td><td class="token-value">border-radius: 8px</td></tr>
+          <tr><td>标签 / Badge</td><td class="token-value">border-radius: 20px</td></tr>
+          <tr><td>输入框</td><td class="token-value">border-radius: 8px</td></tr>
+          <tr><td>微型装饰（accent bar）</td><td class="token-value">border-radius: 1–2px</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">间距基准</p>
+      <table class="token-table">
+        <thead><tr><th>等级</th><th>值</th><th>典型用途</th></tr></thead>
+        <tbody>
+          <tr><td>xs</td><td class="token-value">4–6px</td><td>icon 与文字间距、tag 内边距</td></tr>
+          <tr><td>sm</td><td class="token-value">8–12px</td><td>列表项间距、inline 元素</td></tr>
+          <tr><td>md</td><td class="token-value">16–24px</td><td>卡片内部行间距</td></tr>
+          <tr><td>lg</td><td class="token-value">28–40px</td><td>卡片内容与边缘</td></tr>
+          <tr><td>xl</td><td class="token-value">52–72px</td><td>section 间距、Hero 栅格 gap</td></tr>
+          <tr><td>xxl</td><td class="token-value">80–100px</td><td>section 上下 padding</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">边框规则</p>
+      <ul class="rule-list">
+        <li><span class="rule-marker rule-marker-check">✓</span><span>所有描边均为 <code>1px solid</code>，仅推荐卡片可用 <code>1.5px solid var(--accent)</code></span></li>
+        <li><span class="rule-marker rule-marker-check">✓</span><span>导航底部：<code>1px solid var(--border)</code></span></li>
+        <li><span class="rule-marker rule-marker-check">✓</span><span>卡片默认：<code>1px solid var(--border-cool)</code></span></li>
+        <li><span class="rule-marker rule-marker-cross">×</span><span>不使用 <code>box-shadow</code> 替代边框做分隔，阴影仅用于浮起状态</span></li>
+      </ul>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">阴影</p>
+      <table class="token-table">
+        <thead><tr><th>用途</th><th>值</th></tr></thead>
+        <tbody>
+          <tr><td>卡片默认（静态）</td><td class="token-value">无阴影</td></tr>
+          <tr><td>Hero 案件卡片</td><td class="token-value">0 8px 40px oklch(40% 0.17 294 / 0.08)</td></tr>
+          <tr><td>feature-card hover</td><td class="token-value">0 12px 40px oklch(40% 0.17 294 / 0.08)</td></tr>
+          <tr><td>下拉弹层 / Modal</td><td class="token-value">0 20px 60px oklch(17% 0.02 285 / 0.12)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+
+  <!-- ── 05 核心组件 ── -->
+  <section class="section" id="s5">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2 class="section-title">核心组件</h2>
+    </div>
+
+    <!-- 按钮系统 -->
+    <div class="sub">
+      <p class="sub-title">按钮系统</p>
+      <div class="component-list">
+
+        <div class="component-card">
+          <div class="component-card-header">
+            <span class="component-name">btn-coral — 主行动按钮</span>
+            <div class="component-tags"><span class="tag tag-coral">珊瑚橙</span><span class="tag tag-muted">注册 / 开始使用</span></div>
+          </div>
+          <p class="component-desc">整个产品中唯一使用珊瑚色的按钮类型，具有明确的"邀请进入"语义。尺寸分为 Hero 大尺寸（14px / padding 14px 32px）和 Nav 小尺寸（13px / padding 8px 20px）。</p>
+          <pre>/* Hero size */
+background: var(--coral);
+color: white;
+font-size: 14px; font-weight: 500;
+padding: 14px 32px;
+border-radius: 24px;
+transition: opacity 0.15s, transform 0.15s;
+/* hover: opacity 0.88; transform translateY(-1px) */
+
+/* Nav size */
+padding: 8px 20px;
+border-radius: 20px;
+font-size: 13px;</pre>
+        </div>
+
+        <div class="component-card">
+          <div class="component-card-header">
+            <span class="component-name">btn-ghost-plum — 次级按钮（幽灵）</span>
+            <div class="component-tags"><span class="tag tag-accent">靛紫描边</span><span class="tag tag-muted">查看示例 / 取消</span></div>
+          </div>
+          <p class="component-desc">用于与 btn-coral 并列的次级操作，或单独使用时作为较弱的行动入口。</p>
+          <pre>background: transparent;
+color: var(--accent);
+border: 1.5px solid var(--accent-mid);
+padding: 13px 32px; /* Hero 配对 */
+border-radius: 24px;
+/* hover: border-color var(--accent); background var(--accent-light) */
+
+/* 卡片内 sm 尺寸 */
+padding: 11px 24px;
+border-radius: 8px;
+border-width: 1.5px;</pre>
+        </div>
+
+        <div class="component-card">
+          <div class="component-card-header">
+            <span class="component-name">btn-filled-plum — 填充推荐按钮</span>
+            <div class="component-tags"><span class="tag tag-accent">靛紫填充</span><span class="tag tag-muted">立即选择（推荐包）</span></div>
+          </div>
+          <p class="component-desc">用于定价卡片中推荐档位的 CTA。语义强度介于 btn-coral 和 btn-ghost-plum 之间。</p>
+          <pre>background: var(--accent);
+color: white;
+font-size: 14px; font-weight: 500;
+padding: 12px 24px;
+border-radius: 8px;
+/* hover: opacity 0.88; transform translateY(-1px) */</pre>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <div class="sub">
+      <p class="sub-title">导航栏（Nav）</p>
+      <pre>position: sticky; top: 0; z-index: 100;
+background: oklch(100% 0 0 / 0.95);
+backdrop-filter: blur(12px);
+border-bottom: 1px solid var(--border);
+height: 64px;
+/* 内容区 max-width: 1160px; padding: 0 40px */
+
+/* Logo：律析（Playfair 700 26px accent色）+ LawViz（11px muted uppercase ls:0.15em）*/
+/* 导航链接：14px muted，hover→fg */
+/* 操作区：登录（muted link）+ 注册（btn-coral sm）*/</pre>
+    </div>
+
+    <!-- 案件预览卡片 -->
+    <div class="sub">
+      <p class="sub-title">案件预览卡片（Case Card）</p>
+      <p class="component-desc">Hero 区右侧的产品 Mockup，用于直观展示生成结果。</p>
+      <pre>background: var(--surface);
+border: 1px solid var(--border-cool);
+border-radius: 12px;
+padding: 32px;
+box-shadow: 0 8px 40px oklch(40% 0.17 294 / 0.08);
+
+/* 标题行：Playfair italic 18px / 日期：monospace 11px muted tabular-nums */
+/* 分隔线：1px var(--border) */
+/* 每个section：3px accent竖线（height:16px border-radius:1px）+ 内容区 */
+/* 标签：12px accent 500 ls:0.05em */
+/* 正文：13px muted lh:1.65 */
+/* 底部：右对齐 10px muted italic "律析 AI 生成" */</pre>
+    </div>
+
+    <!-- 功能卡片 -->
+    <div class="sub">
+      <p class="sub-title">功能卡片（Feature Card）</p>
+      <pre>background: var(--bg);
+border: 1px solid var(--border);
+border-radius: 10px;
+padding: 36px 28px;
+transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+
+/* hover: box-shadow 0 12px 40px oklch(40% 0.17 294 / 0.08);
+          transform translateY(-2px);
+          border-color var(--accent-mid) */
+
+/* 顶部装饰线：width 40px; height 2px; background var(--accent); margin-bottom 28px */
+/* 标题：Playfair 400 18px */
+/* 正文：14px muted lh:1.75 */
+/* 底部标签：11px accent uppercase ls:0.1em opacity:0.7 */</pre>
+    </div>
+
+    <!-- 定价卡片 -->
+    <div class="sub">
+      <p class="sub-title">定价卡片（Pricing Card）</p>
+      <pre>/* 默认 */
+background: var(--surface);
+border: 1px solid var(--border);
+border-radius: 12px;
+padding: 36px 28px;
+
+/* 推荐档（.recommended）*/
+border: 1.5px solid var(--accent);
+box-shadow: 0 4px 20px var(--accent-light);
+/* 顶部 badge：position absolute top:-12px center；
+   background var(--accent) color white 10px 500 ls:0.04em; padding 4px 14px; radius 20px */
+
+/* 档位名：11px muted uppercase ls:0.1em; margin-bottom 20px */
+/* 价格：Playfair 700 36px（推荐档用 accent 色）*/
+/* 积分标注：14px muted */
+/* 分隔线：1px var(--border) my:24px */
+/* feature 列表：14px muted / 左侧圆点 6px radius 
+   默认 opacity:0.35，推荐档 opacity:0.7 */</pre>
+    </div>
+
+    <!-- 表单输入 -->
+    <div class="sub">
+      <p class="sub-title">表单输入（Form）</p>
+      <pre>/* Label */
+font-size: 13px; font-weight: 500; color: var(--fg);
+margin-bottom: 6px;
+
+/* Input / Textarea / Select */
+width: 100%;
+padding: 10px 14px;
+font-size: 14px; color: var(--fg);
+background: var(--surface);
+border: 1px solid var(--border-cool);
+border-radius: 8px;
+outline: none;
+transition: border-color 0.15s, box-shadow 0.15s;
+
+/* focus */
+border-color: var(--accent-mid);
+box-shadow: 0 0 0 3px var(--accent-light);
+
+/* error */
+border-color: oklch(55% 0.18 25);
+box-shadow: 0 0 0 3px oklch(55% 0.18 25 / 0.1);
+
+/* 必填标记 */
+color: var(--coral);  /* 红色 * 号 */
+
+/* placeholder */
+color: var(--muted); opacity: 0.65;</pre>
+    </div>
+
+    <!-- 状态徽章 -->
+    <div class="sub">
+      <p class="sub-title">状态徽章（Status Badge）</p>
+      <table class="token-table">
+        <thead><tr><th>状态</th><th>背景</th><th>文字色</th><th>标签</th></tr></thead>
+        <tbody>
+          <tr><td>生成中</td><td class="token-value">oklch(40% 0.17 294 / 0.08)</td><td class="token-value">var(--accent)</td><td>进行中</td></tr>
+          <tr><td>已完成</td><td class="token-value">oklch(55% 0.16 145 / 0.08)</td><td class="token-value">oklch(38% 0.14 145)</td><td>已生成</td></tr>
+          <tr><td>失败</td><td class="token-value">oklch(55% 0.18 25 / 0.08)</td><td class="token-value">oklch(45% 0.18 25)</td><td>生成失败</td></tr>
+          <tr><td>草稿</td><td class="token-value">var(--surface-2)</td><td class="token-value">var(--muted)</td><td>草稿</td></tr>
+        </tbody>
+      </table>
+      <pre>/* 通用 badge 样式 */
+display: inline-flex; align-items: center; gap: 4px;
+font-size: 11px; font-weight: 500; letter-spacing: 0.04em;
+padding: 3px 10px;
+border-radius: 20px;</pre>
+    </div>
+
+    <!-- 对话气泡 -->
+    <div class="sub">
+      <p class="sub-title">AI 追问对话气泡（QAChat）</p>
+      <pre>/* AI 问题气泡（左侧）*/
+background: var(--surface);
+border: 1px solid var(--border-cool);
+border-radius: 0 12px 12px 12px;
+padding: 14px 18px;
+font-size: 14px; color: var(--fg);
+max-width: 520px;
+
+/* 用户回答气泡（右侧）*/
+background: var(--accent-light);
+border: 1px solid var(--accent-mid);
+border-radius: 12px 0 12px 12px;
+color: var(--fg);
+
+/* 轮次提示 */
+font-size: 11px; color: var(--muted); text-align: center; margin: 16px 0;</pre>
+    </div>
+  </section>
+
+
+  <!-- ── 06 页面布局规格 ── -->
+  <section class="section" id="s6">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <h2 class="section-title">页面布局规格</h2>
+    </div>
+
+    <p>全站内容宽度 <code>max-width: 1160px; margin: 0 auto; padding: 0 40px</code>。</p>
+
+    <div class="sub">
+      <p class="sub-title">落地页（/）</p>
+      <div class="layout-demo">
+        <p class="layout-demo-label">Hero — 55/45 两栏网格</p>
+        <div class="layout-visual">
+          <div class="lv-block" style="flex:55">左列：标题 + 副标题 + CTA + Trust bar</div>
+          <div class="lv-block" style="flex:45">右列：案件预览卡片</div>
+        </div>
+      </div>
+      <div class="layout-demo">
+        <p class="layout-demo-label">功能区 — 3列网格</p>
+        <div class="layout-visual">
+          <div class="lv-block" style="flex:1">谈案准备</div>
+          <div class="lv-block" style="flex:1">办案解释</div>
+          <div class="lv-block" style="flex:1">朋友圈分享</div>
+        </div>
+      </div>
+      <div class="layout-demo">
+        <p class="layout-demo-label">定价区 — 3列网格（中间卡片带推荐角标）</p>
+        <div class="layout-visual">
+          <div class="lv-block" style="flex:1">尝鲜 ¥39</div>
+          <div class="lv-block" style="flex:1;border:2px solid var(--accent)">标准 ¥148 ★</div>
+          <div class="lv-block" style="flex:1">专业 ¥349</div>
+        </div>
+      </div>
+      <pre>/* Hero */
+.hero { min-height: 90vh; padding: 80px 0; background: var(--bg); }
+.hero-inner {
+  display: grid;
+  grid-template-columns: 55fr 45fr;
+  align-items: center;
+  gap: 72px;
+}
+
+/* 功能区 */
+.features { background: var(--surface); padding: 100px 0; }
+.feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+/* 定价区 */
+.pricing { background: var(--bg); padding: 100px 0; }
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }</pre>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">仪表盘（/dashboard）</p>
+      <div class="layout-demo">
+        <p class="layout-demo-label">顶部操作栏 + 历史列表</p>
+        <div class="layout-visual">
+          <div class="lv-block" style="flex:1">积分余额（CreditBalance）</div>
+          <div class="lv-block" style="flex:2">历史记录列表（分页）</div>
+          <div class="lv-block" style="flex:0.5">新建按钮</div>
+        </div>
+      </div>
+      <p>历史列表为全宽表格，列：模板名 / 层级徽章 / 生成时间 / 状态 / 操作（查看、分享链接）。背景交替行色：奇数行 <code>var(--surface)</code>，偶数行 <code>var(--surface-2)</code>。</p>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">生成结果页（/generate/result/[genId]）</p>
+      <div class="layout-demo">
+        <p class="layout-demo-label">左 70% 预览 + 右 30% 操作面板</p>
+        <div class="layout-visual">
+          <div class="lv-block" style="flex:70">HTMLPreview（iframe）</div>
+          <div class="lv-block" style="flex:30">ExportPanel（积分/导出/分享）</div>
+        </div>
+      </div>
+      <pre>.result-layout {
+  display: grid;
+  grid-template-columns: 70fr 30fr;
+  gap: 24px;
+  height: calc(100vh - 64px); /* 减去导航高度 */
+}
+.preview-pane { overflow: hidden; border-radius: 12px; border: 1px solid var(--border-cool); }
+.export-pane {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+  overflow-y: auto;
+}</pre>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">选模板页（/generate）</p>
+      <p>3列卡片网格，<code>grid-template-columns: repeat(3, 1fr); gap: 20px</code>。每张模板卡显示：模板名（H3）、描述（body 14px）、最低层级（Badge）、积分消耗范围（muted）、"选择"按钮（ghost-plum sm）。</p>
+    </div>
+  </section>
+
+
+  <!-- ── 07 响应式断点 ── -->
+  <section class="section" id="s7">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <h2 class="section-title">响应式断点</h2>
+    </div>
+
+    <table class="token-table">
+      <thead><tr><th>断点</th><th>条件</th><th>主要变化</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Desktop</td>
+          <td class="token-value">> 1160px</td>
+          <td>全功能布局，内容居中 max-width 1160px</td>
+        </tr>
+        <tr>
+          <td>Laptop</td>
+          <td class="token-value">900px–1160px</td>
+          <td>内容满宽，padding 收窄至 40px</td>
+        </tr>
+        <tr>
+          <td>Tablet</td>
+          <td class="token-value">≤ 900px</td>
+          <td>Hero 单列；feature-grid 1列；pricing-grid 1列；nav-links 隐藏；padding 收至 24px</td>
+        </tr>
+        <tr>
+          <td>Mobile</td>
+          <td class="token-value">≤ 480px</td>
+          <td>H1 收缩至 clamp 最小值 38px；按钮组垂直排列；卡片 padding 收至 20px</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <pre>/* Tailwind 配置等效 */
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+  .feature-grid { grid-template-columns: 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .container { padding: 0 24px; }
+  .nav-inner { padding: 0 24px; }
+}
+
+@media (max-width: 480px) {
+  .hero-cta-row { flex-direction: column; align-items: stretch; }
+  .hero-cta-row a { text-align: center; }
+}</pre>
+  </section>
+
+
+  <!-- ── 08 交互原则 ── -->
+  <section class="section" id="s8">
+    <div class="section-header">
+      <span class="section-num">08</span>
+      <h2 class="section-title">交互原则</h2>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">过渡动画规范</p>
+      <table class="token-table">
+        <thead><tr><th>场景</th><th>属性</th><th>时长 + 缓动</th></tr></thead>
+        <tbody>
+          <tr><td>按钮 hover</td><td class="token-value">opacity, transform</td><td class="token-value">0.15s ease</td></tr>
+          <tr><td>链接颜色</td><td class="token-value">color</td><td class="token-value">0.15s</td></tr>
+          <tr><td>卡片 hover</td><td class="token-value">box-shadow, transform, border-color</td><td class="token-value">0.2s ease</td></tr>
+          <tr><td>表单 focus</td><td class="token-value">border-color, box-shadow</td><td class="token-value">0.15s</td></tr>
+          <tr><td>弹窗/Modal</td><td class="token-value">opacity, transform(scale)</td><td class="token-value">0.2s cubic-bezier(0.16,1,0.3,1)</td></tr>
+          <tr><td>轮询加载</td><td class="token-value">pulse animation</td><td class="token-value">1.5s ease-in-out infinite</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">加载与状态</p>
+      <ul class="rule-list">
+        <li><span class="rule-marker rule-marker-check">✓</span><span>AI 生成中：全屏居中的"AI 正在生成可视化..."文案 + accent 色点状脉冲动画，背景 <code>var(--bg)</code></span></li>
+        <li><span class="rule-marker rule-marker-check">✓</span><span>追问阶段轮次提示：<code>"第 X 轮，最多 3 轮"</code>，居中小字 muted</span></li>
+        <li><span class="rule-marker rule-marker-check">✓</span><span>积分不足时：行动按钮禁用 + 错误提示文字（珊瑚色 13px）</span></li>
+        <li><span class="rule-marker rule-marker-check">✓</span><span>表单必填校验：红色边框 + 12px 错误提示文字，在提交时触发</span></li>
+      </ul>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">导航行为</p>
+      <ul class="rule-list">
+        <li><span class="rule-marker rule-marker-check">✓</span><span>导航栏 sticky + <code>backdrop-filter: blur(12px)</code>，滚动后保持可见</span></li>
+        <li><span class="rule-marker rule-marker-check">✓</span><span>已登录用户访问 <code>/</code> 自动重定向至 <code>/dashboard</code></span></li>
+        <li><span class="rule-marker rule-marker-check">✓</span><span>生成页内三阶段切换（填表→追问→生成中）由前端 state 控制，URL 不变</span></li>
+        <li><span class="rule-marker rule-marker-cross">×</span><span>不使用 <code>scrollIntoView</code>（可能在预览 iframe 内触发布局异常）</span></li>
+      </ul>
+    </div>
+  </section>
+
+
+  <!-- ── 09 Tailwind 配置 ── -->
+  <section class="section" id="s9">
+    <div class="section-header">
+      <span class="section-num">09</span>
+      <h2 class="section-title">Tailwind 配置</h2>
+    </div>
+
+    <p>以下为 <code>tailwind.config.js</code> 中需要注册的自定义 token，与上方 CSS custom properties 对应。</p>
+
+    <pre>// tailwind.config.js
+module.exports = {
+  content: ['./app/**/*.{tsx,ts}', './components/**/*.{tsx,ts}'],
+  theme: {
+    extend: {
+      colors: {
+        bg:          'oklch(98% 0.005 75)',
+        surface:     'oklch(100% 0 0)',
+        'surface-2': 'oklch(96% 0.007 75)',
+        fg:          'oklch(17% 0.02 285)',
+        muted:       'oklch(50% 0.016 285)',
+        border:      'oklch(88% 0.008 75)',
+        'border-cool':'oklch(90% 0.006 285)',
+        accent: {
+          DEFAULT: 'oklch(40% 0.17 294)',
+          light:   'oklch(40% 0.17 294 / 0.07)',
+          mid:     'oklch(40% 0.17 294 / 0.18)',
+        },
+        coral: {
+          DEFAULT: 'oklch(68% 0.15 18)',
+          soft:    'oklch(68% 0.15 18 / 0.1)',
+        },
+      },
+      fontFamily: {
+        display: ["'Playfair Display'", "'Noto Serif SC'", 'Georgia', 'serif'],
+        body:    ['-apple-system', 'BlinkMacSystemFont', "'PingFang SC'", 'system-ui', 'sans-serif'],
+        mono:    ["'SF Mono'", "'Menlo'", "'Consolas'", 'monospace'],
+      },
+      borderRadius: {
+        card:   '12px',
+        feature:'10px',
+        pill:   '24px',
+        input:  '8px',
+      },
+      boxShadow: {
+        card:    '0 8px 40px oklch(40% 0.17 294 / 0.08)',
+        hover:   '0 12px 40px oklch(40% 0.17 294 / 0.08)',
+        modal:   '0 20px 60px oklch(17% 0.02 285 / 0.12)',
+      },
+    },
+  },
+  plugins: [],
+};</pre>
+  </section>
+
+
+  <!-- ── 10 禁止事项 ── -->
+  <section class="section" id="s10">
+    <div class="section-header">
+      <span class="section-num">10</span>
+      <h2 class="section-title">禁止事项</h2>
+    </div>
+
+    <div class="callout callout-warn">
+      以下任何一条在代码 Review 中出现，视为阻断性问题，必须在合并前修复。
+    </div>
+
+    <ul class="rule-list" style="margin-top:20px">
+      <li><span class="rule-marker rule-marker-cross">×</span><span><strong>渐变背景</strong>：不在任何大面积区域使用 CSS 渐变（<code>gradient</code>）。背景色只能是 <code>var(--bg)</code> 或 <code>var(--surface)</code>。</span></li>
+      <li><span class="rule-marker rule-marker-cross">×</span><span><strong>Emoji 功能图标</strong>：不使用 ✨🚀🎯 等 emoji 替代功能图标或装饰。如需图标，使用 Lucide React 线性图标，<code>stroke-width: 1.5</code>，颜色 <code>var(--muted)</code>。</span></li>
+      <li><span class="rule-marker rule-marker-cross">×</span><span><strong>左侧彩色边框卡片</strong>：不使用 <code>border-left: 4px solid &lt;accent&gt;</code> 的装饰性卡片样式。</span></li>
+      <li><span class="rule-marker rule-marker-cross">×</span><span><strong>Inter / Roboto / Arial 作展示字</strong>：展示标题（H1/H2）只用 Playfair Display，不用上述字体。正文系统字体栈不变。</span></li>
+      <li><span class="rule-marker rule-marker-cross">×</span><span><strong>虚构数据</strong>：不在产品页面填写不存在的用户数量、律师证书数、成功率等统计数字。如需占位，用短横线 <code>—</code> 或括号描述 <code>[上线后更新]</code>。</span></li>
+      <li><span class="rule-marker rule-marker-cross">×</span><span><strong>设计器控件暴露</strong>：产品页面不能出现"选择平台"下拉、"方案切换"标签、"生成目标数量"徽章等设计过程控件。</span></li>
+      <li><span class="rule-marker rule-marker-cross">×</span><span><strong>珊瑚色滥用</strong>：<code>var(--coral)</code> 仅限主行动按钮（注册、立即开始使用）。不用于标签、提示、装饰线、图表。</span></li>
+      <li><span class="rule-marker rule-marker-cross">×</span><span><strong>每个标题旁加图标</strong>：H2/H3 标题前不加图标，让 Playfair 斜体字本身承担视觉锚点。</span></li>
+      <li><span class="rule-marker rule-marker-cross">×</span><span><strong>暖米/杏色/奶油色大背景</strong>：<code>var(--bg)</code> 的 oklch H 值已控制为 75（略偏暖），不再进一步加深暖色调。不引入 <code>#FFF8F0</code> 等 AI 风格暖底色。</span></li>
+      <li><span class="rule-marker rule-marker-cross">×</span><span><strong><code>scrollIntoView()</code></strong>：预览 iframe 中存在该调用会引发布局错乱，禁止在任何场景使用，改用原生 scroll 方法。</span></li>
+    </ul>
+  </section>
+
+
+  <!-- Footer -->
+  <footer style="border-top:1px solid var(--border);padding-top:40px;margin-top:40px;text-align:center">
+    <p style="font-size:12px;color:var(--muted)">律析 LawViz · 前端设计规格 · 方案B 晓光 · v1.0 · 2026-05-31</p>
+  </footer>
+
+</div>
+</body>
+</html>

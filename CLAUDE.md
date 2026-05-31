@@ -6,6 +6,7 @@ LawViz is an AI-assisted legal case visualization product for lawyers. It genera
 ## Source Of Truth
 - Primary spec: `docs/2026-05-31-lawviz-design-v1.2-FINAL.md`
 - Sprint plan: `docs/2026-05-31-lawviz-sprint-plan-FINAL.md`
+- Long-running development control plan: `docs/2026-05-31-lawviz-development-control.md`
 - Handoff notes: `HANDOFF.md`
 - Web UI visual references: `docs/lawviz-design-spec-b.html` and `docs/scheme-b-dawn.html`
 

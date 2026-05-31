@@ -7,6 +7,8 @@ LawViz is an AI-assisted legal case visualization product for lawyers. It genera
 - Primary spec: `docs/2026-05-31-lawviz-design-v1.2-FINAL.md`
 - Sprint plan: `docs/2026-05-31-lawviz-sprint-plan-FINAL.md`
 - Long-running development control plan: `docs/2026-05-31-lawviz-development-control.md`
+- M0/Sprint 1 readiness audit: `docs/2026-05-31-m0-status-and-sprint1-readiness.md`
+- Sprint 1 local-only scaffold plan: `docs/2026-05-31-sprint1-local-scaffold-plan.md`
 - Handoff notes: `HANDOFF.md`
 - Web UI visual references: `docs/lawviz-design-spec-b.html` and `docs/scheme-b-dawn.html`
 
@@ -14,7 +16,7 @@ Do not revive older design decisions when they conflict with v1.2.
 
 ## Current State
 - The repo is a scaffold: most frontend/backend source files are placeholders.
-- Sprint 0 is next: GitHub recon, infrastructure checklist, ICP start, and cost analytics SQL prototype.
+- Sprint 0 local documents are present; external vendor actions remain pending.
 - The first planned code milestone is Sprint 1: runnable local frontend, backend, PostgreSQL schema, seeded templates, and `/api/health`.
 
 ## Tech Stack

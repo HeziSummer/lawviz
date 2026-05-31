@@ -18,11 +18,13 @@
 
 M0 is **locally documented but not externally complete**.
 
-The project may continue with planning and local preflight work. It must not claim that ICP, Hupijiao, Aliyun resources, New API, or Pkulaw are active until the user provides evidence or credentials.
+The project may continue with real private/internal MVP development. It must not claim that ICP, public production infrastructure, live public payment, Aliyun production resources, New API production keys, or Pkulaw production access are active until the user provides evidence or credentials.
+
+External M0 gaps block public commercial operation. They do not block building the product workflow for self-use, trusted friends, or internal team use.
 
 ## External User Actions
 
-Required before public gray-test:
+Required before public gray-test or public paid operation:
 
 - Buy/confirm main domain.
 - Buy/confirm render/share domain or subdomain plan.
@@ -54,26 +56,25 @@ Do not ask for secrets in chat unless the user explicitly chooses a secure hando
 | Backend health route | `backend/app/api/health.py` missing | Not ready |
 | Existing source files | Most frontend/backend files are zero-byte placeholders | Not ready |
 
-## Sprint 1 Entry Guard
+## Sprint 1 Entry Decision
 
-Before writing Sprint 1 code, confirm one of these paths:
+Sprint 1 should proceed as a private MVP foundation while external vendor tasks remain pending.
 
-1. Strict path: wait until ICP and Hupijiao are actually started.
-2. Local-only path: user explicitly approves starting Sprint 1 local scaffolding while external vendor tasks remain pending.
+This is not a fake UI or a health-check-only scaffold. The purpose is to build the running foundation for the real LawViz product: access control, case workflow, generation/export contracts, database model, and future integration boundaries.
 
-Without that confirmation, only documentation, preflight, and planning work should continue.
+ICP, production server purchase, public acquisition, and formal paid public operation remain deferred.
 
-## Recommended Local-Only Sprint 1 Scope If Approved
+## Recommended Sprint 1 Private MVP Foundation Scope
 
 This scope does not require production credentials:
 
 - Fill `.gitignore`.
 - Fill `.env.example` with placeholder names only.
 - Add `docker-compose.yml` for local PostgreSQL 15.
-- Add FastAPI minimal app and `/api/health` with both GET and POST.
+- Add FastAPI app foundation and `/api/health` with both GET and POST.
 - Add SQLAlchemy models for `users`, `generations`, `transactions`, `templates`.
 - Add SQL schema/seed for 5 initial templates.
-- Add minimal Next.js 14 app scaffold.
+- Add usable Next.js 14 private MVP route foundation.
 - Fix dynamic routes:
   - `frontend/app/generate/result/[genId]/page.tsx`
   - `frontend/app/share/[token]/page.tsx`
@@ -81,10 +82,4 @@ This scope does not require production credentials:
 
 ## Stop Point
 
-Because `docs/2026-05-31-lawviz-development-control.md` says only M0 Gate completion permits Sprint 1, and M0 external actions are not started, the next implementation step requires user confirmation.
-
-Question to resolve:
-
-```text
-Should Sprint 1 local-only scaffolding start now while ICP/Hupijiao/Aliyun/New API/Pkulaw remain pending, or should development pause until those external tasks are started?
-```
+Stop only if development would require production credentials, public paid activation, ICP-dependent public deployment, final legal question framework decisions, or final commercial pricing/refund/subscription rules.

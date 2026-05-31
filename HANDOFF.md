@@ -22,8 +22,8 @@ Completed:
   - cost dashboard SQL draft
 - User external action checklist written.
 - Enterprise-deferred development boundary written.
-- Sprint 1 local-only scaffold plan written.
-- First-delivery strategy changed to private/internal use first; direct paid features are deferred.
+- Sprint 1 private MVP foundation plan written.
+- First-delivery strategy changed to a real private/internal MVP first; public paid operation is deferred.
 
 Not completed:
 
@@ -43,7 +43,7 @@ Recent commits:
 
 - `2574f2c docs: define enterprise-deferred development boundary`
 - `5d71493 docs: add user external action checklist`
-- `6c0463d docs: plan Sprint 1 local scaffold`
+- `6c0463d docs: prior Sprint 1 planning commit` (superseded by private MVP foundation wording)
 - `54fc159 docs: audit M0 status and Sprint 1 readiness`
 - `94c8302 docs: add Sprint 0 infrastructure and cost plans`
 - `38b4b69 docs: add Sprint 0 open source recon`
@@ -57,7 +57,7 @@ Read these first:
 2. `docs/2026-05-31-lawviz-sprint-plan-FINAL.md`
 3. `docs/2026-05-31-lawviz-development-control.md`
 4. `docs/2026-05-31-enterprise-deferred-development-boundary.md`
-5. `docs/2026-05-31-sprint1-local-scaffold-plan.md`
+5. `docs/2026-05-31-sprint1-private-mvp-foundation-plan.md`
 6. `docs/2026-05-31-m0-status-and-sprint1-readiness.md`
 
 Supporting docs:
@@ -75,16 +75,18 @@ Supporting docs:
 
 The user decided that the first delivery should target self-use, trusted friends, and the user's own team.
 
-Direct paid features should move later. The first release is a private/internal MVP, not a paid public gray-test.
+The first release must be a real private/internal MVP with the product workflow intact. It is not a fake demo, not a picture toy, and not just empty scaffolding.
 
-The user also decided not to run paid service on a personal server. Enterprise subject, production server rental, ICP production filing, live payment, and paid gray-test are deferred until the enterprise setup is ready.
+The user also decided not to run public paid service on a personal server. ICP, production server purchase, public acquisition, and formal paid public operation are deferred until the enterprise setup is ready.
 
-Development should continue locally and with disabled/mock-backed integrations.
+Development should continue toward a complete private/internal product. External integrations should be implemented behind configuration gates and local/private adapters where credentials or formal vendor activation are not yet available. Missing production credentials must not remove the feature from the product design.
 
 Do now:
 
-- Local product core.
-- Mock/local service adapters.
+- Real private/internal product core.
+- Login/access gate for friends and team use.
+- Case intake, conversational follow-up, plan confirmation, generation, preview, export, and history flows.
+- Service adapter interfaces with local/private implementations and fail-closed production switches.
 - Database schema.
 - UI and generation workflow.
 - Export pipeline.
@@ -95,27 +97,27 @@ Do now:
 
 Do later:
 
-- Real paid operation.
-- Production server.
+- Public paid operation.
+- Production server for public service.
 - Enterprise ICP.
 - Live Hupijiao.
-- Production New API key.
-- Production Pkulaw token.
-- Production cloud storage credentials.
+- Production New API key handoff.
+- Production Pkulaw token handoff.
+- Production cloud storage credentials handoff.
 - Final pricing/refund/compliance docs.
 
 ## Immediate Next Step
 
-Start Sprint 1 local-only scaffold.
+Start Sprint 1 private MVP foundation.
 
-The user has accepted the strategy that development can continue before enterprise infrastructure, as long as paid/public production activation is deferred. Build toward a private/internal first delivery instead of a commercial launch.
+The user has accepted the strategy that development continues before enterprise infrastructure, with all real product functions preserved for private/internal use. Only ICP, public production deployment, public acquisition, and formal paid operation move later.
 
 Implement according to:
 
-- `docs/2026-05-31-sprint1-local-scaffold-plan.md`
+- `docs/2026-05-31-sprint1-private-mvp-foundation-plan.md`
 - `docs/2026-05-31-enterprise-deferred-development-boundary.md`
 
-Sprint 1 local-only acceptance criteria:
+Sprint 1 private MVP foundation acceptance criteria:
 
 - Backend starts with Python 3.11.
 - `GET /api/health` returns 200.
@@ -141,10 +143,10 @@ Private/internal first-delivery priorities after Sprint 1:
 
 - Login-gated access.
 - Admin/manual user access control or invite-only registration.
-- Manual credits for testing instead of paid checkout.
+- Manual credits or internal entitlement until live paid checkout is enabled.
 - Generate-to-export workflow.
 - History and result retrieval.
-- Payment, pricing, subscriptions, and public marketing hidden or disabled.
+- Payment, pricing, subscriptions, and public marketing must not be publicly activated, but their data boundaries and future adapters should be designed intentionally.
 
 ## Recommended Sprint 1 Work Breakdown
 
@@ -152,15 +154,15 @@ Main agent:
 
 - Own planning, integration, final verification, commits, and push.
 - Stop and ask when requirements are unclear.
-- Keep external paid/production work disabled.
+- Preserve the full private MVP product scope while keeping public paid/production activation disabled.
 
 Backend lane:
 
 - Own `backend/main.py`, `backend/requirements.txt`, `backend/app/**`.
 - Add FastAPI app and health router.
-- Add config/database scaffolding.
+- Add config/database foundation.
 - Add SQLAlchemy model files for the four core tables.
-- Do not implement final legal generation logic yet.
+- Do not invent final legal question frameworks without user confirmation, but do not shrink the intended generation workflow.
 
 Database lane:
 
@@ -172,7 +174,7 @@ Database lane:
 Frontend lane:
 
 - Own `frontend/**`.
-- Fill minimal Next.js 14 scaffold.
+- Fill a usable Next.js 14 private MVP foundation.
 - Add `tsconfig.json`, `postcss.config.js`, `app/globals.css`.
 - Use dynamic routes:
   - `frontend/app/generate/result/[genId]/page.tsx`
@@ -231,10 +233,10 @@ Backend:
 
 External services:
 
-- New API gateway: adapter later, disabled without env vars.
-- Pkulaw MCP: adapter later, disabled without env vars.
-- Hupijiao: skeleton/signature tests later, no live payment before enterprise setup.
-- Cloud storage: interface can exist now; production OSS/COS credentials later.
+- New API gateway: build adapter boundary; fail closed without env vars or use explicit local/private mode.
+- Pkulaw MCP: build adapter boundary; fail closed without env vars or use explicit local/private mode.
+- Hupijiao: design payment adapter/signature boundary; do not activate live public payment before enterprise setup.
+- Cloud storage: build storage interface; production OSS/COS credentials later.
 
 Generated report rendering:
 

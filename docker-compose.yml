@@ -1,0 +1,22 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: lawviz-postgres
+    environment:
+      POSTGRES_DB: lawviz
+      POSTGRES_USER: lawviz
+      POSTGRES_PASSWORD: lawviz_local_dev_password
+    ports:
+      - "5433:5432"
+    volumes:
+      - lawviz-postgres-data:/var/lib/postgresql/data
+      - ./backend/sql/schema.sql:/docker-entrypoint-initdb.d/01_schema.sql:ro
+      - ./backend/sql/seed_templates.sql:/docker-entrypoint-initdb.d/02_seed_templates.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lawviz -d lawviz"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  lawviz-postgres-data:

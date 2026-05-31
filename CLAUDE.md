@@ -8,16 +8,16 @@ LawViz is an AI-assisted legal case visualization product for lawyers. It genera
 - Sprint plan: `docs/2026-05-31-lawviz-sprint-plan-FINAL.md`
 - Long-running development control plan: `docs/2026-05-31-lawviz-development-control.md`
 - M0/Sprint 1 readiness audit: `docs/2026-05-31-m0-status-and-sprint1-readiness.md`
-- Sprint 1 local-only scaffold plan: `docs/2026-05-31-sprint1-local-scaffold-plan.md`
+- Sprint 1 private MVP foundation plan: `docs/2026-05-31-sprint1-private-mvp-foundation-plan.md`
 - Handoff notes: `HANDOFF.md`
 - Web UI visual references: `docs/lawviz-design-spec-b.html` and `docs/scheme-b-dawn.html`
 
 Do not revive older design decisions when they conflict with v1.2.
 
 ## Current State
-- The repo is a scaffold: most frontend/backend source files are placeholders.
-- Sprint 0 local documents are present; external vendor actions remain pending.
-- The first planned code milestone is Sprint 1: runnable local frontend, backend, PostgreSQL schema, seeded templates, and `/api/health`.
+- The repo currently contains placeholder files, but the target is a real private/internal MVP, not a fake demo.
+- Sprint 0 documents are present; external vendor and compliance actions remain pending for public operation.
+- The first planned code milestone is Sprint 1: runnable frontend, backend, PostgreSQL schema, seeded templates, and `/api/health` as the foundation for the complete private MVP.
 
 ## Tech Stack
 - Frontend: Next.js 14, TypeScript, Tailwind CSS.
@@ -35,11 +35,17 @@ Do not revive older design decisions when they conflict with v1.2.
 5. Lawyer confirms the plan.
 6. System generates validated JSON, fills Jinja2 HTML, then renders PDF and PNG.
 
+## Delivery Boundary
+- Build real product functionality for self-use, trusted friends, and internal team use.
+- Do not reduce the app to mock screens, static images, or empty scaffolding.
+- Keep ICP, public production server, public acquisition, live public payment, and final commercial pricing for later.
+- External service integrations should have real adapter boundaries and safe local/private modes; missing production credentials should fail closed rather than erase the feature from the product design.
+
 ## Core Constraints
 - PDF and PNG downloads are primary output actions; sharing is secondary.
 - There is no case-type permission gate. All subscription tiers can use all case types; credits drive usage.
 - Share pages require login during gray testing.
-- Prices in docs are gray-test placeholders, not final pricing.
+- Prices in docs are placeholders for later public paid operation, not final pricing.
 - ICP filing starts in Sprint 0 and should not block local development.
 
 ## Security

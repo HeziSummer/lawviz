@@ -1,12 +1,12 @@
 # LawViz Enterprise-Deferred Development Boundary
 
 > Date: 2026-05-31  
-> Decision: first delivery targets self-use, small friend-circle use, and internal team use. Paid public operation and production server rental are deferred until an enterprise subject is available.  
-> Purpose: clarify what can be developed now and what must wait.
+> Decision: first delivery is a real private/internal MVP for self-use, trusted friends, and internal team use. ICP, public production deployment, public acquisition, and formal paid public operation are deferred until an enterprise subject is available.  
+> Purpose: clarify that product functionality continues now while public commercial operation waits.
 
 ## Operating Decision
 
-LawViz can continue local and non-paid product development before the enterprise subject is ready.
+LawViz can continue real product development before the enterprise subject is ready.
 
 The first delivery target is private/internal use:
 
@@ -17,23 +17,26 @@ The first delivery target is private/internal use:
 - no live payment collection;
 - no formal paid gray-test.
 
-LawViz must not enter paid public operation under a personal server or personal commercial setup. Production server rental for paid service, ICP production filing, payment activation, and paid gray-test should wait until the enterprise subject and vendor accounts are ready.
+LawViz must not enter paid public operation under a personal server or personal commercial setup. Production server rental for public paid service, ICP production filing, live public payment activation, and paid public gray-test should wait until the enterprise subject and vendor accounts are ready.
+
+This boundary does not mean building fake screens, static images, or a reduced toy. The private/internal MVP must preserve the real product workflow and all major product organs.
 
 ## First Delivery Definition
 
-The first usable delivery should prove that the product workflow is valuable before commercial infrastructure is activated.
+The first usable delivery should prove that the product workflow is valuable before public commercial infrastructure is activated.
 
 ### Included In First Delivery
 
 - Local or private-server app access for a small trusted group.
 - Login or access gate to prevent open public use.
-- Case generation workflow with mock or controlled model access.
+- Case generation workflow with controlled model access or explicit local/private adapter mode.
 - Report preview.
 - PDF/PNG export.
 - Lawyer profile/signature display.
 - Basic history and result retrieval.
 - Basic cost logging for internal estimation.
 - Admin/manual controls for user access if needed.
+- Service adapter boundaries for LLM, Pkulaw, storage, export, and payment so production credentials can be added later without redesigning the product.
 
 ### Excluded From First Delivery
 
@@ -57,13 +60,13 @@ The first usable delivery should prove that the product workflow is valuable bef
 
 ## Can Develop Now
 
-These items do not require an enterprise subject, production server, or real payment credentials.
+These items do not require an enterprise subject, public production server, or live public payment credentials.
 
 ### Local Runtime And Project Foundation
 
 - Local Docker Compose for PostgreSQL 15.
-- FastAPI backend scaffold.
-- Next.js frontend scaffold.
+- FastAPI backend foundation.
+- Next.js frontend foundation.
 - `.env.example` with placeholder names only.
 - `.gitignore`, README, startup docs.
 - Health checks and local verification scripts.
@@ -105,7 +108,7 @@ Acceptance evidence:
 
 Boundaries:
 
-- Do not enable real paid user onboarding.
+- Do not enable public paid user onboarding.
 - Do not promise final commercial plans in UI.
 - Keep access private until enterprise/public compliance is ready.
 
@@ -122,7 +125,7 @@ Boundaries:
 
 Boundaries:
 
-- Pricing copy must remain placeholder or hidden.
+- Public pricing copy must remain internal-only, placeholder, or hidden until final commercial pricing is confirmed.
 - Public share should stay disabled or login-protected until compliance is ready.
 - The first screen should favor the actual workbench/dashboard over a marketing landing page for private users.
 
@@ -135,7 +138,7 @@ Boundaries:
 - Generation status model.
 - HTML preview.
 - PDF and PNG export mechanics.
-- Local mock generation adapter.
+- Local/private generation adapter.
 - Optional New API adapter behind environment variables.
 
 Boundaries:
@@ -146,7 +149,7 @@ Boundaries:
 
 ### External Service Interfaces
 
-These can be coded as adapters with fake/local implementations:
+These should be coded as real adapter boundaries with safe local/private modes:
 
 - LLM provider interface.
 - Pkulaw MCP interface.
@@ -156,9 +159,9 @@ These can be coded as adapters with fake/local implementations:
 
 Boundaries:
 
-- Use fake credentials and local stubs.
+- Use placeholder credentials, local adapters, or disabled fail-closed mode until proper credentials exist.
 - Real credentials must not be committed or pasted into chat.
-- Real payment callbacks must not be activated before enterprise setup.
+- Live public payment callbacks must not be activated before enterprise setup.
 
 ### Quality, Security, And Ops Preparation
 
@@ -178,7 +181,7 @@ Boundaries:
 
 ## Must Wait For Enterprise Subject Or Formal Vendor Setup
 
-These items should not be completed as live production operations under a personal server setup.
+These items should not be completed as live public production operations under a personal server setup.
 
 ### Paid Public Operation
 
@@ -217,7 +220,7 @@ These items should not be completed as live production operations under a person
 
 ## Can Be Designed Now But Activated Later
 
-The following can be implemented as disabled or mock-backed features:
+The following should be implemented with clear boundaries but not publicly activated:
 
 - Subscription plans page.
 - Credits ledger model.
@@ -233,7 +236,7 @@ Required rule:
 
 - Every later-activated feature must have a clear `enabled` switch or missing-env failure mode.
 - If the required production credential is missing, the feature must fail closed.
-- UI for deferred paid features should be hidden, disabled, or explicitly marked internal-only during first delivery.
+- UI for deferred paid features should be hidden, disabled, or explicitly marked internal-only during first delivery, but the product architecture should still account for them.
 
 ## Updated Development Sequence
 
@@ -241,16 +244,16 @@ Required rule:
 
 Build now:
 
-- Sprint 1 local scaffold.
+- Sprint 1 private MVP foundation.
 - Database schema and seed templates.
 - Auth and profile.
 - Generate/result/share/settings UI.
-- Mock generation pipeline.
+- Private/internal generation pipeline with local/private adapter mode.
 - Export pipeline.
 - Local cost tracking.
 - Private/internal access gate.
 
-### Phase B: Integration-Ready But Non-Paid
+### Phase B: Integration-Ready Private MVP
 
 Build after Phase A:
 
@@ -259,7 +262,7 @@ Build after Phase A:
 - Storage adapter with local filesystem and cloud-compatible interface.
 - Payment adapter skeleton with signature tests but no live merchant activation.
 - Dockerized deployment package.
-- Optional private test server deployment for non-paid trusted use only.
+- Optional private test server deployment for trusted use only.
 
 ### Phase C: Enterprise Production Readiness
 
@@ -277,4 +280,4 @@ Wait for enterprise subject:
 
 Do not buy a personal production server for paid LawViz operation.
 
-Use local development and, if necessary, a temporary non-paid development server only for self-use, trusted friends, and internal team testing. Treat any personal server as disposable development infrastructure, not as the paid product host.
+Use local development and, if necessary, a temporary private/internal server for self-use, trusted friends, and internal team testing. Treat any personal server as disposable private infrastructure, not as the public paid product host.

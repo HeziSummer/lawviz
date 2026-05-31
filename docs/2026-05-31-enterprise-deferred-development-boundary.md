@@ -1,14 +1,59 @@
 # LawViz Enterprise-Deferred Development Boundary
 
 > Date: 2026-05-31  
-> Decision: paid public operation and production server rental are deferred until an enterprise subject is available.  
+> Decision: first delivery targets self-use, small friend-circle use, and internal team use. Paid public operation and production server rental are deferred until an enterprise subject is available.  
 > Purpose: clarify what can be developed now and what must wait.
 
 ## Operating Decision
 
 LawViz can continue local and non-paid product development before the enterprise subject is ready.
 
-LawViz must not enter paid public operation under a personal server or personal commercial setup. Production server rental, ICP production filing, payment activation, and paid gray-test should wait until the enterprise subject and vendor accounts are ready.
+The first delivery target is private/internal use:
+
+- self-use by the product owner;
+- small-scope use by trusted friends;
+- internal team use for workflow validation;
+- no public paid acquisition;
+- no live payment collection;
+- no formal paid gray-test.
+
+LawViz must not enter paid public operation under a personal server or personal commercial setup. Production server rental for paid service, ICP production filing, payment activation, and paid gray-test should wait until the enterprise subject and vendor accounts are ready.
+
+## First Delivery Definition
+
+The first usable delivery should prove that the product workflow is valuable before commercial infrastructure is activated.
+
+### Included In First Delivery
+
+- Local or private-server app access for a small trusted group.
+- Login or access gate to prevent open public use.
+- Case generation workflow with mock or controlled model access.
+- Report preview.
+- PDF/PNG export.
+- Lawyer profile/signature display.
+- Basic history and result retrieval.
+- Basic cost logging for internal estimation.
+- Admin/manual controls for user access if needed.
+
+### Excluded From First Delivery
+
+- Public marketing launch.
+- Paid subscription.
+- Online top-up.
+- Live Hupijiao checkout.
+- Final pricing table.
+- Public share links without access control.
+- Enterprise ICP-dependent production operation.
+- Formal commercial service terms.
+
+### First Delivery Success Criteria
+
+- The owner can complete a case report from intake to export.
+- A trusted friend or team member can complete the same flow without developer help.
+- Generated reports are usable enough for internal review and client-communication rehearsal.
+- The system records enough cost/usage data to estimate future pricing.
+- No real production secret is committed.
+- Any external model or legal database usage is explicitly configured and can be disabled.
 
 ## Can Develop Now
 
@@ -56,11 +101,13 @@ Acceptance evidence:
 - Local user dashboard.
 - Lawyer profile fields.
 - Local-only account settings.
+- Optional invite code or admin-created account flow for private/internal access.
 
 Boundaries:
 
 - Do not enable real paid user onboarding.
 - Do not promise final commercial plans in UI.
+- Keep access private until enterprise/public compliance is ready.
 
 ### Product UI
 
@@ -77,6 +124,7 @@ Boundaries:
 
 - Pricing copy must remain placeholder or hidden.
 - Public share should stay disabled or login-protected until compliance is ready.
+- The first screen should favor the actual workbench/dashboard over a marketing landing page for private users.
 
 ### Generation Workflow Without Real Commercial Launch
 
@@ -185,6 +233,7 @@ Required rule:
 
 - Every later-activated feature must have a clear `enabled` switch or missing-env failure mode.
 - If the required production credential is missing, the feature must fail closed.
+- UI for deferred paid features should be hidden, disabled, or explicitly marked internal-only during first delivery.
 
 ## Updated Development Sequence
 
@@ -199,6 +248,7 @@ Build now:
 - Mock generation pipeline.
 - Export pipeline.
 - Local cost tracking.
+- Private/internal access gate.
 
 ### Phase B: Integration-Ready But Non-Paid
 
@@ -209,6 +259,7 @@ Build after Phase A:
 - Storage adapter with local filesystem and cloud-compatible interface.
 - Payment adapter skeleton with signature tests but no live merchant activation.
 - Dockerized deployment package.
+- Optional private test server deployment for non-paid trusted use only.
 
 ### Phase C: Enterprise Production Readiness
 
@@ -226,5 +277,4 @@ Wait for enterprise subject:
 
 Do not buy a personal production server for paid LawViz operation.
 
-Use local development and, if necessary, a temporary non-paid development server only for private testing. Treat any personal server as disposable development infrastructure, not as the paid product host.
-
+Use local development and, if necessary, a temporary non-paid development server only for self-use, trusted friends, and internal team testing. Treat any personal server as disposable development infrastructure, not as the paid product host.

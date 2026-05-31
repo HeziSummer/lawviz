@@ -23,6 +23,7 @@ Completed:
 - User external action checklist written.
 - Enterprise-deferred development boundary written.
 - Sprint 1 local-only scaffold plan written.
+- First-delivery strategy changed to private/internal use first; direct paid features are deferred.
 
 Not completed:
 
@@ -72,9 +73,11 @@ Supporting docs:
 
 ## New Strategic Decision
 
-The user decided not to run paid service on a personal server.
+The user decided that the first delivery should target self-use, trusted friends, and the user's own team.
 
-Enterprise subject, production server rental, ICP production filing, live payment, and paid gray-test are deferred until the enterprise setup is ready.
+Direct paid features should move later. The first release is a private/internal MVP, not a paid public gray-test.
+
+The user also decided not to run paid service on a personal server. Enterprise subject, production server rental, ICP production filing, live payment, and paid gray-test are deferred until the enterprise setup is ready.
 
 Development should continue locally and with disabled/mock-backed integrations.
 
@@ -87,6 +90,8 @@ Do now:
 - Export pipeline.
 - Docker/deploy packaging.
 - Security and verification work.
+- Private/internal access control.
+- Manual credits or admin-managed usage entitlement.
 
 Do later:
 
@@ -103,7 +108,7 @@ Do later:
 
 Start Sprint 1 local-only scaffold.
 
-The user has accepted the strategy that development can continue before enterprise infrastructure, as long as paid/public production activation is deferred.
+The user has accepted the strategy that development can continue before enterprise infrastructure, as long as paid/public production activation is deferred. Build toward a private/internal first delivery instead of a commercial launch.
 
 Implement according to:
 
@@ -131,6 +136,15 @@ Sprint 1 local-only acceptance criteria:
 - `SELECT COUNT(*) FROM templates;` returns 5.
 - No real secrets are committed.
 - Git status is clean after commit and push.
+
+Private/internal first-delivery priorities after Sprint 1:
+
+- Login-gated access.
+- Admin/manual user access control or invite-only registration.
+- Manual credits for testing instead of paid checkout.
+- Generate-to-export workflow.
+- History and result retrieval.
+- Payment, pricing, subscriptions, and public marketing hidden or disabled.
 
 ## Recommended Sprint 1 Work Breakdown
 
@@ -189,6 +203,7 @@ Stop and ask the user before:
 - Writing final GPT/Claude marketing/model introduction copy.
 - Choosing final prices, packages, refunds, paid credits, or subscription rules.
 - Enabling live payment.
+- Turning on public registration or paid onboarding.
 - Using or requesting real production secrets.
 - Enabling public sharing before compliance is ready.
 - Changing app name, ICP description, or public compliance wording.
@@ -282,4 +297,3 @@ npm run dev
 ## Important Caveat
 
 Several existing markdown files may show mojibake in PowerShell output because of encoding display issues. Treat the latest clean handoff and the named source-of-truth docs as the navigation map, then inspect files carefully before editing.
-

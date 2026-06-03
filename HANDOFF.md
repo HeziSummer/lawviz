@@ -1,301 +1,296 @@
 # LawViz Handoff
 
-> Updated: 2026-05-31  
-> Repository: `https://github.com/HeziSummer/lawviz.git`  
-> Workspace: `D:\lawviz`
+> Updated: 2026-06-02  
+> Workspace: `D:\lawviz`  
+> Branch: `main`  
+> Important: the working tree is intentionally dirty with Sprint 2.5 and report-template work. Do not reset or revert unrelated changes.
 
-## Current State
+## Current Product Direction
 
-LawViz is still before runnable product implementation.
+LawViz is building AI-assisted legal case visualization reports for lawyers.
 
-Completed:
+The generated report is not a formal legal document. It is a vertical PPT-style, A4-printable booklet for lawyer-to-client communication:
 
-- GitHub repository connected and pushed.
-- Product design v1.2 finalized.
-- Sprint plan finalized.
-- Long-running development control plan written.
-- Sprint 0 documentation completed:
-  - open-source recon
-  - infrastructure checklist
-  - ICP/vendor startup checklist
-  - cost dashboard plan
-  - cost dashboard SQL draft
-- User external action checklist written.
-- Enterprise-deferred development boundary written.
-- Sprint 1 private MVP foundation plan written.
-- First-delivery strategy changed to a real private/internal MVP first; public paid operation is deferred.
+- one page / one idea;
+- strong visual hierarchy;
+- case facts, timelines, evidence boards, issue matrices, risk strategy, action plans;
+- same case content can later support multiple visual styles.
 
-Not completed:
+The report generation architecture is now a hybrid:
 
-- Frontend is not implemented. Most files under `frontend/` are zero-byte placeholders.
-- Backend is not implemented. Most files under `backend/app/` and `backend/main.py` are zero-byte placeholders.
-- Deploy scripts are not implemented.
-- Local PostgreSQL Docker Compose is not implemented.
-- No runnable app URL exists yet.
+1. Standardized "showroom" pages provide stable product quality.
+2. Agent-created custom visual pages are core functionality, not a future add-on.
+3. Both standard and Agent-created pages must use the same visual system.
+4. The Agent should output structured page plans and visual intent, not uncontrolled raw HTML.
+5. The renderer owns final HTML/CSS, escaping, page size, print rules, and visual consistency.
 
-Latest known Git state before handoff:
+## Latest User Decisions
 
-- Branch: `main`
-- Remote tracking: `origin/main`
-- Working tree should be clean after this handoff commit.
+- Continue work on the current branch.
+- First visual sample pack should start from the strongest/suitable Open Design direction.
+- Chosen first style: `Knowledge Architecture Blueprint`.
+- Use Open Design templates as source material, not as a runtime dependency.
+- Convert Open Design `SKILL.md`, `open-design.json`, and `example.html` into LawViz-owned visual packs.
+- Current template selection is aesthetic-first. After several packs, define a module/function baseline. Future packs must support the baseline; missing modules should be created in that pack's own aesthetic.
+- Next session's immediate task: improve the first `lawviz-blueprint` sample pack and place lawyer personal intro / law firm intro in stable, appropriate fixed positions.
 
-Recent commits:
+## Completed Backend/Auth/Credits Progress
 
-- `2574f2c docs: define enterprise-deferred development boundary`
-- `5d71493 docs: add user external action checklist`
-- `6c0463d docs: prior Sprint 1 planning commit` (superseded by private MVP foundation wording)
-- `54fc159 docs: audit M0 status and Sprint 1 readiness`
-- `94c8302 docs: add Sprint 0 infrastructure and cost plans`
-- `38b4b69 docs: add Sprint 0 open source recon`
-- `f626510 docs: add long-running development control plan`
+Sprint 2.5 auth/credits/admin work was implemented before the current visual-template phase.
 
-## Source Of Truth
+Implemented areas include:
 
-Read these first:
+- FastAPI auth endpoints: SMS send, register pending user, login, logout, `me`.
+- SMS verification service with mainland China phone normalization, DB-backed code records, TTL, resend/hourly/daily limits, and max attempts.
+- JWT/password security helpers using PyJWT and passlib.
+- Admin routes for list users, activate, disable, and self-disable protection.
+- Credits routes and service: balance, ledger, admin grant/adjust, generation deduction/refund helpers.
+- Admin bootstrap script: `backend/scripts/create_admin.py`.
+- User model additions: `email`, `role`, `status`, `is_verified`.
+- New `SmsVerification` model.
+- Migration file: `backend/sql/2026-06-01-sprint2_5_auth_credits.sql`.
 
-1. `docs/2026-05-31-lawviz-design-v1.2-FINAL.md`
-2. `docs/2026-05-31-lawviz-sprint-plan-FINAL.md`
-3. `docs/2026-05-31-lawviz-development-control.md`
-4. `docs/2026-05-31-enterprise-deferred-development-boundary.md`
-5. `docs/2026-05-31-sprint1-private-mvp-foundation-plan.md`
-6. `docs/2026-05-31-m0-status-and-sprint1-readiness.md`
+Verified earlier:
 
-Supporting docs:
+- frontend build passed;
+- backend py_compile passed for key files;
+- local HTTP E2E passed for SMS register, pending user block, admin activate, credit grant, user login, generation confirmation, credit deduction/refund path;
+- temporary local E2E users/SMS records were cleaned.
 
-- `docs/what-to-copy.md`
-- `docs/infrastructure-checklist.md`
-- `docs/icp-and-vendor-startup.md`
-- `docs/2026-05-31-user-external-action-checklist.md`
-- `docs/cost-dashboard-plan.md`
-- `backend/sql/cost_dashboard.sql`
-- `docs/lawviz-design-spec-b.html`
-- `docs/scheme-b-dawn.html`
+## NewAPI / LLM Progress
 
-## New Strategic Decision
+The user had LawViz-specific NewAPI credentials in their local personal information library. `.env` was populated locally and is gitignored. Do not print or commit secrets.
 
-The user decided that the first delivery should target self-use, trusted friends, and the user's own team.
+Validated gateway summary:
 
-The first release must be a real private/internal MVP with the product workflow intact. It is not a fake demo, not a picture toy, and not just empty scaffolding.
+- `lawviz专用 gpt rightcode`: valid, using OpenAI-compatible API.
+- Other candidate Claude/GPT entries timed out, rejected, or had no providers.
 
-The user also decided not to run public paid service on a personal server. ICP, production server purchase, public acquisition, and formal paid public operation are deferred until the enterprise setup is ready.
+Implemented:
 
-Development should continue toward a complete private/internal product. External integrations should be implemented behind configuration gates and local/private adapters where credentials or formal vendor activation are not yet available. Missing production credentials must not remove the feature from the product design.
+- `backend/app/services/llm.py` NewAPI/OpenAI-compatible chat adapter.
+- Optional separate Claude config fields.
+- `generate_report_json()` returns compact JSON fields:
+  - `title`
+  - `summary`
+  - `timeline`
+  - `evidence`
+  - `issues`
+  - `recommendations`
+- `/api/generate/*` flow stores LLM output/token usage, deducts credits, and refunds on failure.
 
-Do now:
+## Current Report Rendering Infrastructure
 
-- Real private/internal product core.
-- Login/access gate for friends and team use.
-- Case intake, conversational follow-up, plan confirmation, generation, preview, export, and history flows.
-- Service adapter interfaces with local/private implementations and fail-closed production switches.
-- Database schema.
-- UI and generation workflow.
-- Export pipeline.
-- Docker/deploy packaging.
-- Security and verification work.
-- Private/internal access control.
-- Manual credits or admin-managed usage entitlement.
+Implemented:
 
-Do later:
+- `backend/app/services/report_renderer.py`
+- `backend/app/api/render.py`
+- `backend/app/report_templates/case_report.html`
+- `backend/app/report_styles/classic.css`
+- `backend/app/report_styles/minimal.css`
+- `Jinja2` dependency added.
 
-- Public paid operation.
-- Production server for public service.
-- Enterprise ICP.
-- Live Hupijiao.
-- Production New API key handoff.
-- Production Pkulaw token handoff.
-- Production cloud storage credentials handoff.
-- Final pricing/refund/compliance docs.
+Routes:
 
-## Immediate Next Step
+- `GET /api/render/styles`
+- `GET /api/render/{gen_id}?style=classic|minimal`
 
-Start Sprint 1 private MVP foundation.
+Important caveat:
 
-The user has accepted the strategy that development continues before enterprise infrastructure, with all real product functions preserved for private/internal use. Only ICP, public production deployment, public acquisition, and formal paid operation move later.
+- The user currently has `file:///D:/lawviz/backend/app/report_templates/case_report.html` open. That is raw Jinja source, not a rendered authenticated preview.
+- The current backend report template/style is a placeholder and should not be treated as final visual quality.
+- `report_renderer.py` and `case_report.html` contain visible Chinese mojibake in source. Fix this before wiring the new visual system into production rendering.
 
-Implement according to:
+## Open Design Research / Docs
 
-- `docs/2026-05-31-sprint1-private-mvp-foundation-plan.md`
-- `docs/2026-05-31-enterprise-deferred-development-boundary.md`
+New planning and research docs created:
 
-Sprint 1 private MVP foundation acceptance criteria:
+- `docs/report-template-research.md`
+- `docs/report-generation-architecture.md`
+- `docs/opendesign-adapter-spec.md`
+- `docs/report-visual-pack-format.md`
+- `docs/report-module-standardization-plan.md`
 
-- Backend starts with Python 3.11.
-- `GET /api/health` returns 200.
-- `POST /api/health` returns 200.
-- Frontend starts with `npm run dev`.
-- Local PostgreSQL 15 starts through Docker Compose.
-- Four core tables exist:
-  - `users`
-  - `generations`
-  - `transactions`
-  - `templates`
-- Five initial templates are seeded:
-  - `contract_dispute`
-  - `labor_dispute`
-  - `divorce_family`
-  - `traffic_accident`
-  - `criminal_defense`
-- `SELECT COUNT(*) FROM templates;` returns 5.
-- No real secrets are committed.
-- Git status is clean after commit and push.
+Key conclusions:
 
-Private/internal first-delivery priorities after Sprint 1:
+- Open Design examples are plugin folders, usually containing `SKILL.md`, `open-design.json`, and `example.html`.
+- They are not a drop-in UI library for LawViz.
+- LawViz should extract tokens, page modules, visual grammar, and Agent rules into its own visual packs.
+- Production rendering should remain controlled through LawViz templates/CSS, not arbitrary Agent HTML.
 
-- Login-gated access.
-- Admin/manual user access control or invite-only registration.
-- Manual credits or internal entitlement until live paid checkout is enabled.
-- Generate-to-export workflow.
-- History and result retrieval.
-- Payment, pricing, subscriptions, and public marketing must not be publicly activated, but their data boundaries and future adapters should be designed intentionally.
+Open Design references currently considered:
 
-## Recommended Sprint 1 Work Breakdown
+- `example-html-ppt-knowledge-arch-blueprint`
+- `example-html-ppt-zhangzara-blue-professional`
+- `example-html-ppt-zhangzara-long-table`
+- `example-html-ppt-course-module`
+- `example-html-ppt-pitch-deck`
+- `example-data-report`
+- `example-finance-report`
+- `example-open-design-landing-deck`
 
-Main agent:
+## First Visual Sample Pack
 
-- Own planning, integration, final verification, commits, and push.
-- Stop and ask when requirements are unclear.
-- Preserve the full private MVP product scope while keeping public paid/production activation disabled.
+Created:
 
-Backend lane:
+`docs/report-style-samples/lawviz-blueprint/`
 
-- Own `backend/main.py`, `backend/requirements.txt`, `backend/app/**`.
-- Add FastAPI app and health router.
-- Add config/database foundation.
-- Add SQLAlchemy model files for the four core tables.
-- Do not invent final legal question frameworks without user confirmation, but do not shrink the intended generation workflow.
+Files:
 
-Database lane:
+- `README.md`
+- `visual-kit.json`
+- `style.css`
+- `showroom.html`
+- `agent-sandbox.html`
 
-- Own `docker-compose.yml`, `backend/sql/schema.sql`, `backend/sql/seed_templates.sql`.
-- PostgreSQL 15 local setup.
-- Seed the five templates.
-- Keep schema aligned with v1.2 data model.
+Purpose:
 
-Frontend lane:
+- first A4 portrait LawViz visual pack sample;
+- based primarily on Open Design Knowledge Architecture Blueprint;
+- supports a cream paper, grid, rust accent, hard-card, blueprint-like visual system;
+- tests whether standard pages and Agent-created custom pages can look like the same report.
 
-- Own `frontend/**`.
-- Fill a usable Next.js 14 private MVP foundation.
-- Add `tsconfig.json`, `postcss.config.js`, `app/globals.css`.
-- Use dynamic routes:
-  - `frontend/app/generate/result/[genId]/page.tsx`
-  - `frontend/app/share/[token]/page.tsx`
-- Remove or replace stale static routes:
-  - `frontend/app/generate/result/page.tsx`
-  - `frontend/app/share/page.tsx`
+Current sample structure:
 
-Repo hygiene lane:
+- `showroom.html`: 8 standard pages:
+  - cover;
+  - executive summary;
+  - timeline;
+  - evidence board;
+  - issue matrix;
+  - risk strategy;
+  - action checklist;
+  - lawyer card / closing.
+- `agent-sandbox.html`: 5 Agent-style custom visual pages:
+  - contradiction map;
+  - payment flow;
+  - evidence heatmap;
+  - litigation path tree;
+  - damages calculation board.
 
-- Add `.gitignore`.
-- Add `.env.example` with placeholder names only.
-- Add README startup instructions.
+Important fix already made:
 
-Verification lane:
+- The first version used rough absolute-positioned `.arrow` divs, which let arrows cross into text cards.
+- This was corrected to SVG `connector-layer` paths, closer to the original Open Design approach.
+- A1 contradiction page now uses a non-directional "冲突对照" connector for contrast, not a misleading one-way arrow.
+- A4 litigation path tree uses directed arrows from "律师函发出" to the three response paths.
 
-- Run backend health checks.
-- Run frontend startup/compile check.
-- Run database seed count check.
-- Check secret leakage.
-- Confirm clean Git status.
+Verification:
+
+- `showroom.html`: 8 A4 pages checked with Playwright, no overflow detected.
+- `agent-sandbox.html`: 5 A4 pages checked with Playwright, no overflow detected.
+- A1/A4 connector visuals were screenshot-checked after the fix.
+
+Local preview service:
+
+- A temporary static server was started on `http://127.0.0.1:8765/`.
+- Preview URLs while that process remains alive:
+  - `http://127.0.0.1:8765/lawviz-blueprint/showroom.html`
+  - `http://127.0.0.1:8765/lawviz-blueprint/agent-sandbox.html`
+- If the session changes and the server is gone, restart with:
+
+```powershell
+$py='C:\Users\夏季\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe'
+Start-Process -WindowStyle Hidden -FilePath $py -ArgumentList '-m','http.server','8765','--bind','127.0.0.1','--directory','D:\lawviz\docs\report-style-samples' -WorkingDirectory 'D:\lawviz'
+```
+
+## Immediate Next Task
+
+Continue improving `lawviz-blueprint` before starting another style pack.
+
+Required focus:
+
+1. Polish the visual sample pages to "样板间" quality.
+2. Decide fixed placement rules for lawyer personal introduction and law firm introduction.
+3. Add lawyer/law-firm content in a way that does not feel like random marketing copy.
+4. Keep the report's primary purpose: explain the case to the client.
+5. Maintain A4 portrait page fit and no-overflow discipline.
+
+Recommended placement approach to explore:
+
+- Cover page:
+  - compact firm/lawyer identity in metadata area, not a large marketing block.
+- Persistent footer:
+  - small law firm or lawyer name can appear as a trust signal.
+- Closing page:
+  - full lawyer card with name, title, practice area, contact, and next-action framing.
+- Optional near-end fixed page:
+  - "律师与律所说明" page, if content is important enough.
+  - Should be concise and trust-building, not a landing-page-style pitch.
+- Lawyer/law-firm info should be part of the fixed standard page set, not left to arbitrary Agent generation.
+
+Specific next implementation steps:
+
+1. Review `showroom.html` page by page and decide where lawyer/law firm identity belongs.
+2. Add a fixed "lawyer profile / firm profile" module in `style.css`.
+3. Update `showroom.html` closing page and possibly cover/footer.
+4. Add one Agent page consistency check if lawyer/firms appear in custom pages.
+5. Re-run Playwright overflow checks for all 13 pages.
+
+## Current Git / Worktree Notes
+
+Branch:
+
+- `main`
+
+The worktree is dirty and contains both previous Sprint 2.5 implementation files and current report-template docs/samples.
+
+Do not revert these changes unless the user explicitly requests it.
+
+Known untracked/modified areas include:
+
+- auth/admin/credits/generate backend/frontend files;
+- report renderer files;
+- report style sample files;
+- Open Design research docs;
+- local browser test artifacts under `.playwright-mcp/`.
+
+Also note:
+
+- `.env` exists locally and contains secrets. It is gitignored. Do not print it.
+- `blue-professional.png` may exist as an earlier temporary screenshot artifact; it can be removed if not needed.
 
 ## Stop And Ask Rules
 
-Stop and ask the user before:
+Stop and ask before:
 
-- Finalizing legal case-type question frameworks.
-- Writing final GPT/Claude marketing/model introduction copy.
-- Choosing final prices, packages, refunds, paid credits, or subscription rules.
-- Enabling live payment.
-- Turning on public registration or paid onboarding.
-- Using or requesting real production secrets.
-- Enabling public sharing before compliance is ready.
-- Changing app name, ICP description, or public compliance wording.
-- Deciding Pkulaw commercial usage terms.
-- Buying or configuring production server resources.
+- finalizing case-type-specific legal frameworks;
+- choosing final report module baseline after sample review;
+- deciding lawyer/law-firm marketing copy tone;
+- enabling public registration/payment/share;
+- committing or printing secrets;
+- changing public product/compliance claims.
 
 Do not ask the user to paste secrets into chat.
 
-## Technical Direction
+## Useful Checks
 
-Frontend:
-
-- Next.js 14
-- TypeScript
-- Tailwind CSS
-- App Router
-- Visual direction: Scheme B / Dawn style from the docs
-
-Backend:
-
-- Python 3.11
-- FastAPI
-- SQLAlchemy
-- PostgreSQL 15
-
-External services:
-
-- New API gateway: build adapter boundary; fail closed without env vars or use explicit local/private mode.
-- Pkulaw MCP: build adapter boundary; fail closed without env vars or use explicit local/private mode.
-- Hupijiao: design payment adapter/signature boundary; do not activate live public payment before enterprise setup.
-- Cloud storage: build storage interface; production OSS/COS credentials later.
-
-Generated report rendering:
-
-- HTML preview.
-- PDF/PNG export via Playwright later.
-- Sandbox and sanitization rules must remain part of the design.
-
-## Product Rules To Preserve
-
-- LawViz is for lawyers generating AI-assisted case visualization reports.
-- The user flow is conversational, not a static long form.
-- Case type is required before first message.
-- Agent may ask structured follow-up questions.
-- Lawyer confirms the plan before final HTML/PDF/PNG generation.
-- PDF and PNG export are primary outputs.
-- Share link is secondary and should be login-protected during gray-test.
-- Do not invent legal citations.
-- Do not describe the product as a legal consultation or legal opinion platform.
-
-## Useful Local Checks
-
-Use PowerShell.
+PowerShell:
 
 ```powershell
 cd D:\lawviz
-git status --short --branch
+git status --short
 ```
 
-After Sprint 1 implementation:
+Static preview:
 
 ```powershell
-docker compose up -d postgres
-docker exec lawviz-postgres psql -U lawviz -d lawviz -c "SELECT COUNT(*) FROM templates;"
+Invoke-WebRequest -Uri 'http://127.0.0.1:8765/lawviz-blueprint/showroom.html' -UseBasicParsing
+Invoke-WebRequest -Uri 'http://127.0.0.1:8765/lawviz-blueprint/agent-sandbox.html' -UseBasicParsing
 ```
 
-Backend:
+Playwright overflow check pattern:
 
-```powershell
-cd D:\lawviz\backend
-& "C:\Users\夏季\AppData\Local\Programs\Python\Python311\python.exe" -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
-.\.venv\Scripts\python.exe -m uvicorn main:app --host 127.0.0.1 --port 8000
+```js
+await page.$$eval('.page', els => els.map((el, i) => {
+  const r = el.getBoundingClientRect();
+  return {
+    index: i + 1,
+    width: Math.round(r.width),
+    height: Math.round(r.height),
+    scrollHeight: el.scrollHeight,
+    overflowing: el.scrollHeight > r.height + 2
+  };
+}));
 ```
 
-Health:
-
-```powershell
-Invoke-RestMethod -Method Get http://127.0.0.1:8000/api/health
-Invoke-RestMethod -Method Post http://127.0.0.1:8000/api/health
-```
-
-Frontend:
-
-```powershell
-cd D:\lawviz\frontend
-npm install
-npm run dev
-```
-
-## Important Caveat
-
-Several existing markdown files may show mojibake in PowerShell output because of encoding display issues. Treat the latest clean handoff and the named source-of-truth docs as the navigation map, then inspect files carefully before editing.

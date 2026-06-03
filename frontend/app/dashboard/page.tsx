@@ -1,109 +1,154 @@
-import Link from "next/link";
-import { ArrowRight, BarChart3, FileText, History, Plus, WalletCards } from "lucide-react";
+"use client";
 
-const history = [
-  { id: "gen_contract_001", type: "合同纠纷", status: "done", time: "2026-05-31 21:40", model: "GPT" },
-  { id: "gen_labor_014", type: "劳动争议", status: "plan", time: "2026-05-31 20:18", model: "Claude" },
-  { id: "gen_family_006", type: "婚姻家事", status: "qa", time: "2026-05-30 17:02", model: "GPT" },
-];
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { ArrowRight, BarChart3, FileText, History, LogOut, Plus } from "lucide-react";
+import AuthGuard from "../../components/AuthGuard";
+import CreditBalance from "../../components/CreditBalance";
+import { api, type AuthUser, type CreditLedgerEntry } from "../../lib/api";
+import { displayLawFirm, displayUserName, isAdmin } from "../../lib/auth";
 
 export default function DashboardPage() {
   return (
-    <main>
-      <Topbar />
-      <section className="lv-container py-10">
-        <div className="flex flex-col justify-between gap-5 border-b border-border pb-8 md:flex-row md:items-end">
-          <div>
-            <p className="lv-kicker">Dashboard</p>
-            <h1 className="mt-3 font-display text-4xl font-bold text-fg">私有验证仪表盘</h1>
-            <p className="mt-3 max-w-2xl text-sm leading-7 text-muted">
-              这里承载内部额度、生成历史和真实工作流入口。公开商业化、公开支付和正式价格仍保持关闭。
-            </p>
-          </div>
-          <Link href="/generate" className="lv-btn-coral">
-            <Plus size={16} strokeWidth={1.5} /> 新建可视化
-          </Link>
-        </div>
-
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
-          <Panel icon={<WalletCards size={18} strokeWidth={1.5} />} label="本月内部额度" value="128 credits" detail="由管理员手动发放和调整" />
-          <Panel icon={<FileText size={18} strokeWidth={1.5} />} label="本月生成" value="12 份" detail="包含草稿、追问、已完成状态" />
-          <Panel icon={<BarChart3 size={18} strokeWidth={1.5} />} label="成本记录" value="已预留" detail="token、模型和导出成本将入库" />
-        </div>
-
-        <section className="mt-8 grid gap-6 lg:grid-cols-[1fr_320px]">
-          <div className="lv-card overflow-hidden">
-            <div className="flex items-center justify-between border-b border-border p-5">
-              <div>
-                <h2 className="text-lg font-semibold text-fg">最近生成历史</h2>
-                <p className="mt-1 text-sm text-muted">Sprint 1 使用静态数据表达后端契约，后续接 `/api/generate/history`。</p>
-              </div>
-              <History className="text-muted" size={18} strokeWidth={1.5} />
-            </div>
-            <div className="overflow-x-auto">
-              <table className="w-full min-w-[680px] text-left text-sm">
-                <thead className="bg-surface-2 text-xs text-muted">
-                  <tr>
-                    <th className="px-5 py-3 font-medium">案由</th>
-                    <th className="px-5 py-3 font-medium">模型</th>
-                    <th className="px-5 py-3 font-medium">状态</th>
-                    <th className="px-5 py-3 font-medium">时间</th>
-                    <th className="px-5 py-3 font-medium">操作</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {history.map((item) => (
-                    <tr key={item.id} className="border-t border-border">
-                      <td className="px-5 py-4 font-medium text-fg">{item.type}</td>
-                      <td className="px-5 py-4 text-muted">{item.model}</td>
-                      <td className="px-5 py-4">
-                        <span className="lv-status">{statusLabel(item.status)}</span>
-                      </td>
-                      <td className="px-5 py-4 text-muted">{item.time}</td>
-                      <td className="px-5 py-4">
-                        <Link href={`/generate/result/${item.id}`} className="font-semibold text-accent">
-                          查看
-                        </Link>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <aside className="lv-card p-5">
-            <h2 className="text-lg font-semibold text-fg">当前边界</h2>
-            <div className="mt-5 space-y-4 text-sm leading-6 text-muted">
-              <p>分享链接仅在登录或有效访问控制后查看，不暴露 OSS 公开对象地址。</p>
-              <p>导出入口预留 PDF/PNG/HTML，文件流由后端鉴权接口提供。</p>
-              <p>额度是内部验证数据，不展示最终套餐价格。</p>
-            </div>
-            <Link href="/share/private-preview-token" className="lv-btn-ghost mt-6 w-full">
-              查看分享边界 <ArrowRight size={16} strokeWidth={1.5} />
-            </Link>
-          </aside>
-        </section>
-      </section>
-    </main>
+    <AuthGuard>
+      {(user) => (
+        <main>
+          <Topbar user={user} />
+          <DashboardContent user={user} />
+        </main>
+      )}
+    </AuthGuard>
   );
 }
 
-function Topbar() {
+function DashboardContent({ user }: { user: AuthUser }) {
+  const [ledger, setLedger] = useState<CreditLedgerEntry[]>([]);
+
+  useEffect(() => {
+    let mounted = true;
+    api
+      .creditLedger()
+      .then((entries) => {
+        if (mounted) setLedger(entries.slice(0, 5));
+      })
+      .catch(() => {
+        if (mounted) setLedger([]);
+      });
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  return (
+    <section className="lv-container py-10">
+      <div className="flex flex-col justify-between gap-5 border-b border-border pb-8 md:flex-row md:items-end">
+        <div>
+          <p className="lv-kicker">Dashboard</p>
+          <h1 className="mt-3 font-display text-4xl font-bold text-fg">Private workspace</h1>
+          <p className="mt-3 max-w-2xl text-sm leading-7 text-muted">
+            Signed in as {displayUserName(user)}
+            {displayLawFirm(user) ? `, ${displayLawFirm(user)}` : ""}. Generation and sharing stay behind account access.
+          </p>
+        </div>
+        <Link href="/generate" className="lv-btn-coral">
+          <Plus size={16} strokeWidth={1.5} /> New visualization
+        </Link>
+      </div>
+
+      <div className="mt-8 grid gap-4 md:grid-cols-3">
+        <CreditBalance />
+        <Panel icon={<FileText size={18} strokeWidth={1.5} />} label="Recent ledger" value={`${ledger.length} entries`} detail="Latest internal credit activity." />
+        <Panel icon={<BarChart3 size={18} strokeWidth={1.5} />} label="Account status" value={user.status} detail="Activation is controlled by administrators." />
+      </div>
+
+      <section className="mt-8 grid gap-6 lg:grid-cols-[1fr_320px]">
+        <div className="lv-card overflow-hidden">
+          <div className="flex items-center justify-between border-b border-border p-5">
+            <div>
+              <h2 className="text-lg font-semibold text-fg">Credit ledger</h2>
+              <p className="mt-1 text-sm text-muted">Internal credit movements for this account.</p>
+            </div>
+            <History className="text-muted" size={18} strokeWidth={1.5} />
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[620px] text-left text-sm">
+              <thead className="bg-surface-2 text-xs text-muted">
+                <tr>
+                  <th className="px-5 py-3 font-medium">Type</th>
+                  <th className="px-5 py-3 font-medium">Amount</th>
+                  <th className="px-5 py-3 font-medium">Reason</th>
+                  <th className="px-5 py-3 font-medium">Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                {ledger.length ? (
+                  ledger.map((entry) => (
+                    <tr key={entry.id} className="border-t border-border">
+                      <td className="px-5 py-4 font-medium text-fg">{entry.type ?? "entry"}</td>
+                      <td className="px-5 py-4 text-muted">{entry.amount}</td>
+                      <td className="px-5 py-4 text-muted">{entry.reason ?? "-"}</td>
+                      <td className="px-5 py-4 text-muted">{entry.created_at ?? "-"}</td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr className="border-t border-border">
+                    <td className="px-5 py-5 text-muted" colSpan={4}>
+                      No ledger entries yet.
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <aside className="lv-card p-5">
+          <h2 className="text-lg font-semibold text-fg">Access boundary</h2>
+          <div className="mt-5 space-y-4 text-sm leading-6 text-muted">
+            <p>Credits are internal ledger units, not public pricing.</p>
+            <p>Public payment and checkout flows remain unavailable.</p>
+            <p>Share links are still treated as private access surfaces.</p>
+          </div>
+          {isAdmin(user) ? (
+            <Link href="/admin/users" className="lv-btn-ghost mt-6 w-full">
+              Open admin tools <ArrowRight size={16} strokeWidth={1.5} />
+            </Link>
+          ) : null}
+        </aside>
+      </section>
+    </section>
+  );
+}
+
+function Topbar({ user }: { user: AuthUser }) {
+  const router = useRouter();
+
+  async function logout() {
+    await api.logout();
+    router.push("/auth/login");
+  }
+
   return (
     <header className="border-b border-border bg-surface">
       <div className="lv-container flex h-[72px] items-center justify-between">
         <Link href="/" className="flex items-baseline gap-2">
-          <span className="font-display text-2xl font-bold text-accent">律析</span>
-          <span className="text-[11px] font-semibold uppercase text-muted">LawViz</span>
+          <span className="font-display text-2xl font-bold text-accent">LawViz</span>
+          <span className="text-[11px] font-semibold uppercase text-muted">Private MVP</span>
         </Link>
         <nav className="flex items-center gap-5 text-sm text-muted">
           <Link href="/dashboard" className="font-semibold text-accent">
-            仪表盘
+            Dashboard
           </Link>
-          <Link href="/generate" className="hover:text-accent">
-            生成
-          </Link>
+          {isAdmin(user) ? (
+            <Link href="/admin/users" className="hover:text-accent">
+              Admin
+            </Link>
+          ) : null}
+          <button className="inline-flex items-center gap-1 hover:text-accent" type="button" onClick={logout}>
+            <LogOut size={15} strokeWidth={1.5} /> Logout
+          </button>
         </nav>
       </div>
     </header>
@@ -121,13 +166,4 @@ function Panel({ icon, label, value, detail }: { icon: React.ReactNode; label: s
       <p className="mt-2 text-sm text-muted">{detail}</p>
     </div>
   );
-}
-
-function statusLabel(status: string) {
-  const labels: Record<string, string> = {
-    done: "已完成",
-    plan: "待确认方案",
-    qa: "追问中",
-  };
-  return labels[status] ?? status;
 }

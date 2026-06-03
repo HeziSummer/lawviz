@@ -1,0 +1,88 @@
+@page {
+  size: A4;
+  margin: 20mm;
+}
+
+:root {
+  --paper: #ffffff;
+  --ink: #151515;
+  --muted: #606060;
+  --line: #e6e6e6;
+  --accent: #111111;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f4f4f4;
+  color: var(--ink);
+  font-family: "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif;
+  line-height: 1.65;
+}
+
+.report {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 44px 42px 60px;
+  background: var(--paper);
+}
+
+.kicker {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 10px 0 14px;
+  font-size: 30px;
+  line-height: 1.28;
+}
+
+.summary {
+  color: var(--muted);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 24px 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.meta div {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 7px 12px;
+}
+
+.section {
+  border-top: 1px solid var(--line);
+  padding: 20px 0;
+}
+
+.section h2 {
+  margin: 0 0 10px;
+  font-size: 17px;
+}
+
+ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+li + li {
+  margin-top: 6px;
+}
+
+.lawyer-card {
+  border-top: 2px solid var(--accent);
+  margin-top: 24px;
+  padding-top: 18px;
+}

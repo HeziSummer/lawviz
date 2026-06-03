@@ -1,0 +1,450 @@
+- main [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: LawViz Case Blueprint
+      - generic [ref=e6]: 合同纠纷谈案样板
+    - paragraph [ref=e7]: 技术服务合同纠纷 · 客户沟通版
+    - generic [ref=e8]:
+      - generic [ref=e9]:
+        - heading "云创 CRM 系统 尾款与验收 争议报告" [level=1] [ref=e10]:
+          - text: 云创 CRM 系统
+          - text: 尾款与验收
+          - text: 争议报告
+        - paragraph [ref=e11]: 本报告用于把合同关系、履约事实、付款节点、证据强弱和下一步策略讲清楚，让客户快速理解“钱为什么能要、风险在哪里、现在做什么”。
+        - generic [ref=e12]:
+          - paragraph [ref=e13]: Presented by
+          - strong [ref=e14]: 衡策争议解决团队
+          - generic [ref=e15]: 主办律师 陈知衡 · 某某律师事务所 · 企业合同与应收款争议
+      - complementary [ref=e16]:
+        - strong [ref=e17]: Core Judgment
+        - paragraph [ref=e18]: 本案主线不是“系统是否完美”，而是“对方是否已经实际使用并触发尾款支付条件”。
+    - generic [ref=e19]: Case Metadata
+    - generic [ref=e20]:
+      - generic [ref=e21]:
+        - generic [ref=e22]: 32万
+        - generic [ref=e23]: 合同总价，分三期付款。
+      - generic [ref=e24]:
+        - generic [ref=e25]: 18.6万
+        - generic [ref=e26]: 当前主要争议尾款。
+      - generic [ref=e27]:
+        - generic [ref=e28]: 21天
+        - generic [ref=e29]: 系统上线后持续使用记录。
+      - generic [ref=e30]:
+        - generic [ref=e31]: 7日
+        - generic [ref=e32]: 建议发函后付款窗口。
+    - generic [ref=e33]:
+      - generic [ref=e34]:
+        - strong [ref=e35]: 衡策争议解决团队
+        - emphasis [ref=e36]: 主办律师 陈知衡 · 某某律师事务所
+      - generic [ref=e37]: 技术服务合同 · 尾款催收 · 验收争议
+      - generic [ref=e38]: 01 / 11
+  - generic [ref=e39]:
+    - generic [ref=e40]:
+      - generic [ref=e41]: Case Cockpit
+      - generic [ref=e42]: 案件总览
+    - paragraph [ref=e43]: 客户先看这一页
+    - heading "当前判断：可以主张尾款，但要先把“实际使用”证据固定成主证明线。" [level=2] [ref=e44]
+    - generic [ref=e45]:
+      - generic [ref=e46]:
+        - heading "建议先发正式律师函，再准备起诉材料。" [level=3] [ref=e47]
+        - paragraph [ref=e48]: 对方已经上线使用系统并持续反馈修改，支持我方主张交付完成和默示验收。风险集中在未签署正式验收单、部分瑕疵反馈可能被扩大解释。
+      - generic [ref=e49]:
+        - generic [ref=e50]:
+          - generic [ref=e51]: Claim
+          - strong [ref=e52]: 尾款 18.6 万元 + 逾期利息
+        - generic [ref=e53]:
+          - generic [ref=e54]: Primary Risk
+          - strong [ref=e55]: 书面验收单缺失
+        - generic [ref=e56]:
+          - generic [ref=e57]: Next Action
+          - strong [ref=e58]: 3 日内固定使用日志
+    - generic [ref=e59]: Client Decision
+    - generic [ref=e60]:
+      - generic [ref=e61]:
+        - heading "是否马上起诉？" [level=3] [ref=e62]
+        - paragraph [ref=e63]: 不建议直接起诉。先用律师函锁定付款期限和对方抗辩口径。
+      - generic [ref=e64]:
+        - heading "是否接受分期？" [level=3] [ref=e65]
+        - paragraph [ref=e66]: 可以作为谈判方案，但不能承认系统存在根本瑕疵。
+      - generic [ref=e67]:
+        - heading "现在最缺什么？" [level=3] [ref=e68]
+        - paragraph [ref=e69]: 服务器访问日志、真实客户数据截图、上线后操作记录。
+    - generic [ref=e70]:
+      - generic [ref=e71]:
+        - strong [ref=e72]: 衡策争议解决团队
+        - emphasis [ref=e73]: 主办律师 陈知衡 · 某某律师事务所
+      - generic [ref=e74]: 一页总览 · 结论 · 风险 · 下一步
+      - generic [ref=e75]: 02 / 11
+  - generic [ref=e76]:
+    - generic [ref=e77]:
+      - generic [ref=e78]: Contract Structure
+      - generic [ref=e79]: 合同结构
+    - paragraph [ref=e80]: 先把合同骨架讲清楚
+    - heading "合同纠纷的第一张图，应当说明“义务、付款、验收、违约责任”如何互相连接。" [level=2] [ref=e81]
+    - generic [ref=e82]:
+      - generic [ref=e83]:
+        - generic [ref=e84]: Parties
+        - heading "开发方" [level=3] [ref=e85]
+        - paragraph [ref=e86]: 上海云创科技公司，负责 CRM 系统开发、部署和交付。
+      - generic [ref=e87]:
+        - generic [ref=e88]: Price
+        - heading "总价 32 万" [level=3] [ref=e89]
+        - paragraph [ref=e90]: 预付款 9.6 万，阶段款 12.8 万，尾款 18.6 万。
+      - generic [ref=e91]:
+        - generic [ref=e92]: Delivery
+        - heading "交付成果" [level=3] [ref=e93]
+        - paragraph [ref=e94]: 客户管理、权限管理、数据看板、部署文档和管理员账号。
+      - generic [ref=e95]:
+        - generic [ref=e96]: Acceptance
+        - heading "验收条件" [level=3] [ref=e97]
+        - paragraph [ref=e98]: 测试通过后 15 日内完成验收，逾期未提出异议视为通过。
+      - generic [ref=e99]:
+        - generic [ref=e100]: Breach
+        - heading "违约责任" [level=3] [ref=e101]
+        - paragraph [ref=e102]: 付款逾期按日计算资金占用损失，并承担维权费用。
+    - generic [ref=e103]: What This Means
+    - generic [ref=e104]:
+      - generic [ref=e105]:
+        - heading "尾款不是孤立金额" [level=3] [ref=e106]
+        - paragraph [ref=e107]: 它对应最终交付、上线部署和验收/默示验收。
+      - generic [ref=e108]:
+        - heading "验收条款是核心" [level=3] [ref=e109]
+        - paragraph [ref=e110]: 即便没有签字验收，也要证明对方未及时拒收且持续使用。
+      - generic [ref=e111]:
+        - heading "违约责任要保守" [level=3] [ref=e112]
+        - paragraph [ref=e113]: 金额主张先稳住尾款，利息和费用作为辅助请求。
+    - generic [ref=e114]:
+      - generic [ref=e115]:
+        - strong [ref=e116]: 衡策争议解决团队
+        - emphasis [ref=e117]: 主办律师 陈知衡 · 某某律师事务所
+      - generic [ref=e118]: 合同结构 · 义务 · 付款 · 验收
+      - generic [ref=e119]: 03 / 11
+  - generic [ref=e120]:
+    - generic [ref=e121]:
+      - generic [ref=e122]: Performance Timeline
+      - generic [ref=e123]: 履约时间轴
+    - paragraph [ref=e124]: 事实节点 + 证据锚点
+    - heading "时间线不是流水账，而是证明“交付完成、对方使用、付款到期”的证据路径。" [level=2] [ref=e125]
+    - generic [ref=e126]:
+      - generic [ref=e127]:
+        - generic [ref=e128]: 2025-03-12
+        - generic [ref=e129]:
+          - heading "合同签署 / 预付款支付" [level=3] [ref=e130]
+          - paragraph [ref=e131]: 合同与 9.6 万付款流水证明合同成立并启动履行。
+      - generic [ref=e132]:
+        - generic [ref=e133]: 2025-04-08
+        - generic [ref=e134]:
+          - heading "原型确认 / 阶段款触发" [level=3] [ref=e135]
+          - paragraph [ref=e136]: 微信群确认页面结构，随后支付 12.8 万阶段款。
+      - generic [ref=e137]:
+        - generic [ref=e138]: 2025-05-19
+        - generic [ref=e139]:
+          - heading "测试环境交付" [level=3] [ref=e140]
+          - paragraph [ref=e141]: 发送测试地址、账号、部署说明，对方开始反馈修改意见。
+      - generic [ref=e142]:
+        - generic [ref=e143]: 2025-06-03
+        - generic [ref=e144]:
+          - heading "正式上线使用" [level=3] [ref=e145]
+          - paragraph [ref=e146]: 运维记录显示系统部署到对方服务器，并录入真实客户数据。
+      - generic [ref=e147]:
+        - generic [ref=e148]: 2025-06-18
+        - generic [ref=e149]:
+          - heading "尾款催收" [level=3] [ref=e150]
+          - paragraph [ref=e151]: 我方提醒尾款，对方回复“财务排期中”，未提出拒付理由。
+      - generic [ref=e152]:
+        - generic [ref=e153]: 2025-07-02
+        - generic [ref=e154]:
+          - heading "集中提出瑕疵" [level=3] [ref=e155]
+          - paragraph [ref=e156]: 对方首次以功能问题拒付，时间点晚于上线使用和催款。
+    - generic [ref=e157]:
+      - generic [ref=e158]:
+        - strong [ref=e159]: 衡策争议解决团队
+        - emphasis [ref=e160]: 主办律师 陈知衡 · 某某律师事务所
+      - generic [ref=e161]: 履约顺序 · 证据锚点 · 风险节点
+      - generic [ref=e162]: 04 / 11
+  - generic [ref=e163]:
+    - generic [ref=e164]:
+      - generic [ref=e165]: Payment Delivery Ledger
+      - generic [ref=e166]: 付款交付对照
+    - paragraph [ref=e167]: 客户最关心的钱，要和交付成果绑定
+    - heading "本案的关键不是“欠了多少钱”，而是哪笔钱对应哪个已完成的交付节点。" [level=2] [ref=e168]
+    - generic [ref=e169]:
+      - generic [ref=e170]:
+        - generic [ref=e171]:
+          - generic [ref=e172]: Paid
+          - strong [ref=e173]: 9.6 万
+        - generic [ref=e174]:
+          - generic [ref=e175]: Condition
+          - strong [ref=e176]: 合同签署后 3 日内支付
+        - generic [ref=e177]:
+          - generic [ref=e178]: Delivery
+          - strong [ref=e179]: 项目启动、需求确认、原型排期
+        - generic [ref=e180]:
+          - generic [ref=e181]: Status
+          - strong [ref=e182]: 无争议
+      - generic [ref=e183]:
+        - generic [ref=e184]:
+          - generic [ref=e185]: Paid
+          - strong [ref=e186]: 12.8 万
+        - generic [ref=e187]:
+          - generic [ref=e188]: Condition
+          - strong [ref=e189]: 原型确认后支付阶段款
+        - generic [ref=e190]:
+          - generic [ref=e191]: Delivery
+          - strong [ref=e192]: 页面结构、权限模块、测试计划
+        - generic [ref=e193]:
+          - generic [ref=e194]: Status
+          - strong [ref=e195]: 无争议
+      - generic [ref=e196]:
+        - generic [ref=e197]:
+          - generic [ref=e198]: Unpaid
+          - strong [ref=e199]: 18.6 万
+        - generic [ref=e200]:
+          - generic [ref=e201]: Condition
+          - strong [ref=e202]: 最终交付并验收后 15 日内
+        - generic [ref=e203]:
+          - generic [ref=e204]: Delivery
+          - strong [ref=e205]: 上线部署、账号交付、真实使用记录
+        - generic [ref=e206]:
+          - generic [ref=e207]: Status
+          - strong [ref=e208]: 争议
+    - generic [ref=e209]:
+      - strong [ref=e210]: Reading Point
+      - paragraph [ref=e211]: 如果能证明 6 月 3 日已经上线并持续使用，尾款付款条件就有较强主张空间。
+    - generic [ref=e212]:
+      - generic [ref=e213]:
+        - strong [ref=e214]: 衡策争议解决团队
+        - emphasis [ref=e215]: 主办律师 陈知衡 · 某某律师事务所
+      - generic [ref=e216]: 付款节点 · 交付成果 · 尾款条件
+      - generic [ref=e217]: 05 / 11
+  - generic [ref=e218]:
+    - generic [ref=e219]:
+      - generic [ref=e220]: Party Positions
+      - generic [ref=e221]: 双方立场
+    - paragraph [ref=e222]: 把争议讲成可比较的两套说法
+    - heading "客户需要看清：双方不是在争“有没有问题”，而是在争“问题是否足以拒付尾款”。" [level=2] [ref=e223]
+    - generic [ref=e224]:
+      - generic [ref=e225]:
+        - heading "我方主张" [level=3] [ref=e226]
+        - paragraph [ref=e227]: 系统已经完成主要交付，对方上线使用并录入真实客户数据，构成实际使用和默示验收。
+        - generic [ref=e228]:
+          - generic [ref=e229]: 上线记录
+          - generic [ref=e230]: 访问日志
+          - generic [ref=e231]: 催款回复
+      - generic [ref=e232]: VS
+      - generic [ref=e233]:
+        - heading "对方抗辩" [level=3] [ref=e234]
+        - paragraph [ref=e235]: 系统未达到预期，部分功能存在瑕疵，未签署正式验收单，因此尾款付款条件尚未成就。
+        - generic [ref=e236]:
+          - generic [ref=e237]: 验收单缺失
+          - generic [ref=e238]: 瑕疵截图
+          - generic [ref=e239]: 新增需求
+    - generic [ref=e240]: Real Dispute
+    - generic [ref=e241]:
+      - generic [ref=e242]:
+        - heading "是否交付" [level=3] [ref=e243]
+        - paragraph [ref=e244]: 用部署记录、账号交付、上线使用证明。
+      - generic [ref=e245]:
+        - heading "是否验收" [level=3] [ref=e246]
+        - paragraph [ref=e247]: 用实际使用、持续反馈、未及时拒收证明。
+      - generic [ref=e248]:
+        - heading "瑕疵影响" [level=3] [ref=e249]
+        - paragraph [ref=e250]: 把普通优化和根本违约区分开。
+    - generic [ref=e251]:
+      - generic [ref=e252]:
+        - strong [ref=e253]: 衡策争议解决团队
+        - emphasis [ref=e254]: 主办律师 陈知衡 · 某某律师事务所
+      - generic [ref=e255]: 我方主张 · 对方抗辩 · 真正争点
+      - generic [ref=e256]: 06 / 11
+  - generic [ref=e257]:
+    - generic [ref=e258]:
+      - generic [ref=e259]: Issue Matrix
+      - generic [ref=e260]: 争议焦点矩阵
+    - paragraph [ref=e261]: 争议点必须连接事实、证据和策略
+    - heading "每一个争议点都要回答：我方怎么证明，对方怎么反驳，下一步怎么处理。" [level=2] [ref=e262]
+    - table [ref=e263]:
+      - rowgroup [ref=e264]:
+        - row "争议点 我方证明方向 对方抗辩 处理策略" [ref=e265]:
+          - columnheader "争议点" [ref=e266]
+          - columnheader "我方证明方向" [ref=e267]
+          - columnheader "对方抗辩" [ref=e268]
+          - columnheader "处理策略" [ref=e269]
+      - rowgroup [ref=e270]:
+        - row "是否完成交付 测试地址、部署记录、账号交付、上线日志 功能未完全符合预期 强调核心功能可用，瑕疵不等于未交付" [ref=e271]:
+          - cell "是否完成交付" [ref=e272]
+          - cell "测试地址、部署记录、账号交付、上线日志" [ref=e273]
+          - cell "功能未完全符合预期" [ref=e274]
+          - cell "强调核心功能可用，瑕疵不等于未交付" [ref=e275]
+        - row "是否构成验收 持续使用、修改反馈、未及时拒收 没有书面验收单 主张默示验收和实际使用" [ref=e276]:
+          - cell "是否构成验收" [ref=e277]
+          - cell "持续使用、修改反馈、未及时拒收" [ref=e278]
+          - cell "没有书面验收单" [ref=e279]
+          - cell "主张默示验收和实际使用" [ref=e280]
+        - row "瑕疵是否足以拒付 瑕疵不影响核心业务运行 系统质量不合格 逐项拆分为优化、新增需求、轻微瑕疵" [ref=e281]:
+          - cell "瑕疵是否足以拒付" [ref=e282]
+          - cell "瑕疵不影响核心业务运行" [ref=e283]
+          - cell "系统质量不合格" [ref=e284]
+          - cell "逐项拆分为优化、新增需求、轻微瑕疵" [ref=e285]
+        - row "尾款是否到期 交付完成 + 15 日付款期届满 验收未完成所以未到期 把付款条件和实际使用绑定" [ref=e286]:
+          - cell "尾款是否到期" [ref=e287]
+          - cell "交付完成 + 15 日付款期届满" [ref=e288]
+          - cell "验收未完成所以未到期" [ref=e289]
+          - cell "把付款条件和实际使用绑定" [ref=e290]
+    - generic [ref=e291]:
+      - generic [ref=e292]:
+        - strong [ref=e293]: 衡策争议解决团队
+        - emphasis [ref=e294]: 主办律师 陈知衡 · 某某律师事务所
+      - generic [ref=e295]: 争议点 · 证据 · 抗辩 · 策略
+      - generic [ref=e296]: 07 / 11
+  - generic [ref=e297]:
+    - generic [ref=e298]:
+      - generic [ref=e299]: Proof Map
+      - generic [ref=e300]: 证据证明力
+    - paragraph [ref=e301]: 证据按证明目标组织，而不是按材料类型堆叠
+    - heading "这页告诉客户：哪些证据最有用，哪些证据只是辅助，哪里还缺材料。" [level=2] [ref=e302]
+    - generic [ref=e303]:
+      - generic [ref=e304]:
+        - heading "证明已交付" [level=3] [ref=e305]
+        - paragraph [ref=e306]: 部署邮件、测试地址、管理员账号、交付清单。当前证明力较强。
+      - generic [ref=e307]:
+        - heading "证明实际使用" [level=3] [ref=e308]
+        - paragraph [ref=e309]: 后台访问日志、真实客户数据、对方操作截图。应作为主证明线。
+      - generic [ref=e310]:
+        - heading "证明尾款到期" [level=3] [ref=e311]
+        - paragraph [ref=e312]: 合同付款条款、催款记录、对方“财务排期中”回复。
+      - generic [ref=e313]:
+        - heading "解释瑕疵反馈" [level=3] [ref=e314]
+        - paragraph [ref=e315]: 技术说明、修改清单、需求变更记录，用于削弱拒付理由。
+      - generic [ref=e316]:
+        - heading "当前缺口" [level=3] [ref=e317]
+        - paragraph [ref=e318]: 正式验收单、公证固定、完整服务器日志、对方内部使用数据。
+      - generic [ref=e319]:
+        - heading "补证优先级" [level=3] [ref=e320]
+        - paragraph [ref=e321]: 先固定日志，再整理聊天节点，最后形成技术瑕疵说明。
+    - generic [ref=e322]:
+      - generic [ref=e323]:
+        - strong [ref=e324]: 衡策争议解决团队
+        - emphasis [ref=e325]: 主办律师 陈知衡 · 某某律师事务所
+      - generic [ref=e326]: 证明目标 · 证据强弱 · 补证缺口
+      - generic [ref=e327]: 08 / 11
+  - generic [ref=e328]:
+    - generic [ref=e329]:
+      - generic [ref=e330]: Claim Amount
+      - generic [ref=e331]: 金额请求
+    - paragraph [ref=e332]: 金额要拆开讲，不要混成一笔总账
+    - heading "客户需要知道：哪些钱稳，哪些钱有风险，哪些钱适合谈判。" [level=2] [ref=e333]
+    - generic [ref=e334]:
+      - generic [ref=e335]:
+        - generic [ref=e336]: 18.6万
+        - heading "尾款本金" [level=3] [ref=e337]
+        - paragraph [ref=e338]: 主请求。证明交付完成和付款条件成就是关键。
+      - generic [ref=e339]:
+        - generic [ref=e340]: 1.2万
+        - heading "暂估逾期利息" [level=3] [ref=e341]
+        - paragraph [ref=e342]: 需谨慎确定起算日，可从催告期满或尾款到期后计算。
+      - generic [ref=e343]:
+        - generic [ref=e344]: 3.8万
+        - heading "新增需求费用" [level=3] [ref=e345]
+        - paragraph [ref=e346]: 证据不足时不宜作为主请求，可作为谈判筹码。
+    - generic [ref=e347]: Claim Strategy
+    - generic [ref=e348]:
+      - generic [ref=e349]:
+        - heading "诉讼主轴" [level=3] [ref=e350]
+        - paragraph [ref=e351]: 尾款本金 + 逾期利息。
+      - generic [ref=e352]:
+        - heading "谈判空间" [level=3] [ref=e353]
+        - paragraph [ref=e354]: 可接受短期分期，但应保留违约后果。
+      - generic [ref=e355]:
+        - heading "不建议" [level=3] [ref=e356]
+        - paragraph [ref=e357]: 不要把新增费用和尾款混在一起主张。
+    - generic [ref=e358]:
+      - generic [ref=e359]:
+        - strong [ref=e360]: 衡策争议解决团队
+        - emphasis [ref=e361]: 主办律师 陈知衡 · 某某律师事务所
+      - generic [ref=e362]: 本金 · 利息 · 新增费用 · 谈判空间
+      - generic [ref=e363]: 09 / 11
+  - generic [ref=e364]:
+    - generic [ref=e365]:
+      - generic [ref=e366]: Strategy Path
+      - generic [ref=e367]: 策略路径
+    - paragraph [ref=e368]: 不同回应触发不同下一步
+    - heading "律师函不是形式动作，而是用来锁定付款窗口和对方抗辩口径。" [level=2] [ref=e369]
+    - generic [ref=e370]:
+      - generic [ref=e371]:
+        - generic [ref=e372]: DAY 1-3
+        - heading "固定证据" [level=3] [ref=e373]
+        - paragraph [ref=e374]: 日志、聊天、交付包、付款流水统一编号。
+      - generic [ref=e375]:
+        - generic [ref=e376]: DAY 4
+        - heading "律师函" [level=3] [ref=e377]
+        - paragraph [ref=e378]: 明确尾款金额、付款期限、违约后果。
+      - generic [ref=e379]:
+        - generic [ref=e380]: DAY 5-11
+        - heading "回应判断" [level=3] [ref=e381]
+        - paragraph [ref=e382]: 付款、拖延、瑕疵抗辩分别进入不同路径。
+      - generic [ref=e383]:
+        - generic [ref=e384]: DAY 12+
+        - heading "谈判/起诉" [level=3] [ref=e385]
+        - paragraph [ref=e386]: 根据回应决定和解方案或提交诉讼材料。
+    - generic [ref=e387]: Response Paths
+    - generic [ref=e388]:
+      - generic [ref=e389]:
+        - heading "对方付款" [level=3] [ref=e390]
+        - paragraph [ref=e391]: 签署结清确认，新增需求另行报价。
+      - generic [ref=e392]:
+        - heading "继续拖延" [level=3] [ref=e393]
+        - paragraph [ref=e394]: 固定送达和逾期事实，准备起诉。
+      - generic [ref=e395]:
+        - heading "提出瑕疵" [level=3] [ref=e396]
+        - paragraph [ref=e397]: 要求列明缺陷、合同依据和影响范围。
+    - generic [ref=e398]:
+      - generic [ref=e399]:
+        - strong [ref=e400]: 衡策争议解决团队
+        - emphasis [ref=e401]: 主办律师 陈知衡 · 某某律师事务所
+      - generic [ref=e402]: 发函 · 回应 · 谈判 · 起诉
+      - generic [ref=e403]: 10 / 11
+  - generic [ref=e404]:
+    - generic [ref=e405]:
+      - generic [ref=e406]: Action Board
+      - generic [ref=e407]: 行动看板
+    - paragraph [ref=e408]: 客户和律师接下来分别做什么
+    - heading "好的谈案报告最后必须落到行动：谁负责、何时完成、为什么重要。" [level=2] [ref=e409]
+    - generic [ref=e410]:
+      - generic [ref=e411]:
+        - heading "立即做" [level=3] [ref=e412]
+        - generic [ref=e413]:
+          - strong [ref=e414]: 导出访问日志
+          - generic [ref=e415]: 客户技术负责人，今天完成。
+        - generic [ref=e416]:
+          - strong [ref=e417]: 固定聊天记录
+          - generic [ref=e418]: 按时间顺序标注关键节点。
+      - generic [ref=e419]:
+        - heading "3 日内" [level=3] [ref=e420]
+        - generic [ref=e421]:
+          - strong [ref=e422]: 整理交付清单
+          - generic [ref=e423]: 代码、部署包、账号、文档。
+        - generic [ref=e424]:
+          - strong [ref=e425]: 准备技术说明
+          - generic [ref=e426]: 区分瑕疵、新增需求、优化项。
+      - generic [ref=e427]:
+        - heading "7 日内" [level=3] [ref=e428]
+        - generic [ref=e429]:
+          - strong [ref=e430]: 发出律师函
+          - generic [ref=e431]: 锁定付款期限和违约后果。
+        - generic [ref=e432]:
+          - strong [ref=e433]: 准备谈判方案
+          - generic [ref=e434]: 全款、分期、和解三套口径。
+      - generic [ref=e435]:
+        - heading "待回应" [level=3] [ref=e436]
+        - generic [ref=e437]:
+          - strong [ref=e438]: 付款
+          - generic [ref=e439]: 签署结清确认。
+        - generic [ref=e440]:
+          - strong [ref=e441]: 拒付/拖延
+          - generic [ref=e442]: 进入诉讼材料准备。
+    - generic [ref=e443]:
+      - generic [ref=e444]:
+        - strong [ref=e445]: 衡策争议解决团队
+        - emphasis [ref=e446]: 主办律师 陈知衡 · 某某律师事务所
+      - generic [ref=e447]: 客户行动 · 律师动作 · 时间要求
+      - generic [ref=e448]: 11 / 11

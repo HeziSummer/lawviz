@@ -1,0 +1,231 @@
+- main [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: Agent Visual Page
+      - generic [ref=e6]: 矛盾地图
+    - paragraph [ref=e7]: Agent 生成意图 · Contradiction Map
+    - heading "对方说法与 客观行为 不一致" [level=1] [ref=e8]:
+      - text: 对方说法与
+      - text: 客观行为
+      - text: 不一致
+    - paragraph [ref=e9]: Agent 判断：本案最有价值的自定义可视化，是把对方“未验收、未使用”的抗辩和其真实使用行为放在同一页对照。
+    - generic [ref=e10]:
+      - img:
+        - generic: 冲突对照
+      - generic [ref=e11]:
+        - strong [ref=e12]: 对方主张
+        - text: 系统未完成，无法验收，因此拒付尾款。
+      - generic [ref=e13]:
+        - strong [ref=e14]: 客观记录
+        - text: 上线后 21 天内存在 156 次后台访问。
+      - generic [ref=e15]:
+        - strong [ref=e16]: 核心矛盾
+        - text: 若完全无法使用，为何持续登录并录入真实数据？
+      - generic [ref=e17]:
+        - strong [ref=e18]: 证明方向
+        - text: 默示验收、实际使用、拒付理由后置。
+      - generic [ref=e19]:
+        - strong [ref=e20]: 待补材料
+        - text: 访问日志、真实数据截图、管理员账号记录。
+    - generic [ref=e21]:
+      - strong [ref=e22]: Agent Note
+      - paragraph [ref=e23]: 这一页不是固定模板页，而是 Agent 基于案情选择的“矛盾关系图”。但视觉语言仍与标准页一致。
+    - generic [ref=e24]:
+      - generic [ref=e25]:
+        - strong [ref=e26]: 衡策争议解决团队
+        - emphasis [ref=e27]: Agent 可视化 · 主办律师 陈知衡
+      - generic [ref=e28]: 合同纠纷 · 证据链整理 · 诉前谈判
+      - generic [ref=e29]: A1 / A5
+  - generic [ref=e30]:
+    - generic [ref=e31]:
+      - generic [ref=e32]: Agent Visual Page
+      - generic [ref=e33]: 付款与交付流
+    - paragraph [ref=e34]: Agent 生成意图 · Payment Flow
+    - heading "付款节点和交付节点没有同步闭合。" [level=2] [ref=e35]
+    - paragraph [ref=e36]: Agent 判断：客户最容易误解的是“钱为什么还能要”。因此需要把合同付款结构、交付行为和对方拒付理由放在同一张流程图上。
+    - generic [ref=e37]:
+      - generic [ref=e38]:
+        - generic [ref=e39]: PAYMENT 01
+        - heading "预付款 9.6 万" [level=3] [ref=e40]
+        - paragraph [ref=e41]: 合同签署后已支付，对应项目启动与原型阶段。
+      - generic [ref=e42]:
+        - generic [ref=e43]: PAYMENT 02
+        - heading "阶段款 12.8 万" [level=3] [ref=e44]
+        - paragraph [ref=e45]: 原型确认后支付，说明对方认可前期履行基础。
+      - generic [ref=e46]:
+        - generic [ref=e47]: PAYMENT 03 · DISPUTE
+        - heading "尾款 18.6 万" [level=3] [ref=e48]
+        - paragraph [ref=e49]: 交付后未付，对方以未验收和瑕疵为抗辩。
+    - generic [ref=e50]: Flow Diagnosis
+    - generic [ref=e51]:
+      - generic [ref=e52]:
+        - heading "我方有利解释" [level=3] [ref=e53]
+        - paragraph [ref=e54]: 前两期款项按约支付，说明对方认可开发过程；后续持续使用系统，支持交付完成。
+      - generic [ref=e55]:
+        - heading "对方抗辩空间" [level=3] [ref=e56]
+        - paragraph [ref=e57]: 正式验收单缺失，若瑕疵影响核心功能，法官可能支持部分扣减。
+    - table [ref=e58]:
+      - rowgroup [ref=e59]:
+        - row "节点 证明目标 证据材料" [ref=e60]:
+          - columnheader "节点" [ref=e61]
+          - columnheader "证明目标" [ref=e62]
+          - columnheader "证据材料" [ref=e63]
+      - rowgroup [ref=e64]:
+        - row "预付款 合同成立并启动履行 合同、付款流水、发票" [ref=e65]:
+          - cell "预付款" [ref=e66]
+          - cell "合同成立并启动履行" [ref=e67]
+          - cell "合同、付款流水、发票" [ref=e68]
+        - row "阶段款 阶段成果被认可 原型确认、会议纪要、聊天记录" [ref=e69]:
+          - cell "阶段款" [ref=e70]
+          - cell "阶段成果被认可" [ref=e71]
+          - cell "原型确认、会议纪要、聊天记录" [ref=e72]
+        - row "尾款 交付完成且付款到期 部署记录、访问日志、催款记录" [ref=e73]:
+          - cell "尾款" [ref=e74]
+          - cell "交付完成且付款到期" [ref=e75]
+          - cell "部署记录、访问日志、催款记录" [ref=e76]
+    - generic [ref=e77]:
+      - generic [ref=e78]:
+        - strong [ref=e79]: 衡策争议解决团队
+        - emphasis [ref=e80]: Agent 可视化 · 主办律师 陈知衡
+      - generic [ref=e81]: 电话 138-0000-0000 · 微信 ch-law
+      - generic [ref=e82]: A2 / A5
+  - generic [ref=e83]:
+    - generic [ref=e84]:
+      - generic [ref=e85]: Agent Visual Page
+      - generic [ref=e86]: 证据热力图
+    - paragraph [ref=e87]: Agent 生成意图 · Evidence Heatmap
+    - heading "不是所有证据都该平均用力。" [level=2] [ref=e88]
+    - paragraph [ref=e89]: Agent 判断：本案应优先强化“实际使用”和“默示验收”，其次才是解释瑕疵。热力图用于指导客户补证优先级。
+    - generic [ref=e90]:
+      - generic [ref=e91]:
+        - heading "实际使用" [level=3] [ref=e92]
+        - paragraph [ref=e93]: 访问日志、后台操作、真实客户数据。证明力最高，直接削弱未交付抗辩。
+      - generic [ref=e94]:
+        - heading "交付记录" [level=3] [ref=e95]
+        - paragraph [ref=e96]: 测试地址、部署包、账号信息、交付邮件。支撑主张的基础。
+      - generic [ref=e97]:
+        - heading "验收沟通" [level=3] [ref=e98]
+        - paragraph [ref=e99]: 微信和会议纪要可证明对方参与测试，但需要逐条整理。
+      - generic [ref=e100]:
+        - heading "付款结构" [level=3] [ref=e101]
+        - paragraph [ref=e102]: 前两期款项正常支付，能证明项目并非从一开始失败。
+      - generic [ref=e103]:
+        - heading "瑕疵反馈" [level=3] [ref=e104]
+        - paragraph [ref=e105]: 对方会使用这部分抗辩，需要技术说明限制其影响范围。
+      - generic [ref=e106]:
+        - heading "新增需求" [level=3] [ref=e107]
+        - paragraph [ref=e108]: 有助于解释延期和修改，但需要防止被反向解释为未完成。
+    - generic [ref=e109]: 补证优先级
+    - generic [ref=e110]:
+      - generic [ref=e111]:
+        - generic [ref=e112]: "1"
+        - generic [ref=e113]: 先固定访问日志和真实使用截图。
+      - generic [ref=e114]:
+        - generic [ref=e115]: "2"
+        - generic [ref=e116]: 再整理交付包与测试账号记录。
+      - generic [ref=e117]:
+        - generic [ref=e118]: "3"
+        - generic [ref=e119]: 最后逐项解释瑕疵与新增需求。
+    - generic [ref=e120]:
+      - generic [ref=e121]:
+        - strong [ref=e122]: 衡策争议解决团队
+        - emphasis [ref=e123]: Agent 可视化 · 主办律师 陈知衡
+      - generic [ref=e124]: 合同纠纷 · 证据链整理 · 诉前谈判
+      - generic [ref=e125]: A3 / A5
+  - generic [ref=e126]:
+    - generic [ref=e127]:
+      - generic [ref=e128]: Agent Visual Page
+      - generic [ref=e129]: 诉讼路径树
+    - paragraph [ref=e130]: Agent 生成意图 · Litigation Path Tree
+    - heading "根据对方回应，把下一步分成三条路径。" [level=2] [ref=e131]
+    - paragraph [ref=e132]: Agent 判断：客户需要看到“不是只有起诉一个选择”，而是不同回应触发不同策略。
+    - generic [ref=e133]:
+      - generic [ref=e134]:
+        - generic [ref=e135]: PATH A
+        - heading "对方付款" [level=3] [ref=e136]
+        - paragraph [ref=e137]: 签署尾款结清确认，保留新增需求另行报价。
+      - generic [ref=e138]:
+        - generic [ref=e139]: PATH B · LIKELY
+        - heading "对方拖延" [level=3] [ref=e140]
+        - paragraph [ref=e141]: 固定函件送达和逾期事实，准备起诉材料。
+      - generic [ref=e142]:
+        - generic [ref=e143]: PATH C
+        - heading "对方反诉瑕疵" [level=3] [ref=e144]
+        - paragraph [ref=e145]: 启动技术说明，逐项区分核心瑕疵与普通优化。
+    - generic [ref=e146]: Decision Tree
+    - generic [ref=e147]:
+      - img
+      - generic [ref=e148]:
+        - strong [ref=e149]: 律师函发出
+        - text: 5 个工作日内要求明确回应。
+      - generic [ref=e150]:
+        - strong [ref=e151]: 付款/和解
+        - text: 形成书面结清协议。
+      - generic [ref=e152]:
+        - strong [ref=e153]: 无回应
+        - text: 进入起诉准备。
+      - generic [ref=e154]:
+        - strong [ref=e155]: 瑕疵抗辩
+        - text: 要求列明缺陷和合同依据。
+    - generic [ref=e156]:
+      - generic [ref=e157]:
+        - strong [ref=e158]: 衡策争议解决团队
+        - emphasis [ref=e159]: Agent 可视化 · 主办律师 陈知衡
+      - generic [ref=e160]: 电话 138-0000-0000 · 微信 ch-law
+      - generic [ref=e161]: A4 / A5
+  - generic [ref=e162]:
+    - generic [ref=e163]:
+      - generic [ref=e164]: Agent Visual Page
+      - generic [ref=e165]: 损失计算板
+    - paragraph [ref=e166]: Agent 生成意图 · Damages Board
+    - heading "金额页要让客户马上知道“要什么钱、怎么算、风险在哪”。" [level=2] [ref=e167]
+    - generic [ref=e168]:
+      - generic [ref=e169]:
+        - generic [ref=e170]: 18.6万
+        - generic [ref=e171]: 合同尾款，主请求。
+      - generic [ref=e172]:
+        - generic [ref=e173]: 1.2万
+        - generic [ref=e174]: 暂估逾期利息或资金占用损失。
+      - generic [ref=e175]:
+        - generic [ref=e176]: 3.8万
+        - generic [ref=e177]: 新增需求开发费用，需单独论证。
+    - table [ref=e178]:
+      - rowgroup [ref=e179]:
+        - row "项目 主张逻辑 证据 风险" [ref=e180]:
+          - columnheader "项目" [ref=e181]
+          - columnheader "主张逻辑" [ref=e182]
+          - columnheader "证据" [ref=e183]
+          - columnheader "风险" [ref=e184]
+      - rowgroup [ref=e185]:
+        - row "尾款 交付完成，付款条件成就 合同、交付、使用、催款 验收单缺失" [ref=e186]:
+          - cell "尾款" [ref=e187]
+          - cell "交付完成，付款条件成就" [ref=e188]
+          - cell "合同、交付、使用、催款" [ref=e189]
+          - cell "验收单缺失" [ref=e190]
+        - row "逾期利息 尾款到期后未付 催告记录、付款节点 起算日需谨慎" [ref=e191]:
+          - cell "逾期利息" [ref=e192]
+          - cell "尾款到期后未付" [ref=e193]
+          - cell "催告记录、付款节点" [ref=e194]
+          - cell "起算日需谨慎" [ref=e195]
+        - row "新增费用 超出原合同范围 聊天记录、报价单 缺补充协议" [ref=e196]:
+          - cell "新增费用" [ref=e197]
+          - cell "超出原合同范围" [ref=e198]
+          - cell "聊天记录、报价单" [ref=e199]
+          - cell "缺补充协议" [ref=e200]
+    - generic [ref=e201]: Agent Recommendation
+    - generic [ref=e202]:
+      - generic [ref=e203]:
+        - heading "诉讼请求" [level=3] [ref=e204]
+        - paragraph [ref=e205]: 主张尾款和逾期利息，新增费用可作为谈判筹码或另行主张。
+      - generic [ref=e206]:
+        - heading "客户解释口径" [level=3] [ref=e207]
+        - paragraph [ref=e208]: 不要把所有金额混成“总欠款”，应区分确定性高低，避免削弱主请求。
+    - generic [ref=e209]:
+      - strong [ref=e210]: Consistency Check
+      - paragraph [ref=e211]: 这一页引用 Data/Finance 的功能逻辑，但仍使用 Blueprint 的纸张、边框、卡片和页脚系统。
+    - generic [ref=e212]:
+      - generic [ref=e213]:
+        - strong [ref=e214]: 衡策争议解决团队
+        - emphasis [ref=e215]: Agent 可视化 · 主办律师 陈知衡
+      - generic [ref=e216]: 合同纠纷 · 证据链整理 · 诉前谈判
+      - generic [ref=e217]: A5 / A5

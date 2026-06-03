@@ -3,13 +3,29 @@ CREATE EXTENSION IF NOT EXISTS pgcrypto;
 CREATE TABLE IF NOT EXISTS users (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   phone TEXT NOT NULL UNIQUE,
+  email TEXT NOT NULL UNIQUE,
   password_hash TEXT NOT NULL,
+  role TEXT NOT NULL DEFAULT 'lawyer',
+  status TEXT NOT NULL DEFAULT 'pending',
+  is_verified BOOLEAN NOT NULL DEFAULT false,
   lawyer_profile JSONB NOT NULL DEFAULT '{}'::jsonb,
   credits DECIMAL(12,2) NOT NULL DEFAULT 0 CHECK (credits >= 0),
   subscription_tier TEXT NOT NULL DEFAULT 'free',
   subscription_end_date TIMESTAMPTZ,
   created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
   last_login TIMESTAMPTZ
+);
+
+CREATE TABLE IF NOT EXISTS sms_verifications (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  phone TEXT NOT NULL,
+  purpose TEXT NOT NULL,
+  code_hash TEXT NOT NULL,
+  request_ip TEXT,
+  attempts INTEGER NOT NULL DEFAULT 0,
+  expires_at TIMESTAMPTZ NOT NULL,
+  consumed_at TIMESTAMPTZ,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
 CREATE TABLE IF NOT EXISTS templates (
@@ -85,6 +101,12 @@ CREATE INDEX IF NOT EXISTS idx_transactions_user_id_created_at
 CREATE INDEX IF NOT EXISTS idx_transactions_provider_order_id
   ON transactions(provider_order_id)
   WHERE provider_order_id IS NOT NULL;
+
+CREATE INDEX IF NOT EXISTS idx_sms_verifications_phone_created_at
+  ON sms_verifications(phone, created_at DESC);
+
+CREATE INDEX IF NOT EXISTS idx_sms_verifications_purpose_created_at
+  ON sms_verifications(purpose, created_at DESC);
 
 CREATE INDEX IF NOT EXISTS idx_templates_active_key
   ON templates(is_active, template_key);

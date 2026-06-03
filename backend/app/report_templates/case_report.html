@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ report.title }}</title>
+    <style>{{ style_css }}</style>
+  </head>
+  <body>
+    <article class="report">
+      <p class="kicker">LawViz Case Report</p>
+      <h1>{{ report.title }}</h1>
+      {% if report.summary %}
+      <p class="summary">{{ report.summary }}</p>
+      {% endif %}
+
+      <section class="meta">
+        <div>案件类型：{{ case_type }}</div>
+        <div>模型：{{ model_used }}</div>
+        <div>积分：{{ credits_cost }} credits</div>
+      </section>
+
+      {% for section in sections %}
+      <section class="section">
+        <h2>{{ section.title }}</h2>
+        {% if section.list_items %}
+        <ul>
+          {% for item in section.list_items %}
+          <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p>暂无内容。</p>
+        {% endif %}
+      </section>
+      {% endfor %}
+
+      {% if lawyer_card %}
+      <section class="lawyer-card">
+        <strong>{{ lawyer_card.full_name }}</strong>
+        {% if lawyer_card.law_firm %}<span> · {{ lawyer_card.law_firm }}</span>{% endif %}
+      </section>
+      {% endif %}
+    </article>
+  </body>
+</html>

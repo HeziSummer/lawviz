@@ -1,0 +1,242 @@
+﻿{
+    "id":  "lawviz-blueprint",
+    "name":  "LawViz Blueprint",
+    "version":  "0.1.0",
+    "status":  "sample-pack",
+    "purpose":  "A4 portrait visual style pack for LawViz reports. It defines page shell, tokens, components, identity rendering, and renderer constraints without binding to any case type.",
+    "sources":  [
+                    {
+                        "name":  "Knowledge Architecture Blueprint",
+                        "plugin_url":  "https://open-design.ai/zh/plugins/example-html-ppt-knowledge-arch-blueprint/",
+                        "example_url":  "https://open-design.ai/plugins/example-html-ppt-knowledge-arch-blueprint/example.html",
+                        "github_url":  "https://github.com/nexu-io/open-design/tree/main/plugins/_official/examples/html-ppt-knowledge-arch-blueprint",
+                        "role":  "Primary structure, grid, hard cards, rust-red insight callouts"
+                    },
+                    {
+                        "name":  "Zhangzara Blue Professional",
+                        "plugin_url":  "https://open-design.ai/zh/plugins/example-html-ppt-zhangzara-blue-professional/",
+                        "example_url":  "https://open-design.ai/plugins/example-html-ppt-zhangzara-blue-professional/example.html",
+                        "github_url":  "https://github.com/nexu-io/open-design/tree/main/plugins/_official/examples/html-ppt-zhangzara-blue-professional",
+                        "role":  "Professional report restraint and cobalt secondary accent"
+                    },
+                    {
+                        "name":  "Data Visualization Report",
+                        "plugin_url":  "https://open-design.ai/zh/plugins/example-data-report/",
+                        "example_url":  "https://open-design.ai/plugins/example-data-report/example.html",
+                        "github_url":  "https://github.com/nexu-io/open-design/tree/main/plugins/_official/examples/data-report",
+                        "role":  "KPI, table, and evidence summary module inspiration"
+                    },
+                    {
+                        "name":  "Finance Report",
+                        "plugin_url":  "https://open-design.ai/zh/plugins/example-finance-report/",
+                        "example_url":  "https://open-design.ai/plugins/example-finance-report/example.html",
+                        "github_url":  "https://github.com/nexu-io/open-design/tree/main/plugins/_official/examples/finance-report",
+                        "role":  "Amount, loss, and claim-value summary inspiration"
+                    }
+                ],
+    "visual_tokens":  {
+                          "page":  {
+                                       "format":  "A4 portrait",
+                                       "screen_preview_px":  {
+                                                                 "width":  794,
+                                                                 "height":  1123
+                                                             },
+                                       "print_size":  "210mm x 297mm",
+                                       "safe_margin_mm":  14
+                                   },
+                          "colors":  {
+                                         "paper":  "#F0EAE0",
+                                         "paper_light":  "#F8F3E9",
+                                         "ink":  "#171717",
+                                         "muted":  "#66625A",
+                                         "line":  "#CFC6B8",
+                                         "card":  "#FFFDF8",
+                                         "accent":  "#B5392A",
+                                         "accent_dark":  "#8F2D24",
+                                         "accent_secondary":  "#244CFF",
+                                         "success":  "#2E6F4E",
+                                         "warning":  "#A86313"
+                                     },
+                          "typography":  {
+                                             "display":  "Noto Serif SC, Songti SC, SimSun, Georgia, serif",
+                                             "body":  "Inter, Noto Sans SC, Microsoft YaHei, Arial, sans-serif",
+                                             "mono":  "JetBrains Mono, Consolas, monospace"
+                                         },
+                          "shapes":  {
+                                         "card_border":  "2px solid #171717",
+                                         "card_radius":  "10px",
+                                         "callout_radius":  "10px",
+                                         "grid_size_px":  36
+                                     }
+                      },
+    "component_showroom_sections":  [
+                                        "page_shell",
+                                        "identity_system",
+                                        "cards_and_metrics",
+                                        "structured_tables",
+                                        "flow_components",
+                                        "comparison_and_money",
+                                        "evidence_and_heat",
+                                        "connector_canvas",
+                                        "chart_components"
+                                    ],
+    "identity_system":  {
+                            "purpose":  "Marketing-forward but simple report identity system. It renders the lawyer, team, or firm as the visible maker of the report without turning case pages into a landing page.",
+                            "identity_types":  {
+                                                   "solo_lawyer":  {
+                                                                       "label":  "个人律师",
+                                                                       "message_focus":  "The named lawyer is professional, accountable, and directly responsible for the matter.",
+                                                                       "required_fields":  [
+                                                                                               "identity_type",
+                                                                                               "lawyer_name",
+                                                                                               "lawyer_title",
+                                                                                               "firm_name",
+                                                                                               "primary_contact",
+                                                                                               "practice_areas"
+                                                                                           ],
+                                                                       "optional_fields":  [
+                                                                                               "avatar_url",
+                                                                                               "license_number",
+                                                                                               "practice_years",
+                                                                                               "bio_short",
+                                                                                               "representative_cases",
+                                                                                               "service_style",
+                                                                                               "qr_code_url"
+                                                                                           ],
+                                                                       "rendering_focus":  {
+                                                                                               "cover":  "lawyer_name + lawyer_title + firm_name",
+                                                                                               "footer":  "lawyer_name + firm_name + primary_contact",
+                                                                                               "closing":  "personal lawyer card with avatar or text seal, practice areas, contact, and short positioning"
+                                                                                           }
+                                                                   },
+                                                   "law_firm_team":  {
+                                                                         "label":  "律所团队",
+                                                                         "message_focus":  "The matter is handled by a visible legal team with a lead lawyer and clear division of work.",
+                                                                         "required_fields":  [
+                                                                                                 "identity_type",
+                                                                                                 "team_name",
+                                                                                                 "firm_name",
+                                                                                                 "lead_lawyer_name",
+                                                                                                 "primary_contact",
+                                                                                                 "practice_areas"
+                                                                                             ],
+                                                                         "optional_fields":  [
+                                                                                                 "team_members",
+                                                                                                 "team_positioning",
+                                                                                                 "team_advantages",
+                                                                                                 "service_process",
+                                                                                                 "bio_short",
+                                                                                                 "logo_url",
+                                                                                                 "qr_code_url"
+                                                                                             ],
+                                                                         "rendering_focus":  {
+                                                                                                 "cover":  "team_name + lead_lawyer_name + firm_name",
+                                                                                                 "footer":  "team_name + lead_lawyer_name + primary_contact",
+                                                                                                 "closing":  "team card with lead lawyer, practice areas, optional member roles, and contact"
+                                                                                             }
+                                                                     },
+                                                   "corporate_firm":  {
+                                                                          "label":  "公司化律所",
+                                                                          "message_focus":  "The firm is institutional, process-driven, and capable of standardized delivery.",
+                                                                          "required_fields":  [
+                                                                                                  "identity_type",
+                                                                                                  "firm_name",
+                                                                                                  "contact_person",
+                                                                                                  "primary_contact",
+                                                                                                  "service_areas"
+                                                                                              ],
+                                                                          "optional_fields":  [
+                                                                                                  "firm_short_name",
+                                                                                                  "office_name",
+                                                                                                  "department_name",
+                                                                                                  "firm_positioning",
+                                                                                                  "institutional_strengths",
+                                                                                                  "service_standards",
+                                                                                                  "client_types",
+                                                                                                  "logo_url",
+                                                                                                  "qr_code_url"
+                                                                                              ],
+                                                                          "rendering_focus":  {
+                                                                                                  "cover":  "firm_name + department_name or service_areas + contact_person",
+                                                                                                  "footer":  "firm_short_name or firm_name + department_name + primary_contact",
+                                                                                                  "closing":  "institutional firm card with department, service standards, contact window, and optional logo"
+                                                                                              }
+                                                                      }
+                                               },
+                            "common_optional_fields":  [
+                                                           "brand_color",
+                                                           "email",
+                                                           "phone",
+                                                           "wechat",
+                                                           "office_address",
+                                                           "website",
+                                                           "disclaimer_short"
+                                                       ],
+                            "empty_state_policy":  {
+                                                       "avatar_url":  "Use a text seal or initials mark.",
+                                                       "logo_url":  "Use display_name as the brand mark.",
+                                                       "bio_short":  "Omit the biography area and enlarge practice areas/contact modules.",
+                                                       "team_members":  "Hide member-role grid and keep lead lawyer/team positioning.",
+                                                       "qr_code_url":  "Hide QR slot; do not render an empty placeholder.",
+                                                       "license_number":  "Omit license line without leaving blank spacing."
+                                                   },
+                            "rendering_slots":  [
+                                                    "cover_identity",
+                                                    "persistent_footer_identity",
+                                                    "identity_settings_page",
+                                                    "closing_profile_card"
+                                                ]
+                        },
+    "component_catalog":  [
+                              "page_header",
+                              "identity_footer",
+                              "cover_identity",
+                              "card",
+                              "callout",
+                              "metric",
+                              "tag_row",
+                              "timeline",
+                              "pipeline",
+                              "mini_table",
+                              "focus_matrix",
+                              "position_board",
+                              "ledger",
+                              "proof_grid",
+                              "heatmap",
+                              "amount_grid",
+                              "action_board",
+                              "connector_canvas",
+                              "profile_card",
+                              "bar_chart",
+                              "stacked_bar_chart",
+                              "donut_chart",
+                              "waterfall_chart",
+                              "risk_quadrant",
+                              "score_gauge",
+                              "calendar_strip"
+                          ],
+    "agent_guidance":  {
+                           "allowed_to_choose":  [
+                                                     "approved component",
+                                                     "page title",
+                                                     "short explanatory copy",
+                                                     "semantic grouping of structured facts, evidence, issues, amounts, and next actions",
+                                                     "visual intent that maps to a known component"
+                                                 ],
+                           "not_allowed_to_generate":  [
+                                                           "external scripts",
+                                                           "arbitrary CSS tokens",
+                                                           "unbounded HTML",
+                                                           "new unrelated visual style",
+                                                           "overlong paragraphs",
+                                                           "absolute-positioned div arrows"
+                                                       ]
+                       },
+    "renderer_constraints":  {
+                                 "escape_text":  true,
+                                 "allow_external_scripts":  false,
+                                 "print_ready":  true,
+                                 "page_overflow_policy":  "split page or condense block",
+                                 "agent_html_policy":  "Agent outputs structured page plan only; renderer owns final HTML"
+                             }
+}

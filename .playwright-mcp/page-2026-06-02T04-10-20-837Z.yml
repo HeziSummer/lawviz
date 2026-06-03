@@ -1,0 +1,370 @@
+- main [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: LawViz Blueprint
+      - generic [ref=e6]: 样式模板 · 组件全集
+    - paragraph [ref=e7]: Style Template · Not Case-Type Content
+    - generic [ref=e8]:
+      - generic [ref=e9]:
+        - heading "A4 竖版报告 视觉系统 组件手册" [level=1] [ref=e10]:
+          - text: A4 竖版报告
+          - text: 视觉系统
+          - text: 组件手册
+        - paragraph [ref=e11]: 本页只定义样式模板能力：页面壳、身份系统、卡片、矩阵、时间线、金额板、证据板、路径图和关系图。它不定义任何案由的内容顺序。
+        - generic [ref=e12]:
+          - paragraph [ref=e13]: Template Scope
+          - strong [ref=e14]: Blueprint Style Pack
+          - generic [ref=e15]: 适用于合同纠纷、劳动纠纷、婚姻家事、股权争议等不同内容模板。
+      - complementary [ref=e16]:
+        - strong [ref=e17]: Current Goal
+        - paragraph [ref=e18]: 样式模板求全：让 Agent 和 Renderer 知道这套视觉系统能稳定承载哪些组件。
+    - generic [ref=e19]: Template Outputs
+    - generic [ref=e20]:
+      - generic [ref=e21]:
+        - heading "style.css" [level=3] [ref=e22]
+        - paragraph [ref=e23]: 页面尺寸、视觉 tokens、组件样式和打印规则。
+      - generic [ref=e24]:
+        - heading "visual-kit.json" [level=3] [ref=e25]
+        - paragraph [ref=e26]: 组件清单、使用规则、身份系统和 Renderer 约束。
+      - generic [ref=e27]:
+        - heading "component-showroom" [level=3] [ref=e28]
+        - paragraph [ref=e29]: 人类可见的组件全集和组合压力测试。
+    - generic [ref=e30]:
+      - generic [ref=e31]:
+        - strong [ref=e32]: LawViz Blueprint
+        - emphasis [ref=e33]: Style Pack · Component Catalog
+      - generic [ref=e34]: 不绑定案由 · 不定义内容模板
+      - generic [ref=e35]: 01 / 09
+  - generic [ref=e36]:
+    - generic [ref=e37]:
+      - generic [ref=e38]: Page Shell
+      - generic [ref=e39]: 页眉 · 页脚 · 页面结构
+    - paragraph [ref=e40]: A4 Portrait Shell
+    - heading "页面壳负责稳定、清晰和品牌连续性，不承载案由逻辑。" [level=2] [ref=e41]
+    - generic [ref=e42]:
+      - generic [ref=e43]:
+        - heading "每页只表达一个主要信息单元。" [level=3] [ref=e44]
+        - paragraph [ref=e45]: 样式模板提供固定页眉、品牌身份页脚、页面分隔线和 A4 安全区。内容模板只需要决定每页放什么信息。
+      - generic [ref=e46]:
+        - generic [ref=e47]:
+          - generic [ref=e48]: Page Size
+          - strong [ref=e49]: 794 × 1123 px
+        - generic [ref=e50]:
+          - generic [ref=e51]: Header
+          - strong [ref=e52]: 标题 + 页面语义
+        - generic [ref=e53]:
+          - generic [ref=e54]: Footer
+          - strong [ref=e55]: 品牌身份 + 页码
+    - generic [ref=e56]: Text Hierarchy
+    - generic [ref=e57]:
+      - generic [ref=e58]:
+        - paragraph [ref=e59]: Kicker
+        - heading "模块前导标签" [level=3] [ref=e60]
+        - paragraph [ref=e61]: 用于说明本页功能或组件类别。
+      - generic [ref=e62]:
+        - heading "正文标题" [level=3] [ref=e63]
+        - paragraph [ref=e64]: 用于 A4 内部主标题，避免在普通页面滥用封面级大字。
+      - generic [ref=e65]:
+        - strong [ref=e66]: Callout
+        - paragraph [ref=e67]: 用于单页内最重要的判断、结论或警示。
+    - generic [ref=e68]:
+      - generic [ref=e69]:
+        - strong [ref=e70]: LawViz Blueprint
+        - emphasis [ref=e71]: Style Pack · Page Shell
+      - generic [ref=e72]: 页眉页脚不与正文和分隔线冲突
+      - generic [ref=e73]: 02 / 09
+  - generic [ref=e74]:
+    - generic [ref=e75]:
+      - generic [ref=e76]: Identity System
+      - generic [ref=e77]: 律师 · 团队 · 律所展示
+    - paragraph [ref=e78]: Marketing Card Layer
+    - heading "身份系统是展示和名片，不是内容模板；它要支持三种主体并允许选填为空。" [level=2] [ref=e79]
+    - generic [ref=e80]:
+      - article [ref=e81]:
+        - generic [ref=e82]: Solo Lawyer
+        - heading "个人律师" [level=3] [ref=e83]
+        - paragraph [ref=e84]: 突出律师本人、职务、律所、执业领域和直接联系方式。
+        - list [ref=e85]:
+          - listitem [ref=e86]: 适合个人品牌
+          - listitem [ref=e87]: 头像可选
+          - listitem [ref=e88]: 执业证号可选
+      - article [ref=e89]:
+        - generic [ref=e90]: Firm Team
+        - heading "律所团队" [level=3] [ref=e91]
+        - paragraph [ref=e92]: 突出团队名、主办律师、团队分工和服务响应。
+        - list [ref=e93]:
+          - listitem [ref=e94]: 适合小团队展示
+          - listitem [ref=e95]: 成员可选
+          - listitem [ref=e96]: 分工可选
+      - article [ref=e97]:
+        - generic [ref=e98]: Corporate Firm
+        - heading "公司化律所" [level=3] [ref=e99]
+        - paragraph [ref=e100]: 突出律所品牌、部门、联系窗口和服务标准。
+        - list [ref=e101]:
+          - listitem [ref=e102]: 适合机构化展示
+          - listitem [ref=e103]: logo 可选
+          - listitem [ref=e104]: 服务标准可选
+    - generic [ref=e105]: 空字段规则：头像为空用文字印章；logo 为空用展示名称；简介为空时隐藏简介区；二维码为空时不显示空框。
+    - generic [ref=e106]:
+      - generic [ref=e107]:
+        - strong [ref=e108]: 衡策争议解决团队
+        - emphasis [ref=e109]: 主办律师 陈知衡 · 某某律师事务所
+      - generic [ref=e110]: 身份系统示例 · 字段可收拢
+      - generic [ref=e111]: 03 / 09
+  - generic [ref=e112]:
+    - generic [ref=e113]:
+      - generic [ref=e114]: Cards & Metrics
+      - generic [ref=e115]: 卡片 · 指标 · 标签
+    - paragraph [ref=e116]: Reusable Atoms
+    - heading "基础组件用于承载短判断、关键数字、状态标签和模块说明。" [level=2] [ref=e117]
+    - generic [ref=e118]:
+      - generic [ref=e119]:
+        - generic [ref=e120]: A4
+        - generic [ref=e121]: 固定竖版页面，适合打印和客户沟通。
+      - generic [ref=e122]:
+        - generic [ref=e123]: 3类
+        - generic [ref=e124]: 个人律师、律所团队、公司化律所。
+      - generic [ref=e125]:
+        - generic [ref=e126]: 9+
+        - generic [ref=e127]: 组件类别，可服务不同案由内容模板。
+      - generic [ref=e128]:
+        - generic [ref=e129]: "0"
+        - generic [ref=e130]: 组件默认不允许页面溢出。
+    - generic [ref=e131]: Card States
+    - generic [ref=e132]:
+      - generic [ref=e133]:
+        - heading "普通信息卡" [level=3] [ref=e134]
+        - paragraph [ref=e135]: 适合承载 1 个短结论、1 个事实组或 1 个说明单元。
+        - generic [ref=e136]:
+          - generic [ref=e137]: Short copy
+          - generic [ref=e138]: Stable
+      - generic [ref=e139]:
+        - strong [ref=e140]: Strong Callout
+        - paragraph [ref=e141]: 适合强调当前页面最重要的判断，不适合放长段文字。
+      - generic [ref=e142]:
+        - heading "标签组" [level=3] [ref=e143]
+        - paragraph [ref=e144]: 用于展示领域、状态、证据类型、风险等级等短文本。
+        - generic [ref=e145]:
+          - generic [ref=e146]: 证据
+          - generic [ref=e147]: 风险
+          - generic [ref=e148]: 金额
+    - generic [ref=e149]:
+      - generic [ref=e150]:
+        - strong [ref=e151]: LawViz Blueprint
+        - emphasis [ref=e152]: Style Pack · Cards
+      - generic [ref=e153]: 指标 · 卡片 · 标签 · 强调块
+      - generic [ref=e154]: 04 / 09
+  - generic [ref=e155]:
+    - generic [ref=e156]:
+      - generic [ref=e157]: Structured Tables
+      - generic [ref=e158]: 表格 · 矩阵
+    - paragraph [ref=e159]: Dense But Readable
+    - heading "当信息需要比较、归类或逐项判断时，优先使用矩阵和表格，而不是堆卡片。" [level=2] [ref=e160]
+    - table [ref=e161]:
+      - rowgroup [ref=e162]:
+        - row "模块 适合内容 不适合内容 空字段处理" [ref=e163]:
+          - columnheader "模块" [ref=e164]
+          - columnheader "适合内容" [ref=e165]
+          - columnheader "不适合内容" [ref=e166]
+          - columnheader "空字段处理" [ref=e167]
+      - rowgroup [ref=e168]:
+        - row "矩阵 争议点、风险项、证明方向、处理策略 长段法律分析 缺列时降级为三列表" [ref=e169]:
+          - cell "矩阵" [ref=e170]
+          - cell "争议点、风险项、证明方向、处理策略" [ref=e171]
+          - cell "长段法律分析" [ref=e172]
+          - cell "缺列时降级为三列表" [ref=e173]
+        - row "普通表格 金额、节点、材料清单、任务清单 复杂关系图 空单元格隐藏标签" [ref=e174]:
+          - cell "普通表格" [ref=e175]
+          - cell "金额、节点、材料清单、任务清单" [ref=e176]
+          - cell "复杂关系图" [ref=e177]
+          - cell "空单元格隐藏标签" [ref=e178]
+        - row "对照板 双方立场、方案比较、优劣取舍 超过 3 方的复杂关系 缺一侧时改为单栏说明" [ref=e179]:
+          - cell "对照板" [ref=e180]
+          - cell "双方立场、方案比较、优劣取舍" [ref=e181]
+          - cell "超过 3 方的复杂关系" [ref=e182]
+          - cell "缺一侧时改为单栏说明" [ref=e183]
+        - row "行动看板 按时间、角色或优先级分组的任务 事实叙事 空泳道不显示" [ref=e184]:
+          - cell "行动看板" [ref=e185]
+          - cell "按时间、角色或优先级分组的任务" [ref=e186]
+          - cell "事实叙事" [ref=e187]
+          - cell "空泳道不显示" [ref=e188]
+    - generic [ref=e189]: Mini Table
+    - table [ref=e190]:
+      - rowgroup [ref=e191]:
+        - row "字段 推荐字数 Renderer 规则" [ref=e192]:
+          - columnheader "字段" [ref=e193]
+          - columnheader "推荐字数" [ref=e194]
+          - columnheader "Renderer 规则" [ref=e195]
+      - rowgroup [ref=e196]:
+        - row "标题 12-24 字 超长自动降字号或换行" [ref=e197]:
+          - cell "标题" [ref=e198]
+          - cell "12-24 字" [ref=e199]
+          - cell "超长自动降字号或换行" [ref=e200]
+        - row "说明 40-80 字 超出时拆卡或拆页" [ref=e201]:
+          - cell "说明" [ref=e202]
+          - cell "40-80 字" [ref=e203]
+          - cell "超出时拆卡或拆页" [ref=e204]
+        - row "标签 2-8 字 超出时换行，不压缩到不可读" [ref=e205]:
+          - cell "标签" [ref=e206]
+          - cell "2-8 字" [ref=e207]
+          - cell "超出时换行，不压缩到不可读" [ref=e208]
+    - generic [ref=e209]:
+      - generic [ref=e210]:
+        - strong [ref=e211]: LawViz Blueprint
+        - emphasis [ref=e212]: Style Pack · Tables
+      - generic [ref=e213]: 表格 · 矩阵 · 对照 · 数据密度
+      - generic [ref=e214]: 05 / 09
+  - generic [ref=e215]:
+    - generic [ref=e216]:
+      - generic [ref=e217]: Flow Components
+      - generic [ref=e218]: 时间线 · 流程 · 行动看板
+    - paragraph [ref=e219]: Sequence & Responsibility
+    - heading "当内容包含时间、步骤、路径或执行责任时，应使用顺序组件。" [level=2] [ref=e220]
+    - generic [ref=e221]:
+      - generic [ref=e222]:
+        - generic [ref=e223]: STEP 01
+        - heading "收集信息" [level=3] [ref=e224]
+        - paragraph [ref=e225]: 适合放在流程、策略、办案阶段或项目推进页。
+      - generic [ref=e226]:
+        - generic [ref=e227]: STEP 02
+        - heading "形成判断" [level=3] [ref=e228]
+        - paragraph [ref=e229]: 重点步骤可使用强调色，但一页不宜超过一个。
+      - generic [ref=e230]:
+        - generic [ref=e231]: STEP 03
+        - heading "执行动作" [level=3] [ref=e232]
+        - paragraph [ref=e233]: 用于说明接下来要做什么和由谁负责。
+      - generic [ref=e234]:
+        - generic [ref=e235]: STEP 04
+        - heading "观察回应" [level=3] [ref=e236]
+        - paragraph [ref=e237]: 适合连接后续路径或分支决策。
+    - generic [ref=e238]: Timeline
+    - generic [ref=e239]:
+      - generic [ref=e240]:
+        - generic [ref=e241]: T-01
+        - generic [ref=e242]:
+          - heading "事实节点" [level=3] [ref=e243]
+          - paragraph [ref=e244]: 时间线用于表达事实顺序和证据锚点，不用于堆长段解释。
+      - generic [ref=e245]:
+        - generic [ref=e246]: T-02
+        - generic [ref=e247]:
+          - heading "风险节点" [level=3] [ref=e248]
+          - paragraph [ref=e249]: 可标注关键分歧、缺口或需要客户确认的时间点。
+      - generic [ref=e250]:
+        - generic [ref=e251]: T-03
+        - generic [ref=e252]:
+          - heading "行动节点" [level=3] [ref=e253]
+          - paragraph [ref=e254]: 可连接行动看板和策略路径。
+    - generic [ref=e255]:
+      - generic [ref=e256]:
+        - strong [ref=e257]: LawViz Blueprint
+        - emphasis [ref=e258]: Style Pack · Flow
+      - generic [ref=e259]: 时间线 · 流程 · 节点 · 行动
+      - generic [ref=e260]: 06 / 09
+  - generic [ref=e261]:
+    - generic [ref=e262]:
+      - generic [ref=e263]: Comparison & Money
+      - generic [ref=e264]: 对照 · 金额 · 台账
+    - paragraph [ref=e265]: Decision-Oriented Layouts
+    - heading "当客户需要做判断时，样式模板提供对照板、金额板和台账。" [level=2] [ref=e266]
+    - generic [ref=e267]:
+      - generic [ref=e268]:
+        - heading "方案 A" [level=3] [ref=e269]
+        - paragraph [ref=e270]: 用于呈现一方立场、一个选择或一个解释路径。
+        - generic [ref=e271]:
+          - generic [ref=e272]: 优势
+          - generic [ref=e273]: 证据
+      - generic [ref=e274]: VS
+      - generic [ref=e275]:
+        - heading "方案 B" [level=3] [ref=e276]
+        - paragraph [ref=e277]: 用于呈现另一方立场、备选策略或风险路径。
+        - generic [ref=e278]:
+          - generic [ref=e279]: 风险
+          - generic [ref=e280]: 成本
+    - generic [ref=e281]:
+      - generic [ref=e282]:
+        - generic [ref=e283]: 18.6万
+        - heading "主金额" [level=3] [ref=e284]
+        - paragraph [ref=e285]: 用于主请求、核心损失或关键商业金额。
+      - generic [ref=e286]:
+        - generic [ref=e287]: 1.2万
+        - heading "附属金额" [level=3] [ref=e288]
+        - paragraph [ref=e289]: 用于利息、费用、补偿或次级请求。
+      - generic [ref=e290]:
+        - generic [ref=e291]: 3.8万
+        - heading "谈判金额" [level=3] [ref=e292]
+        - paragraph [ref=e293]: 用于不确定性较高但可进入谈判的金额。
+    - generic [ref=e294]:
+      - generic [ref=e295]:
+        - strong [ref=e296]: LawViz Blueprint
+        - emphasis [ref=e297]: Style Pack · Decision Layouts
+      - generic [ref=e298]: 对照 · 金额 · 选择 · 风险
+      - generic [ref=e299]: 07 / 09
+  - generic [ref=e300]:
+    - generic [ref=e301]:
+      - generic [ref=e302]: Evidence & Heat
+      - generic [ref=e303]: 证据 · 强弱 · 优先级
+    - paragraph [ref=e304]: Proof-Oriented Components
+    - heading "证据相关组件应该按证明目标组织，而不是按材料名称堆叠。" [level=2] [ref=e305]
+    - generic [ref=e306]:
+      - generic [ref=e307]:
+        - heading "强证明目标" [level=3] [ref=e308]
+        - paragraph [ref=e309]: 用于展示当前证据链较稳的证明方向。
+      - generic [ref=e310]:
+        - heading "辅助证明目标" [level=3] [ref=e311]
+        - paragraph [ref=e312]: 用于展示有帮助但不能单独支撑结论的材料。
+      - generic [ref=e313]:
+        - heading "证据缺口" [level=3] [ref=e314]
+        - paragraph [ref=e315]: 用于提醒客户补充材料或确认事实。
+      - generic [ref=e316]:
+        - heading "解释风险" [level=3] [ref=e317]
+        - paragraph [ref=e318]: 用于说明材料可能被另一方如何解释。
+    - generic [ref=e319]: Heatmap
+    - generic [ref=e320]:
+      - generic [ref=e321]:
+        - heading "最高优先级" [level=3] [ref=e322]
+        - paragraph [ref=e323]: 应先固定、先展示、先解释。
+      - generic [ref=e324]:
+        - heading "中优先级" [level=3] [ref=e325]
+        - paragraph [ref=e326]: 用于补强主线或解释争议。
+      - generic [ref=e327]:
+        - heading "低优先级" [level=3] [ref=e328]
+        - paragraph [ref=e329]: 放在备选或附属说明中。
+    - generic [ref=e330]:
+      - generic [ref=e331]:
+        - strong [ref=e332]: LawViz Blueprint
+        - emphasis [ref=e333]: Style Pack · Evidence
+      - generic [ref=e334]: 证明目标 · 证据强弱 · 补证优先级
+      - generic [ref=e335]: 08 / 09
+  - generic [ref=e336]:
+    - generic [ref=e337]:
+      - generic [ref=e338]: Connector Canvas
+      - generic [ref=e339]: 关系图 · 路径图 · SVG 连线
+    - paragraph [ref=e340]: Complex Visual Stress Test
+    - heading "复杂关系图必须使用 SVG connector-layer，不能用绝对定位 div 箭头。" [level=2] [ref=e341]
+    - generic [ref=e342]:
+      - img:
+        - generic: 路径分流
+      - generic [ref=e343]:
+        - strong [ref=e344]: 中心节点
+        - text: 用于放置核心事实、核心判断或起点。
+      - generic [ref=e345]:
+        - strong [ref=e346]: 路径 A
+        - text: 用于展示一种回应、方案或结果。
+      - generic [ref=e347]:
+        - strong [ref=e348]: 路径 B
+        - text: 可作为重点路径或默认策略。
+      - generic [ref=e349]:
+        - strong [ref=e350]: 路径 C
+        - text: 用于展示风险路径或备选方案。
+      - generic [ref=e351]:
+        - strong [ref=e352]: 后续动作
+        - text: 虚线连接可表示待补证或待确认。
+      - generic [ref=e353]:
+        - strong [ref=e354]: 风险缺口
+        - text: 箭头不应穿进文字框。
+    - generic [ref=e355]:
+      - generic [ref=e356]:
+        - strong [ref=e357]: LawViz Blueprint
+        - emphasis [ref=e358]: Style Pack · Connector Canvas
+      - generic [ref=e359]: SVG connector-layer · 节点图 · 路径图
+      - generic [ref=e360]: 09 / 09

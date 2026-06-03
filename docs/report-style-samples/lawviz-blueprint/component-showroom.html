@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LawViz Blueprint Component Showroom</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="deck">
+      <section class="page">
+        <div class="page-header"><span>LawViz Blueprint</span><span>样式模板 · 组件全集</span></div>
+        <p class="kicker">Style Template · Not Case-Type Content</p>
+        <div class="two-zone">
+          <div>
+            <h1 class="title">A4 竖版报告<br /><span class="accent">视觉系统</span><br />组件手册</h1>
+            <p class="subtitle">本页只定义样式模板能力：页面壳、身份系统、卡片、矩阵、时间线、金额板、证据板、路径图和关系图。它不定义任何案由的内容顺序。</p>
+            <div class="cover-identity">
+              <p class="eyebrow">Template Scope</p>
+              <strong>Blueprint Style Pack</strong>
+              <span>适用于合同纠纷、劳动纠纷、婚姻家事、股权争议等不同内容模板。</span>
+            </div>
+          </div>
+          <aside class="callout">
+            <strong>Current Goal</strong>
+            <p>样式模板求全：让 Agent 和 Renderer 知道这套视觉系统能稳定承载哪些组件。</p>
+          </aside>
+        </div>
+        <div class="divider-label">Template Outputs</div>
+        <div class="grid-3">
+          <div class="card"><h3>style.css</h3><p>页面尺寸、视觉 tokens、组件样式和打印规则。</p></div>
+          <div class="card"><h3>visual-kit.json</h3><p>组件清单、使用规则、身份系统和 Renderer 约束。</p></div>
+          <div class="card"><h3>component-showroom</h3><p>人类可见的组件全集和组合压力测试。</p></div>
+        </div>
+        <div class="page-footer identity-footer"><span class="footer-brand"><strong>LawViz Blueprint</strong><em>Style Pack · Component Catalog</em></span><span class="footer-meta">不绑定案由 · 不定义内容模板</span><span class="footer-page">01 / 09</span></div>
+      </section>
+
+      <section class="page">
+        <div class="page-header"><span>Page Shell</span><span>页眉 · 页脚 · 页面结构</span></div>
+        <p class="kicker">A4 Portrait Shell</p>
+        <h2 class="h2">页面壳负责稳定、清晰和品牌连续性，不承载案由逻辑。</h2>
+        <div class="case-brief">
+          <div class="verdict-card">
+            <h3>每页只表达一个主要信息单元。</h3>
+            <p>样式模板提供固定页眉、品牌身份页脚、页面分隔线和 A4 安全区。内容模板只需要决定每页放什么信息。</p>
+          </div>
+          <div class="brief-list">
+            <div class="brief-item"><span>Page Size</span><strong>794 × 1123 px</strong></div>
+            <div class="brief-item"><span>Header</span><strong>标题 + 页面语义</strong></div>
+            <div class="brief-item"><span>Footer</span><strong>品牌身份 + 页码</strong></div>
+          </div>
+        </div>
+        <div class="divider-label">Text Hierarchy</div>
+        <div class="grid-3">
+          <div class="card"><p class="eyebrow">Kicker</p><h3>模块前导标签</h3><p>用于说明本页功能或组件类别。</p></div>
+          <div class="card"><h3>正文标题</h3><p>用于 A4 内部主标题，避免在普通页面滥用封面级大字。</p></div>
+          <div class="callout"><strong>Callout</strong><p>用于单页内最重要的判断、结论或警示。</p></div>
+        </div>
+        <div class="page-footer identity-footer"><span class="footer-brand"><strong>LawViz Blueprint</strong><em>Style Pack · Page Shell</em></span><span class="footer-meta">页眉页脚不与正文和分隔线冲突</span><span class="footer-page">02 / 09</span></div>
+      </section>
+
+      <section class="page">
+        <div class="page-header"><span>Identity System</span><span>律师 · 团队 · 律所展示</span></div>
+        <p class="kicker">Marketing Card Layer</p>
+        <h2 class="h2">身份系统是展示和名片，不是内容模板；它要支持三种主体并允许选填为空。</h2>
+        <div class="identity-chooser">
+          <article class="identity-option">
+            <span class="option-type">Solo Lawyer</span>
+            <h3>个人律师</h3>
+            <p>突出律师本人、职务、律所、执业领域和直接联系方式。</p>
+            <ul><li>适合个人品牌</li><li>头像可选</li><li>执业证号可选</li></ul>
+          </article>
+          <article class="identity-option featured">
+            <span class="option-type">Firm Team</span>
+            <h3>律所团队</h3>
+            <p>突出团队名、主办律师、团队分工和服务响应。</p>
+            <ul><li>适合小团队展示</li><li>成员可选</li><li>分工可选</li></ul>
+          </article>
+          <article class="identity-option">
+            <span class="option-type">Corporate Firm</span>
+            <h3>公司化律所</h3>
+            <p>突出律所品牌、部门、联系窗口和服务标准。</p>
+            <ul><li>适合机构化展示</li><li>logo 可选</li><li>服务标准可选</li></ul>
+          </article>
+        </div>
+        <div class="empty-state-rule">空字段规则：头像为空用文字印章；logo 为空用展示名称；简介为空时隐藏简介区；二维码为空时不显示空框。</div>
+        <div class="page-footer identity-footer"><span class="footer-brand"><strong>衡策争议解决团队</strong><em>主办律师 陈知衡 · 某某律师事务所</em></span><span class="footer-meta">身份系统示例 · 字段可收拢</span><span class="footer-page">03 / 09</span></div>
+      </section>
+
+      <section class="page">
+        <div class="page-header"><span>Cards & Metrics</span><span>卡片 · 指标 · 标签</span></div>
+        <p class="kicker">Reusable Atoms</p>
+        <h2 class="h2">基础组件用于承载短判断、关键数字、状态标签和模块说明。</h2>
+        <div class="grid-4">
+          <div class="metric"><span class="value">A4</span><span class="label">固定竖版页面，适合打印和客户沟通。</span></div>
+          <div class="metric"><span class="value">3类</span><span class="label">个人律师、律所团队、公司化律所。</span></div>
+          <div class="metric"><span class="value">9+</span><span class="label">组件类别，可服务不同案由内容模板。</span></div>
+          <div class="metric"><span class="value">0</span><span class="label">组件默认不允许页面溢出。</span></div>
+        </div>
+        <div class="divider-label">Card States</div>
+        <div class="grid-3">
+          <div class="card"><h3>普通信息卡</h3><p>适合承载 1 个短结论、1 个事实组或 1 个说明单元。</p><div class="tag-row"><span class="tag">Short copy</span><span class="tag">Stable</span></div></div>
+          <div class="callout"><strong>Strong Callout</strong><p>适合强调当前页面最重要的判断，不适合放长段文字。</p></div>
+          <div class="card"><h3>标签组</h3><p>用于展示领域、状态、证据类型、风险等级等短文本。</p><div class="tag-row"><span class="tag">证据</span><span class="tag">风险</span><span class="tag">金额</span></div></div>
+        </div>
+        <div class="page-footer identity-footer"><span class="footer-brand"><strong>LawViz Blueprint</strong><em>Style Pack · Cards</em></span><span class="footer-meta">指标 · 卡片 · 标签 · 强调块</span><span class="footer-page">04 / 09</span></div>
+      </section>
+
+      <section class="page">
+        <div class="page-header"><span>Structured Tables</span><span>表格 · 矩阵</span></div>
+        <p class="kicker">Dense But Readable</p>
+        <h2 class="h2">当信息需要比较、归类或逐项判断时，优先使用矩阵和表格，而不是堆卡片。</h2>
+        <table class="focus-matrix">
+          <thead><tr><th>模块</th><th>适合内容</th><th>不适合内容</th><th>空字段处理</th></tr></thead>
+          <tbody>
+            <tr><td>矩阵</td><td>争议点、风险项、证明方向、处理策略</td><td>长段法律分析</td><td>缺列时降级为三列表</td></tr>
+            <tr><td>普通表格</td><td>金额、节点、材料清单、任务清单</td><td>复杂关系图</td><td>空单元格隐藏标签</td></tr>
+            <tr><td>对照板</td><td>双方立场、方案比较、优劣取舍</td><td>超过 3 方的复杂关系</td><td>缺一侧时改为单栏说明</td></tr>
+            <tr><td>行动看板</td><td>按时间、角色或优先级分组的任务</td><td>事实叙事</td><td>空泳道不显示</td></tr>
+          </tbody>
+        </table>
+        <div class="divider-label">Mini Table</div>
+        <table class="mini-table">
+          <thead><tr><th>字段</th><th>推荐字数</th><th>Renderer 规则</th></tr></thead>
+          <tbody>
+            <tr><td>标题</td><td>12-24 字</td><td>超长自动降字号或换行</td></tr>
+            <tr><td>说明</td><td>40-80 字</td><td>超出时拆卡或拆页</td></tr>
+            <tr><td>标签</td><td>2-8 字</td><td>超出时换行，不压缩到不可读</td></tr>
+          </tbody>
+        </table>
+        <div class="page-footer identity-footer"><span class="footer-brand"><strong>LawViz Blueprint</strong><em>Style Pack · Tables</em></span><span class="footer-meta">表格 · 矩阵 · 对照 · 数据密度</span><span class="footer-page">05 / 09</span></div>
+      </section>
+
+      <section class="page">
+        <div class="page-header"><span>Flow Components</span><span>时间线 · 流程 · 行动看板</span></div>
+        <p class="kicker">Sequence & Responsibility</p>
+        <h2 class="h2">当内容包含时间、步骤、路径或执行责任时，应使用顺序组件。</h2>
+        <div class="pipeline">
+          <div class="step"><span class="num">STEP 01</span><h3>收集信息</h3><p>适合放在流程、策略、办案阶段或项目推进页。</p></div>
+          <div class="step focus"><span class="num">STEP 02</span><h3>形成判断</h3><p>重点步骤可使用强调色，但一页不宜超过一个。</p></div>
+          <div class="step"><span class="num">STEP 03</span><h3>执行动作</h3><p>用于说明接下来要做什么和由谁负责。</p></div>
+          <div class="step"><span class="num">STEP 04</span><h3>观察回应</h3><p>适合连接后续路径或分支决策。</p></div>
+        </div>
+        <div class="divider-label">Timeline</div>
+        <div class="timeline">
+          <div class="event"><div class="date">T-01</div><div class="body"><h3>事实节点</h3><p>时间线用于表达事实顺序和证据锚点，不用于堆长段解释。</p></div></div>
+          <div class="event"><div class="date">T-02</div><div class="body"><h3>风险节点</h3><p>可标注关键分歧、缺口或需要客户确认的时间点。</p></div></div>
+          <div class="event"><div class="date">T-03</div><div class="body"><h3>行动节点</h3><p>可连接行动看板和策略路径。</p></div></div>
+        </div>
+        <div class="page-footer identity-footer"><span class="footer-brand"><strong>LawViz Blueprint</strong><em>Style Pack · Flow</em></span><span class="footer-meta">时间线 · 流程 · 节点 · 行动</span><span class="footer-page">06 / 09</span></div>
+      </section>
+
+      <section class="page">
+        <div class="page-header"><span>Comparison & Money</span><span>对照 · 金额 · 台账</span></div>
+        <p class="kicker">Decision-Oriented Layouts</p>
+        <h2 class="h2">当客户需要做判断时，样式模板提供对照板、金额板和台账。</h2>
+        <div class="position-board">
+          <div class="position-card client"><h3>方案 A</h3><p>用于呈现一方立场、一个选择或一个解释路径。</p><div class="tag-row"><span class="tag">优势</span><span class="tag">证据</span></div></div>
+          <div class="vs-mark">VS</div>
+          <div class="position-card"><h3>方案 B</h3><p>用于呈现另一方立场、备选策略或风险路径。</p><div class="tag-row"><span class="tag">风险</span><span class="tag">成本</span></div></div>
+        </div>
+        <div class="amount-grid">
+          <div class="amount-card primary"><span class="amount">18.6万</span><h3>主金额</h3><p>用于主请求、核心损失或关键商业金额。</p></div>
+          <div class="amount-card"><span class="amount">1.2万</span><h3>附属金额</h3><p>用于利息、费用、补偿或次级请求。</p></div>
+          <div class="amount-card"><span class="amount">3.8万</span><h3>谈判金额</h3><p>用于不确定性较高但可进入谈判的金额。</p></div>
+        </div>
+        <div class="page-footer identity-footer"><span class="footer-brand"><strong>LawViz Blueprint</strong><em>Style Pack · Decision Layouts</em></span><span class="footer-meta">对照 · 金额 · 选择 · 风险</span><span class="footer-page">07 / 09</span></div>
+      </section>
+
+      <section class="page">
+        <div class="page-header"><span>Evidence & Heat</span><span>证据 · 强弱 · 优先级</span></div>
+        <p class="kicker">Proof-Oriented Components</p>
+        <h2 class="h2">证据相关组件应该按证明目标组织，而不是按材料名称堆叠。</h2>
+        <div class="proof-grid">
+          <div class="proof-target strong"><h3>强证明目标</h3><p>用于展示当前证据链较稳的证明方向。</p></div>
+          <div class="proof-target"><h3>辅助证明目标</h3><p>用于展示有帮助但不能单独支撑结论的材料。</p></div>
+          <div class="proof-target gap"><h3>证据缺口</h3><p>用于提醒客户补充材料或确认事实。</p></div>
+          <div class="proof-target"><h3>解释风险</h3><p>用于说明材料可能被另一方如何解释。</p></div>
+        </div>
+        <div class="divider-label">Heatmap</div>
+        <div class="heatmap">
+          <div class="heat hot"><h3>最高优先级</h3><p>应先固定、先展示、先解释。</p></div>
+          <div class="heat mid"><h3>中优先级</h3><p>用于补强主线或解释争议。</p></div>
+          <div class="heat"><h3>低优先级</h3><p>放在备选或附属说明中。</p></div>
+        </div>
+        <div class="page-footer identity-footer"><span class="footer-brand"><strong>LawViz Blueprint</strong><em>Style Pack · Evidence</em></span><span class="footer-meta">证明目标 · 证据强弱 · 补证优先级</span><span class="footer-page">08 / 09</span></div>
+      </section>
+
+      <section class="page">
+        <div class="page-header"><span>Connector Canvas</span><span>关系图 · 路径图 · SVG 连线</span></div>
+        <p class="kicker">Complex Visual Stress Test</p>
+        <h2 class="h2">复杂关系图必须使用 SVG connector-layer，不能用绝对定位 div 箭头。</h2>
+        <div class="map" style="height: 540px;">
+          <svg class="connector-layer" viewBox="0 0 666 540" aria-hidden="true">
+            <defs>
+              <marker id="arrow-component" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                <path d="M 0 0 L 10 5 L 0 10 z"></path>
+              </marker>
+              <marker id="arrow-component-rust" class="rust" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                <path d="M 0 0 L 10 5 L 0 10 z"></path>
+              </marker>
+            </defs>
+            <path d="M 332 118 C 260 160, 180 190, 122 232" marker-end="url(#arrow-component)"></path>
+            <path d="M 332 118 L 332 270" marker-end="url(#arrow-component)"></path>
+            <path d="M 332 118 C 430 160, 500 190, 544 232" marker-end="url(#arrow-component)"></path>
+            <path class="dashed" d="M 332 350 C 270 384, 224 410, 178 456" marker-end="url(#arrow-component-rust)"></path>
+            <path class="dashed" d="M 332 350 C 424 384, 470 410, 504 456" marker-end="url(#arrow-component-rust)"></path>
+            <rect class="connector-label-bg" x="286" y="180" width="92" height="22" rx="6"></rect>
+            <text x="332" y="195" text-anchor="middle">路径分流</text>
+          </svg>
+          <div class="node primary" style="left: 248px; top: 44px;"><strong>中心节点</strong><span>用于放置核心事实、核心判断或起点。</span></div>
+          <div class="node" style="left: 42px; top: 222px;"><strong>路径 A</strong><span>用于展示一种回应、方案或结果。</span></div>
+          <div class="node" style="left: 248px; top: 276px;"><strong>路径 B</strong><span>可作为重点路径或默认策略。</span></div>
+          <div class="node" style="right: 42px; top: 222px;"><strong>路径 C</strong><span>用于展示风险路径或备选方案。</span></div>
+          <div class="node" style="left: 92px; bottom: 48px;"><strong>后续动作</strong><span>虚线连接可表示待补证或待确认。</span></div>
+          <div class="node" style="right: 92px; bottom: 48px;"><strong>风险缺口</strong><span>箭头不应穿进文字框。</span></div>
+        </div>
+        <div class="page-footer identity-footer"><span class="footer-brand"><strong>LawViz Blueprint</strong><em>Style Pack · Connector Canvas</em></span><span class="footer-meta">SVG connector-layer · 节点图 · 路径图</span><span class="footer-page">09 / 09</span></div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,117 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LawViz Client Guide Chart Showroom</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="deck">
+      <section class="page">
+        <div class="page-header"><span>Chart Components</span><span>柱状 · 堆叠 · 环形</span></div>
+        <p class="kicker">Chart Trial · Text Data Included</p>
+        <h2 class="h2">图表组件必须让客户能核对数据，而不是只看视觉效果。</h2>
+        <div class="grid-2" style="margin-top: 24px;">
+          <div class="chart-panel">
+            <h3>证据数量柱状图</h3>
+            <div class="bar-chart">
+              <div class="bar-row"><span>交付记录</span><div class="bar-track"><div class="bar-fill" style="width: 86%;"></div></div><strong>12</strong></div>
+              <div class="bar-row"><span>付款记录</span><div class="bar-track"><div class="bar-fill" style="width: 57%;"></div></div><strong>8</strong></div>
+              <div class="bar-row"><span>聊天记录</span><div class="bar-track"><div class="bar-fill" style="width: 100%;"></div></div><strong>14</strong></div>
+              <div class="bar-row"><span>技术日志</span><div class="bar-track"><div class="bar-fill" style="width: 43%;"></div></div><strong>6</strong></div>
+            </div>
+            <p class="chart-note">用途：比较证据数量、事件数量、任务数量。每一行都显示文本标签和数值。</p>
+          </div>
+          <div class="chart-panel">
+            <h3>证据构成堆叠图</h3>
+            <div class="stack-chart">
+              <div class="stack-row">
+                <div class="stack-label"><span>证明交付</span><strong>强 58% · 中 25% · 弱 17%</strong></div>
+                <div class="stack-track"><div class="stack-a" style="width: 58%;"></div><div class="stack-b" style="width: 25%;"></div><div class="stack-c" style="width: 17%;"></div></div>
+              </div>
+              <div class="stack-row">
+                <div class="stack-label"><span>证明欠款</span><strong>强 72% · 中 18% · 弱 10%</strong></div>
+                <div class="stack-track"><div class="stack-a" style="width: 72%;"></div><div class="stack-b" style="width: 18%;"></div><div class="stack-c" style="width: 10%;"></div></div>
+              </div>
+              <div class="stack-row">
+                <div class="stack-label"><span>解释瑕疵</span><strong>强 36% · 中 34% · 弱 30%</strong></div>
+                <div class="stack-track"><div class="stack-a" style="width: 36%;"></div><div class="stack-b" style="width: 34%;"></div><div class="stack-c" style="width: 30%;"></div></div>
+              </div>
+            </div>
+            <div class="chart-legend"><span><i class="legend-dot"></i>强</span><span><i class="legend-dot cyan"></i>中</span><span><i class="legend-dot amber"></i>弱</span></div>
+          </div>
+        </div>
+        <div class="divider-label">Donut Chart</div>
+        <div class="chart-panel">
+          <div class="donut-wrap">
+            <div class="donut"><div class="donut-center">58%</div></div>
+            <div>
+              <h3>任务完成状态环形图</h3>
+              <p class="chart-note">已完成 58%：访问日志、付款流水、交付包。进行中 24%：聊天节点整理、瑕疵说明。待补充 18%：正式催告、截图固定。</p>
+              <div class="chart-legend"><span><i class="legend-dot"></i>已完成 58%</span><span><i class="legend-dot cyan"></i>进行中 24%</span><span><i class="legend-dot amber"></i>待补充 18%</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="page-footer identity-footer"><span class="footer-brand"><strong>LawViz Client Guide</strong><em>Chart Trial · Components</em></span><span class="footer-meta">bar_chart · stacked_bar_chart · donut_chart</span><span class="footer-page">01 / 03</span></div>
+      </section>
+
+      <section class="page">
+        <div class="page-header"><span>Chart Components</span><span>瀑布 · 风险象限</span></div>
+        <p class="kicker">Amount & Risk Charts</p>
+        <h2 class="h2">金额和风险是法律报告里最适合图表化的两类信息。</h2>
+        <div class="chart-panel" style="margin-top: 24px;">
+          <h3>请求金额瀑布图</h3>
+          <div class="waterfall">
+            <div class="water-step"><div class="water-bar" style="height: 88px;">18.6万</div><div class="water-label">尾款本金</div></div>
+            <div class="water-step"><div class="water-bar add" style="height: 48px;">+1.2万</div><div class="water-label">逾期利息</div></div>
+            <div class="water-step"><div class="water-bar add" style="height: 58px;">+3.8万</div><div class="water-label">新增费用</div></div>
+            <div class="water-step"><div class="water-bar minus" style="height: 36px;">-2.0万</div><div class="water-label">谈判扣减</div></div>
+            <div class="water-step"><div class="water-bar" style="height: 104px;">21.6万</div><div class="water-label">建议主张</div></div>
+          </div>
+          <p class="chart-note">用途：赔偿构成、尾款 + 利息 + 扣减项、离婚财产分割、劳动赔偿项目。</p>
+        </div>
+        <div class="divider-label">Risk Quadrant</div>
+        <div class="chart-panel">
+          <h3>证据强度 × 对方反制风险</h3>
+          <div class="quadrant">
+            <span class="quad-axis quad-x">证据强度 →</span>
+            <span class="quad-axis quad-y">反制风险 →</span>
+            <div class="quad-point" style="left: 62%; top: 18%;"><strong>尾款主张</strong><br />证据强，反制中</div>
+            <div class="quad-point" style="left: 58%; top: 62%;"><strong>瑕疵解释</strong><br />证据中，反制高</div>
+            <div class="quad-point" style="left: 16%; top: 58%;"><strong>新增费用</strong><br />证据弱，反制高</div>
+            <div class="quad-point" style="left: 18%; top: 20%;"><strong>利息请求</strong><br />证据中，反制低</div>
+          </div>
+        </div>
+        <div class="page-footer identity-footer"><span class="footer-brand"><strong>LawViz Client Guide</strong><em>Chart Trial · Amount & Risk</em></span><span class="footer-meta">waterfall_chart · risk_quadrant</span><span class="footer-page">02 / 03</span></div>
+      </section>
+
+      <section class="page">
+        <div class="page-header"><span>Chart Components</span><span>评分条 · 期限条</span></div>
+        <p class="kicker">Score & Calendar Charts</p>
+        <h2 class="h2">评分和期限组件适合给客户明确优先级和时间压力。</h2>
+        <div class="chart-panel" style="margin-top: 24px;">
+          <h3>案件准备度评分条</h3>
+          <div class="gauge-list">
+            <div class="gauge-row"><span>证据完整度</span><div class="gauge-track"><div class="gauge-fill" style="width: 76%;"></div></div><strong>76</strong></div>
+            <div class="gauge-row"><span>金额确定性</span><div class="gauge-track"><div class="gauge-fill" style="width: 82%;"></div></div><strong>82</strong></div>
+            <div class="gauge-row"><span>谈判压力</span><div class="gauge-track"><div class="gauge-fill" style="width: 64%;"></div></div><strong>64</strong></div>
+            <div class="gauge-row"><span>诉讼准备度</span><div class="gauge-track"><div class="gauge-fill" style="width: 58%;"></div></div><strong>58</strong></div>
+          </div>
+          <p class="chart-note">用途：证据强度、风险等级、材料完整度、谈判压力。推荐横向评分条，不做夸张仪表盘。</p>
+        </div>
+        <div class="divider-label">Calendar Strip</div>
+        <div class="calendar-strip">
+          <div class="calendar-day"><strong>D+0</strong><span>导出访问日志和后台截图。</span></div>
+          <div class="calendar-day"><strong>D+2</strong><span>整理聊天节点和交付清单。</span></div>
+          <div class="calendar-day"><strong>D+4</strong><span>律师函定稿并发送。</span></div>
+          <div class="calendar-day"><strong>D+7</strong><span>观察对方付款或抗辩。</span></div>
+          <div class="calendar-day"><strong>D+14</strong><span>决定谈判或起诉路径。</span></div>
+        </div>
+        <div class="callout" style="margin-top: 22px;"><strong>Renderer Rule</strong><p>图表数据必须以结构化数组输入，Renderer 生成 HTML/SVG/CSS，Agent 不直接生成脚本或任意图表代码。</p></div>
+        <div class="page-footer identity-footer"><span class="footer-brand"><strong>LawViz Client Guide</strong><em>Chart Trial · Score & Deadline</em></span><span class="footer-meta">score_gauge · calendar_strip</span><span class="footer-page">03 / 03</span></div>
+      </section>
+    </main>
+  </body>
+</html>
+

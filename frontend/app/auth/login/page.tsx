@@ -1,18 +1,50 @@
+"use client";
+
+import { FormEvent, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ArrowRight, LockKeyhole } from "lucide-react";
+import { ApiError, api } from "../../../lib/api";
 
 export default function LoginPage() {
+  const router = useRouter();
+  const [identifier, setIdentifier] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
+
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setMessage(null);
+    setSubmitting(true);
+
+    try {
+      await api.login({ identifier, password });
+      router.push("/dashboard");
+    } catch (error) {
+      if (error instanceof ApiError && error.status === 403) {
+        setMessage("This account is waiting for activation or has been disabled.");
+      } else {
+        setMessage("Login failed. Check the phone/email and password.");
+      }
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
   return (
     <main className="lv-container grid min-h-screen items-center gap-10 py-10 lg:grid-cols-[1fr_420px]">
       <section>
         <Link href="/" className="flex items-baseline gap-2">
-          <span className="font-display text-2xl font-bold text-accent">律析</span>
-          <span className="text-[11px] font-semibold uppercase text-muted">LawViz</span>
+          <span className="font-display text-2xl font-bold text-accent">LawViz</span>
+          <span className="text-[11px] font-semibold uppercase text-muted">Private MVP</span>
         </Link>
         <p className="lv-kicker mt-14">Access Control</p>
-        <h1 className="mt-5 max-w-2xl font-display text-5xl font-bold leading-tight text-fg">登录后进入私有生成流程</h1>
+        <h1 className="mt-5 max-w-2xl font-display text-5xl font-bold leading-tight text-fg">
+          Sign in to the private workspace
+        </h1>
         <p className="mt-6 max-w-xl text-base leading-8 text-muted">
-          当前版本不开放公开注册、公开分享或 public checkout。账号用于内部额度、历史记录、报告渲染和导出权限校验。
+          Access is limited to verified accounts. Credits are managed internally by the team.
         </p>
       </section>
 
@@ -22,27 +54,41 @@ export default function LoginPage() {
             <LockKeyhole size={18} strokeWidth={1.5} />
           </div>
           <div>
-            <h2 className="text-lg font-semibold text-fg">私有 MVP 登录</h2>
-            <p className="text-sm text-muted">Sprint 1 前端基础表单</p>
+            <h2 className="text-lg font-semibold text-fg">Login</h2>
+            <p className="text-sm text-muted">Use phone or email with your password.</p>
           </div>
         </div>
-        <form className="space-y-4">
+        <form className="space-y-4" onSubmit={onSubmit}>
           <label className="block text-sm font-medium text-fg">
-            手机号或邮箱
-            <input className="lv-input mt-2" placeholder="lawyer@example.com" />
+            Phone or email
+            <input
+              className="lv-input mt-2"
+              placeholder="+15555550115 or lawyer@example.com"
+              value={identifier}
+              onChange={(event) => setIdentifier(event.target.value)}
+              required
+            />
           </label>
           <label className="block text-sm font-medium text-fg">
-            密码
-            <input className="lv-input mt-2" type="password" placeholder="输入访问密码" />
+            Password
+            <input
+              className="lv-input mt-2"
+              type="password"
+              placeholder="Enter password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              required
+            />
           </label>
-          <Link href="/dashboard" className="lv-btn-coral w-full">
-            登录并进入仪表盘 <ArrowRight size={16} strokeWidth={1.5} />
-          </Link>
+          {message ? <p className="rounded-md bg-red-50 p-3 text-sm text-red-700">{message}</p> : null}
+          <button className="lv-btn-coral w-full" type="submit" disabled={submitting}>
+            {submitting ? "Signing in..." : "Sign in"} <ArrowRight size={16} strokeWidth={1.5} />
+          </button>
         </form>
         <p className="mt-5 text-sm text-muted">
-          还没有内部访问账号？{" "}
+          Need access?{" "}
           <Link href="/auth/register" className="font-semibold text-accent">
-            提交访问申请
+            Submit a request
           </Link>
         </p>
       </section>

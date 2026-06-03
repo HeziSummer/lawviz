@@ -1,0 +1,414 @@
+- main [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: LawViz Editorial Ink
+      - generic [ref=e6]: 样式模板 · 组件全集
+    - paragraph [ref=e7]: Style Template · Editorial E-Ink
+    - generic [ref=e8]:
+      - generic [ref=e9]:
+        - heading "编辑部式 E-Ink 法律报告 视觉系统" [level=1] [ref=e10]:
+          - text: 编辑部式
+          - text: E-Ink 法律报告
+          - text: 视觉系统
+        - paragraph [ref=e11]: 这套样式模板强调黑白高对比、强排版、电子墨水质感和杂志式阅读节奏。它定义视觉组件，不绑定任何案由内容模板。
+        - generic [ref=e12]:
+          - paragraph [ref=e13]: Template Scope
+          - strong [ref=e14]: Editorial Ink Style Pack
+          - generic [ref=e15]: 适合高端客户汇报、专题分析、深度解释和需要强排版质感的法律报告。
+      - complementary [ref=e16]:
+        - strong [ref=e17]: Visual Intent
+        - paragraph [ref=e18]: 少色彩、强字重、强规则线，让报告更像一份可打印的专业专题小册子。
+    - generic [ref=e19]: Template Outputs
+    - generic [ref=e20]:
+      - generic [ref=e21]:
+        - heading "黑白高对比" [level=3] [ref=e22]
+        - paragraph [ref=e23]: 尽量减少色彩依赖，突出文字和结构。
+      - generic [ref=e24]:
+        - heading "编辑式排版" [level=3] [ref=e25]
+        - paragraph [ref=e26]: 更像专题册、白皮书、深度分析材料。
+      - generic [ref=e27]:
+        - heading "统一基线" [level=3] [ref=e28]
+        - paragraph [ref=e29]: 组件能力与其他样式包保持一致。
+    - generic [ref=e30]:
+      - generic [ref=e31]:
+        - strong [ref=e32]: LawViz Editorial Ink
+        - emphasis [ref=e33]: Style Pack · Component Catalog
+      - generic [ref=e34]: 不绑定案由 · 不定义内容模板
+      - generic [ref=e35]: 01 / 09
+  - generic [ref=e36]:
+    - generic [ref=e37]:
+      - generic [ref=e38]: Identity System
+      - generic [ref=e39]: 律师 · 团队 · 律所
+    - paragraph [ref=e40]: Editorial Identity Layer
+    - heading "身份展示在这套风格里更像出版署名和专业名片。" [level=2] [ref=e41]
+    - generic [ref=e42]:
+      - article [ref=e43]:
+        - generic [ref=e44]: Solo Lawyer
+        - heading "个人律师" [level=3] [ref=e45]
+        - paragraph [ref=e46]: 突出律师本人、职务、律所、业务领域和联系方式。
+        - list [ref=e47]:
+          - listitem [ref=e48]: 头像可选
+          - listitem [ref=e49]: 执业证号可选
+          - listitem [ref=e50]: 简介可收拢
+      - article [ref=e51]:
+        - generic [ref=e52]: Firm Team
+        - heading "律所团队" [level=3] [ref=e53]
+        - paragraph [ref=e54]: 突出团队名、主办律师、成员分工和服务响应。
+        - list [ref=e55]:
+          - listitem [ref=e56]: 团队成员可选
+          - listitem [ref=e57]: 分工可选
+          - listitem [ref=e58]: 页脚持续展示
+      - article [ref=e59]:
+        - generic [ref=e60]: Corporate Firm
+        - heading "公司化律所" [level=3] [ref=e61]
+        - paragraph [ref=e62]: 突出律所品牌、部门、联系窗口和服务标准。
+        - list [ref=e63]:
+          - listitem [ref=e64]: logo 可选
+          - listitem [ref=e65]: 部门可选
+          - listitem [ref=e66]: 服务标准可选
+    - generic [ref=e67]:
+      - generic [ref=e68]:
+        - heading "必填字段" [level=3] [ref=e69]
+        - generic [ref=e70]:
+          - generic [ref=e71]: identity_type
+          - generic [ref=e72]: display_name
+          - generic [ref=e73]: primary_contact
+          - generic [ref=e74]: practice_areas
+      - generic [ref=e75]:
+        - heading "选填字段" [level=3] [ref=e76]
+        - generic [ref=e77]:
+          - generic [ref=e78]: avatar_url
+          - generic [ref=e79]: logo_url
+          - generic [ref=e80]: license_number
+          - generic [ref=e81]: team_members
+          - generic [ref=e82]: qr_code_url
+    - generic [ref=e83]:
+      - generic [ref=e84]:
+        - strong [ref=e85]: 衡策争议解决团队
+        - emphasis [ref=e86]: 主办律师 陈知衡 · 某某律师事务所
+      - generic [ref=e87]: 专题分析 · 深度解释 · 专业交付
+      - generic [ref=e88]: 02 / 09
+  - generic [ref=e89]:
+    - generic [ref=e90]:
+      - generic [ref=e91]: Cards & Metrics
+      - generic [ref=e92]: 卡片 · 指标 · 标签
+    - paragraph [ref=e93]: E-Ink Atoms
+    - heading "基础组件使用硬线和强文字层级，适合承载短判断和关键数字。" [level=2] [ref=e94]
+    - generic [ref=e95]:
+      - generic [ref=e96]:
+        - generic [ref=e97]: A4
+        - generic [ref=e98]: 固定竖版输出，适合打印。
+      - generic [ref=e99]:
+        - generic [ref=e100]: Ink
+        - generic [ref=e101]: 黑白主导，减少装饰色。
+      - generic [ref=e102]:
+        - generic [ref=e103]: "19"
+        - generic [ref=e104]: 同一组件基线。
+      - generic [ref=e105]:
+        - generic [ref=e106]: "0"
+        - generic [ref=e107]: 默认不允许溢出。
+    - generic [ref=e108]: Card States
+    - generic [ref=e109]:
+      - generic [ref=e110]:
+        - heading "信息卡" [level=3] [ref=e111]
+        - paragraph [ref=e112]: 用于解释事实、判断、风险或组件规则。
+        - generic [ref=e113]:
+          - generic [ref=e114]: Fact
+          - generic [ref=e115]: Risk
+      - generic [ref=e116]:
+        - strong [ref=e117]: Editorial Callout
+        - paragraph [ref=e118]: 用于本页最重要的判断、警示或结论。
+      - generic [ref=e119]:
+        - heading "标签组" [level=3] [ref=e120]
+        - paragraph [ref=e121]: 用于状态、证据类型、客户动作或风险等级。
+        - generic [ref=e122]:
+          - generic [ref=e123]: 材料
+          - generic [ref=e124]: 证据
+          - generic [ref=e125]: 行动
+    - generic [ref=e126]:
+      - generic [ref=e127]:
+        - strong [ref=e128]: LawViz Editorial Ink
+        - emphasis [ref=e129]: Style Pack · Cards
+      - generic [ref=e130]: 信息卡 · 指标 · 标签 · callout
+      - generic [ref=e131]: 03 / 09
+  - generic [ref=e132]:
+    - generic [ref=e133]:
+      - generic [ref=e134]: Tables & Matrices
+      - generic [ref=e135]: 表格 · 矩阵
+    - paragraph [ref=e136]: Structured Reading
+    - heading "黑白编辑风格适合承载中高密度表格和矩阵。" [level=2] [ref=e137]
+    - table [ref=e138]:
+      - rowgroup [ref=e139]:
+        - row "组件 适合内容 使用边界 空字段策略" [ref=e140]:
+          - columnheader "组件" [ref=e141]
+          - columnheader "适合内容" [ref=e142]
+          - columnheader "使用边界" [ref=e143]
+          - columnheader "空字段策略" [ref=e144]
+      - rowgroup [ref=e145]:
+        - row "矩阵 争议点、证明方向、风险、策略 不放长篇论证 缺列时降级" [ref=e146]:
+          - cell "矩阵" [ref=e147]
+          - cell "争议点、证明方向、风险、策略" [ref=e148]
+          - cell "不放长篇论证" [ref=e149]
+          - cell "缺列时降级" [ref=e150]
+        - row "表格 金额、节点、材料、任务 不表达复杂关系 空单元格隐藏" [ref=e151]:
+          - cell "表格" [ref=e152]
+          - cell "金额、节点、材料、任务" [ref=e153]
+          - cell "不表达复杂关系" [ref=e154]
+          - cell "空单元格隐藏" [ref=e155]
+        - row "台账 付款、交付、责任、期限对应关系 行数过多要分页 空状态不渲染" [ref=e156]:
+          - cell "台账" [ref=e157]
+          - cell "付款、交付、责任、期限对应关系" [ref=e158]
+          - cell "行数过多要分页" [ref=e159]
+          - cell "空状态不渲染" [ref=e160]
+        - row "行动板 按时间、角色、优先级分组 不用于叙事 空泳道不显示" [ref=e161]:
+          - cell "行动板" [ref=e162]
+          - cell "按时间、角色、优先级分组" [ref=e163]
+          - cell "不用于叙事" [ref=e164]
+          - cell "空泳道不显示" [ref=e165]
+    - table [ref=e166]:
+      - rowgroup [ref=e167]:
+        - row "字段 推荐长度 Renderer 规则" [ref=e168]:
+          - columnheader "字段" [ref=e169]
+          - columnheader "推荐长度" [ref=e170]
+          - columnheader "Renderer 规则" [ref=e171]
+      - rowgroup [ref=e172]:
+        - row "标题 12-24 字 超长换行或降级" [ref=e173]:
+          - cell "标题" [ref=e174]
+          - cell "12-24 字" [ref=e175]
+          - cell "超长换行或降级" [ref=e176]
+        - row "说明 40-80 字 超出拆卡或拆页" [ref=e177]:
+          - cell "说明" [ref=e178]
+          - cell "40-80 字" [ref=e179]
+          - cell "超出拆卡或拆页" [ref=e180]
+        - row "标签 2-8 字 自动换行" [ref=e181]:
+          - cell "标签" [ref=e182]
+          - cell "2-8 字" [ref=e183]
+          - cell "自动换行" [ref=e184]
+    - generic [ref=e185]:
+      - generic [ref=e186]:
+        - strong [ref=e187]: LawViz Editorial Ink
+        - emphasis [ref=e188]: Style Pack · Tables
+      - generic [ref=e189]: 表格 · 矩阵 · 数据密度
+      - generic [ref=e190]: 04 / 09
+  - generic [ref=e191]:
+    - generic [ref=e192]:
+      - generic [ref=e193]: Flow Components
+      - generic [ref=e194]: 流程 · 时间 · 执行
+    - paragraph [ref=e195]: Sequence Components
+    - heading "流程组件在黑白风格中依靠数字、规则线和卡片层级建立顺序。" [level=2] [ref=e196]
+    - generic [ref=e197]:
+      - generic [ref=e198]:
+        - generic [ref=e199]: STEP 01
+        - heading "理解问题" [level=3] [ref=e200]
+        - paragraph [ref=e201]: 用于解释客户为什么要看这一页。
+      - generic [ref=e202]:
+        - generic [ref=e203]: STEP 02
+        - heading "确认重点" [level=3] [ref=e204]
+        - paragraph [ref=e205]: 重点步骤使用反白强调。
+      - generic [ref=e206]:
+        - generic [ref=e207]: STEP 03
+        - heading "准备材料" [level=3] [ref=e208]
+        - paragraph [ref=e209]: 用于提示客户接下来补什么。
+      - generic [ref=e210]:
+        - generic [ref=e211]: STEP 04
+        - heading "执行动作" [level=3] [ref=e212]
+        - paragraph [ref=e213]: 连接行动看板和后续路径。
+    - generic [ref=e214]:
+      - generic [ref=e215]:
+        - generic [ref=e216]: T-01
+        - generic [ref=e217]:
+          - heading "事实节点" [level=3] [ref=e218]
+          - paragraph [ref=e219]: 表达事实顺序和证据锚点。
+      - generic [ref=e220]:
+        - generic [ref=e221]: T-02
+        - generic [ref=e222]:
+          - heading "确认节点" [level=3] [ref=e223]
+          - paragraph [ref=e224]: 标注需要客户确认的重点。
+      - generic [ref=e225]:
+        - generic [ref=e226]: T-03
+        - generic [ref=e227]:
+          - heading "行动节点" [level=3] [ref=e228]
+          - paragraph [ref=e229]: 连接材料准备和策略路径。
+    - generic [ref=e230]:
+      - generic [ref=e231]:
+        - strong [ref=e232]: LawViz Editorial Ink
+        - emphasis [ref=e233]: Style Pack · Flow
+      - generic [ref=e234]: 时间线 · 步骤 · 路径
+      - generic [ref=e235]: 05 / 09
+  - generic [ref=e236]:
+    - generic [ref=e237]:
+      - generic [ref=e238]: Decision Layouts
+      - generic [ref=e239]: 对照 · 金额 · 证据
+    - paragraph [ref=e240]: Editorial Decision Support
+    - heading "对照、金额和证据组件在这套风格里更像专题分析版块。" [level=2] [ref=e241]
+    - generic [ref=e242]:
+      - generic [ref=e243]:
+        - heading "路径 A" [level=3] [ref=e244]
+        - paragraph [ref=e245]: 用于展示推荐方案、主张路径或客户优先选择。
+        - generic [ref=e246]:
+          - generic [ref=e247]: 推荐
+          - generic [ref=e248]: 证据强
+      - generic [ref=e249]: VS
+      - generic [ref=e250]:
+        - heading "路径 B" [level=3] [ref=e251]
+        - paragraph [ref=e252]: 用于展示备选策略、风险路径或对方立场。
+        - generic [ref=e253]:
+          - generic [ref=e254]: 风险
+          - generic [ref=e255]: 成本
+    - generic [ref=e256]:
+      - generic [ref=e257]:
+        - generic [ref=e258]: 18.6万
+        - heading "主金额" [level=3] [ref=e259]
+        - paragraph [ref=e260]: 用于核心请求、关键损失或主要商业金额。
+      - generic [ref=e261]:
+        - generic [ref=e262]: 1.2万
+        - heading "附属金额" [level=3] [ref=e263]
+        - paragraph [ref=e264]: 用于利息、费用、补偿或次级请求。
+      - generic [ref=e265]:
+        - generic [ref=e266]: 3.8万
+        - heading "谈判金额" [level=3] [ref=e267]
+        - paragraph [ref=e268]: 用于不确定性较高但可进入谈判的金额。
+    - generic [ref=e269]:
+      - generic [ref=e270]:
+        - strong [ref=e271]: LawViz Editorial Ink
+        - emphasis [ref=e272]: Style Pack · Decisions
+      - generic [ref=e273]: 对照 · 金额 · 专题分析
+      - generic [ref=e274]: 06 / 09
+  - generic [ref=e275]:
+    - generic [ref=e276]:
+      - generic [ref=e277]: Evidence & Action
+      - generic [ref=e278]: 证据 · 优先级 · 行动
+    - paragraph [ref=e279]: Proof & Task Components
+    - heading "证据和行动组件保持克制，用层级而不是颜色表达优先级。" [level=2] [ref=e280]
+    - generic [ref=e281]:
+      - generic [ref=e282]:
+        - heading "强证明目标" [level=3] [ref=e283]
+        - paragraph [ref=e284]: 用于展示当前证据链较稳的证明方向。
+      - generic [ref=e285]:
+        - heading "辅助证明目标" [level=3] [ref=e286]
+        - paragraph [ref=e287]: 用于展示有帮助但不能单独支撑结论的材料。
+      - generic [ref=e288]:
+        - heading "证据缺口" [level=3] [ref=e289]
+        - paragraph [ref=e290]: 用于提示客户补充材料或确认事实。
+      - generic [ref=e291]:
+        - heading "解释风险" [level=3] [ref=e292]
+        - paragraph [ref=e293]: 用于说明材料可能被另一方如何解释。
+    - generic [ref=e294]:
+      - generic [ref=e295]:
+        - heading "立即" [level=3] [ref=e296]
+        - generic [ref=e297]:
+          - strong [ref=e298]: 补充材料
+          - generic [ref=e299]: 今天完成。
+      - generic [ref=e300]:
+        - heading "3 日内" [level=3] [ref=e301]
+        - generic [ref=e302]:
+          - strong [ref=e303]: 确认事实
+          - generic [ref=e304]: 和律师核对。
+      - generic [ref=e305]:
+        - heading "7 日内" [level=3] [ref=e306]
+        - generic [ref=e307]:
+          - strong [ref=e308]: 发送文件
+          - generic [ref=e309]: 形成正式动作。
+      - generic [ref=e310]:
+        - heading "待回应" [level=3] [ref=e311]
+        - generic [ref=e312]:
+          - strong [ref=e313]: 选择路径
+          - generic [ref=e314]: 谈判或推进。
+    - generic [ref=e315]:
+      - generic [ref=e316]:
+        - strong [ref=e317]: LawViz Editorial Ink
+        - emphasis [ref=e318]: Style Pack · Evidence
+      - generic [ref=e319]: 证明目标 · 任务分组 · 优先级
+      - generic [ref=e320]: 07 / 09
+  - generic [ref=e321]:
+    - generic [ref=e322]:
+      - generic [ref=e323]: Ledger & Profile
+      - generic [ref=e324]: 台账 · 完整名片
+    - paragraph [ref=e325]: Baseline Components
+    - heading "台账表达对应关系；完整名片用于封底或交付方展示。" [level=2] [ref=e326]
+    - generic [ref=e327]:
+      - generic [ref=e328]:
+        - generic [ref=e329]:
+          - generic [ref=e330]: Status
+          - strong [ref=e331]: 已完成
+        - generic [ref=e332]:
+          - generic [ref=e333]: Condition
+          - strong [ref=e334]: 节点条件或触发事项
+        - generic [ref=e335]:
+          - generic [ref=e336]: Output
+          - strong [ref=e337]: 对应成果、材料或义务
+        - generic [ref=e338]:
+          - generic [ref=e339]: Risk
+          - strong [ref=e340]: 低
+      - generic [ref=e341]:
+        - generic [ref=e342]:
+          - generic [ref=e343]: Status
+          - strong [ref=e344]: 争议
+        - generic [ref=e345]:
+          - generic [ref=e346]: Condition
+          - strong [ref=e347]: 尚需确认的条件
+        - generic [ref=e348]:
+          - generic [ref=e349]: Output
+          - strong [ref=e350]: 需补充证明的对应内容
+        - generic [ref=e351]:
+          - generic [ref=e352]: Risk
+          - strong [ref=e353]: 中
+    - generic [ref=e354]:
+      - generic [ref=e355]: 衡
+      - generic [ref=e356]:
+        - paragraph [ref=e357]: Prepared by
+        - heading "衡策争议解决团队" [level=3] [ref=e358]
+        - paragraph [ref=e359]: 负责人：陈知衡律师 · 某某律师事务所 · 专题分析与争议解决
+        - generic [ref=e360]:
+          - generic [ref=e361]: 专题分析
+          - generic [ref=e362]: 证据整理
+          - generic [ref=e363]: 策略判断
+        - generic [ref=e364]:
+          - generic [ref=e365]:
+            - generic [ref=e366]: Phone
+            - strong [ref=e367]: 138-0000-0000
+          - generic [ref=e368]:
+            - generic [ref=e369]: Wechat
+            - strong [ref=e370]: ch-law
+          - generic [ref=e371]:
+            - generic [ref=e372]: Office
+            - strong [ref=e373]: 上海 · 企业争议部
+    - generic [ref=e374]:
+      - generic [ref=e375]:
+        - strong [ref=e376]: LawViz Editorial Ink
+        - emphasis [ref=e377]: Style Pack · Ledger & Profile
+      - generic [ref=e378]: 台账 · 对应关系 · 完整名片
+      - generic [ref=e379]: 08 / 09
+  - generic [ref=e380]:
+    - generic [ref=e381]:
+      - generic [ref=e382]: Connector Canvas
+      - generic [ref=e383]: 关系图 · 路径图
+    - paragraph [ref=e384]: SVG Connector Stress Test
+    - heading "复杂关系图使用 SVG connector-layer，保持清楚，不穿透文字框。" [level=2] [ref=e385]
+    - generic [ref=e386]:
+      - img:
+        - generic: 路径分流
+      - generic [ref=e387]:
+        - strong [ref=e388]: 中心节点
+        - text: 核心事实、核心判断或起点。
+      - generic [ref=e389]:
+        - strong [ref=e390]: 路径 A
+        - text: 一种回应、方案或结果。
+      - generic [ref=e391]:
+        - strong [ref=e392]: 路径 B
+        - text: 默认策略或重点路径。
+      - generic [ref=e393]:
+        - strong [ref=e394]: 路径 C
+        - text: 风险路径或备选方案。
+      - generic [ref=e395]:
+        - strong [ref=e396]: 后续动作
+        - text: 虚线表示待确认动作。
+      - generic [ref=e397]:
+        - strong [ref=e398]: 风险缺口
+        - text: 连线不进入文字框。
+    - generic [ref=e399]:
+      - generic [ref=e400]:
+        - strong [ref=e401]: LawViz Editorial Ink
+        - emphasis [ref=e402]: Style Pack · Connector Canvas
+      - generic [ref=e403]: SVG connector-layer · 节点图 · 路径图
+      - generic [ref=e404]: 09 / 09

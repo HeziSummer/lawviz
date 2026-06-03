@@ -1,0 +1,148 @@
+﻿{
+    "id":  "lawviz-consulting-blue",
+    "name":  "LawViz Consulting Blue",
+    "version":  "0.1.0",
+    "status":  "sample-pack",
+    "purpose":  "A4 portrait professional consulting-style visual style pack for LawViz reports. It defines page shell, tokens, components, identity rendering, and renderer constraints without binding to any case type.",
+    "sources":  [
+                    {
+                        "name":  "Zhangzara Blue Professional",
+                        "plugin_url":  "https://open-design.ai/zh/plugins/example-html-ppt-zhangzara-blue-professional/",
+                        "example_url":  "https://open-design.ai/plugins/example-html-ppt-zhangzara-blue-professional/example.html",
+                        "github_url":  "https://github.com/nexu-io/open-design/tree/main/plugins/_official/examples/html-ppt-zhangzara-blue-professional",
+                        "role":  "Primary consulting-style structure, cobalt accent, professional page grammar"
+                    },
+                    {
+                        "name":  "Data Visualization Report",
+                        "plugin_url":  "https://open-design.ai/zh/plugins/example-data-report/",
+                        "example_url":  "https://open-design.ai/plugins/example-data-report/example.html",
+                        "github_url":  "https://github.com/nexu-io/open-design/tree/main/plugins/_official/examples/data-report",
+                        "role":  "KPI, table, and insight module inspiration"
+                    },
+                    {
+                        "name":  "Finance Report",
+                        "plugin_url":  "https://open-design.ai/zh/plugins/example-finance-report/",
+                        "example_url":  "https://open-design.ai/plugins/example-finance-report/example.html",
+                        "github_url":  "https://github.com/nexu-io/open-design/tree/main/plugins/_official/examples/finance-report",
+                        "role":  "Monetary and calculation board inspiration"
+                    }
+                ],
+    "visual_tokens":  {
+                          "page":  {
+                                       "format":  "A4 portrait",
+                                       "screen_preview_px":  {
+                                                                 "width":  794,
+                                                                 "height":  1123
+                                                             },
+                                       "print_size":  "210mm x 297mm",
+                                       "safe_margin_mm":  14
+                                   },
+                          "colors":  {
+                                         "paper":  "#F7F5EF",
+                                         "paper_soft":  "#FBFAF6",
+                                         "ink":  "#111827",
+                                         "muted":  "#5D6472",
+                                         "line":  "#D8DEE9",
+                                         "card":  "#FFFFFF",
+                                         "accent":  "#1D4ED8",
+                                         "accent_dark":  "#0F2F82",
+                                         "accent_soft":  "#E8F0FF",
+                                         "success":  "#16794C",
+                                         "warning":  "#B7791F"
+                                     },
+                          "typography":  {
+                                             "display":  "Inter, Noto Sans SC, Microsoft YaHei, Arial, sans-serif",
+                                             "body":  "Inter, Noto Sans SC, Microsoft YaHei, Arial, sans-serif",
+                                             "mono":  "JetBrains Mono, Consolas, monospace"
+                                         },
+                          "shapes":  {
+                                         "card_border":  "1px solid #D8DEE9",
+                                         "card_radius":  "8px",
+                                         "callout_radius":  "8px"
+                                     }
+                      },
+    "component_showroom_sections":  [
+                                        "page_shell",
+                                        "identity_system",
+                                        "cards_and_metrics",
+                                        "structured_tables",
+                                        "flow_components",
+                                        "comparison_and_money",
+                                        "evidence_and_heat",
+                                        "ledger_and_profile",
+                                        "connector_canvas",
+                                        "chart_components"
+                                    ],
+    "component_catalog":  [
+                              "page_header",
+                              "identity_footer",
+                              "cover_identity",
+                              "card",
+                              "callout",
+                              "metric",
+                              "tag_row",
+                              "timeline",
+                              "pipeline",
+                              "mini_table",
+                              "focus_matrix",
+                              "position_board",
+                              "ledger",
+                              "amount_grid",
+                              "proof_grid",
+                              "heatmap",
+                              "action_board",
+                              "connector_canvas",
+                              "profile_card",
+                              "bar_chart",
+                              "stacked_bar_chart",
+                              "donut_chart",
+                              "waterfall_chart",
+                              "risk_quadrant",
+                              "score_gauge",
+                              "calendar_strip"
+                          ],
+    "identity_system":  {
+                            "purpose":  "Professional report identity system for individual lawyer, law firm team, or corporate-style firm.",
+                            "identity_types":  [
+                                                   "solo_lawyer",
+                                                   "law_firm_team",
+                                                   "corporate_firm"
+                                               ],
+                            "empty_state_policy":  {
+                                                       "avatar_url":  "Use text mark or initials.",
+                                                       "logo_url":  "Use display_name as brand mark.",
+                                                       "bio_short":  "Omit biography area and enlarge practice/contact modules.",
+                                                       "team_members":  "Hide member-role grid and keep lead lawyer/team positioning.",
+                                                       "qr_code_url":  "Hide QR slot; do not render an empty placeholder."
+                                                   },
+                            "rendering_slots":  [
+                                                    "cover_identity",
+                                                    "persistent_footer_identity",
+                                                    "profile_card"
+                                                ]
+                        },
+    "agent_guidance":  {
+                           "allowed_to_choose":  [
+                                                     "approved component",
+                                                     "page title",
+                                                     "short explanatory copy",
+                                                     "semantic grouping of structured facts, evidence, issues, amounts, and next actions",
+                                                     "visual intent that maps to a known component"
+                                                 ],
+                           "not_allowed_to_generate":  [
+                                                           "external scripts",
+                                                           "arbitrary CSS tokens",
+                                                           "unbounded HTML",
+                                                           "new unrelated visual style",
+                                                           "overlong paragraphs",
+                                                           "absolute-positioned div arrows"
+                                                       ]
+                       },
+    "renderer_constraints":  {
+                                 "escape_text":  true,
+                                 "allow_external_scripts":  false,
+                                 "print_ready":  true,
+                                 "page_overflow_policy":  "split page or condense block",
+                                 "agent_html_policy":  "Agent outputs structured page plan only; renderer owns final HTML"
+                             }
+}

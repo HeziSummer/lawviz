@@ -19,7 +19,11 @@ class User(Base):
 
     id: Mapped[UUID] = mapped_column(PG_UUID(as_uuid=True), primary_key=True, server_default=func.gen_random_uuid(), index=True)
     phone: Mapped[str] = mapped_column(String(32), unique=True, index=True, nullable=False)
+    email: Mapped[str] = mapped_column(String(255), unique=True, index=True, nullable=False)
     password_hash: Mapped[str] = mapped_column(String(255), nullable=False)
+    role: Mapped[str] = mapped_column(String(30), nullable=False, default="lawyer")
+    status: Mapped[str] = mapped_column(String(30), nullable=False, default="pending", index=True)
+    is_verified: Mapped[bool] = mapped_column(nullable=False, default=False)
     credits: Mapped[Decimal] = mapped_column(Numeric(12, 2), nullable=False, default=0)
     subscription_tier: Mapped[str] = mapped_column(String(50), nullable=False, default="free")
     subscription_end_date: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
